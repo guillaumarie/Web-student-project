@@ -10,30 +10,35 @@
 
         if ($db_found) {
             if (isset($_POST["button1"])) {
-                $sql = "SELECT * FROM vendeur WHERE Email LIKE '$email' AND Pseudo LIKE '$pseudo'"; 
-                
+                $sql = "SELECT * FROM vendeur WHERE Email LIKE '$email'"; 
                 $result = mysqli_query($db_handle, $sql);
 
                 if (mysqli_num_rows($result) === 0) {
                     echo "Ce compte vendeur n'existe pas.<br>";
                 } else {
-                    while ($data = mysqli_fetch_assoc($result)) {
-                        echo "Informations sur le vendeur connecté :" . "<br>";
-                        echo "ID Vendeur : " . $data['IdVendeur'] . "<br>";
-                        echo "Email : " . $data['Email'] . "<br>";
-                        echo "Pseudo : " . $data['Pseudo'] . "<br>";
-                        echo "<br>";
+                    $sql .= " AND Pseudo LIKE '$pseudo'";
+                    $result = mysqli_query($db_handle, $sql);
+
+                    if (mysqli_num_rows($result) === 0) {
+                        echo "Votre pseudo est incorrect.<br>";
+                    } else {
+                        while ($data = mysqli_fetch_assoc($result)) {
+                            echo "Informations sur le vendeur connecté :" . "<br>";
+                            echo "ID Vendeur : " . $data['IdVendeur'] . "<br>";
+                            echo "Email : " . $data['Email'] . "<br>";
+                            echo "Pseudo : " . $data['Pseudo'] . "<br>";
+                            echo "<br>";
+                        }
                     }
                 }
             }
 
             if (isset($_POST["button2"])) {
                 $sql = "SELECT * FROM vendeur WHERE Email LIKE '$email'";
-
                 $result = mysqli_query($db_handle, $sql);
 
                 if (mysqli_num_rows($result) !== 0) {
-                    echo "Cet email est déjà utilisé par un vendeur.<br>";
+                    echo "Cet Email est déjà utilisé par un vendeur.<br>";
                 } else {
                     $sqlInsert = "INSERT INTO vendeur (Email, Pseudo) VALUES ('$email', '$pseudo')";
 
