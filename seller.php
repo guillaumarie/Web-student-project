@@ -9,7 +9,7 @@
         $db_found = mysqli_select_db($db_handle, $database);
 
         if ($db_found) {
-            if ($_POST["button1"]) {
+            if (isset($_POST["button1"])) {
                 $sql = "SELECT * FROM vendeur WHERE Email LIKE '$email' AND Pseudo LIKE '$pseudo'"; 
                 
                 $result = mysqli_query($db_handle, $sql);
@@ -27,7 +27,7 @@
                 }
             }
 
-            if ($_POST["button2"]) {
+            if (isset($_POST["button2"])) {
                 $sql = "SELECT * FROM vendeur WHERE Email LIKE '$email'";
 
                 $result = mysqli_query($db_handle, $sql);
