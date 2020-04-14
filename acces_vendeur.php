@@ -10,12 +10,10 @@
     <form action="connexion_vendeur.php" method="post">
         <table>
             <tr>
-                <td>Email : </td>
-                <td><input type="text" name="email"></td>
+                <td><input type="text" name="email" placeholder="Email" size="30"></td>
             </tr>
             <tr>
-                <td>Mot de passe : </td>
-                <td><input type="text" name="password"></td>
+                <td><input type="password" name="password" placeholder="Mot de passe" size="30"></td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
@@ -29,24 +27,19 @@
     <form action="inscription_vendeur.php" method="post">
         <table>
             <tr>
-                <td>Nom : </td>
-                <td><input type="text" name="nom"></td>
+                <td><input type="text" name="nom" placeholder="Nom" size="12"></td>
+                <td><input type="text" name="prenom" placeholder="Prénom" size="12"></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td><input type="text" name="email" placeholder="Email" size="30"></td>
             </tr>
             <tr>
-                <td>Prénom : </td>
-                <td><input type="text" name="prenom"></td>
+                <td><input type="password" name="password1" placeholder="Nouveau mot de passe" size="30"></td>
             </tr>
             <tr>
-                <td>Email : </td>
-                <td><input type="text" name="email"></td>
-            </tr>
-            <tr>
-                <td>Mot de passe : </td>
-                <td><input type="text" name="password1"></td>
-            </tr>
-            <tr>
-                <td>Répétez votre mot de passe : </td>
-                <td><input type="text" name="password2"></td>
+                <td><input type="password" name="password2" placeholder="Confirmez votre mot de passe" size="30"></td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
