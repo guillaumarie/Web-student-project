@@ -10,8 +10,8 @@
     <form action="connexion_vendeur.php" method="post">
         <table>
             <tr>
-                <td>Email ou Pseudo : </td>
-                <td><input type="text" name="pseudo"></td>
+                <td>Email : </td>
+                <td><input type="text" name="email"></td>
             </tr>
             <tr>
                 <td>Mot de passe : </td>
@@ -39,10 +39,6 @@
             <tr>
                 <td>Email : </td>
                 <td><input type="text" name="email"></td>
-            </tr>
-            <tr>
-                <td>Pseudo : </td>
-                <td><input type="text" name="pseudo"></td>
             </tr>
             <tr>
                 <td>Mot de passe : </td>

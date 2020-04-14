@@ -2,11 +2,10 @@
     $nom = isset($_POST["nom"])? $_POST["nom"] : "";
     $prenom = isset($_POST["prenom"])? $_POST["prenom"] : "";
     $email = isset($_POST["email"])? $_POST["email"] : "";
-    $pseudo = isset($_POST["pseudo"])? $_POST["pseudo"] : "";
     $password1 = isset($_POST["password1"])? $_POST["password1"] : "";
     $password2 = isset($_POST["password2"])? $_POST["password2"] : "";
 
-    if($nom && $prenom && $email && $pseudo && $password1 && $password2) {
+    if($nom && $prenom && $email && $password1 && $password2) {
         $database = "ebay_ece";
 
         $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
@@ -20,8 +19,8 @@
                 echo "Cet Email est déjà utilisé par un vendeur.<br>";
             } else {
                 if ($password1 === $password2) {
-                    $sqlInsert = "INSERT INTO vendeur (Nom, Prenom, Email, Pseudo, Password)
-                    VALUES ('$nom', '$prenom', '$email', '$pseudo', '$password1')";
+                    $sqlInsert = "INSERT INTO vendeur (Nom, Prenom, Email, Password)
+                    VALUES ('$nom', '$prenom', '$email', '$password1')";
 
                     $result = mysqli_query($db_handle, $sqlInsert);
                     echo "Votre compte vendeur a été créé." . "<br>";
@@ -34,7 +33,6 @@
                     echo "Nom : " . $data['Nom'] . "<br>";
                     echo "Prenom : " . $data['Prenom'] . "<br>";
                     echo "Email : " . $data['Email'] . "<br>";
-                    echo "Pseudo : " . $data['Pseudo'] . "<br>";
                     echo "<br>";
                     }
                 } else {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Apr 14, 2020 at 10:52 AM
+-- Generation Time: Apr 14, 2020 at 11:31 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -34,17 +34,17 @@ CREATE TABLE IF NOT EXISTS `vendeur` (
   `Nom` varchar(250) NOT NULL,
   `Prenom` varchar(250) NOT NULL,
   `Email` varchar(250) NOT NULL,
-  `Pseudo` varchar(250) NOT NULL,
   `Password` varchar(100) NOT NULL,
   PRIMARY KEY (`IdVendeur`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `vendeur`
 --
 
-INSERT INTO `vendeur` (`IdVendeur`, `Nom`, `Prenom`, `Email`, `Pseudo`, `Password`) VALUES
-(2, 'MARIE', 'Guillaume', 'guillaume@gmail.com', 'guillaumarie', 'azerty');
+INSERT INTO `vendeur` (`IdVendeur`, `Nom`, `Prenom`, `Email`, `Password`) VALUES
+(2, 'MARIE', 'Guillaume', 'guillaume@gmail.com', 'azerty'),
+(3, 'DUPONT', 'Marc', 'marc@gmail.com', '123');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
