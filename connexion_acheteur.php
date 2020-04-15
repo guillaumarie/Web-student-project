@@ -34,7 +34,6 @@
         } else {
             echo "Database not found.<br>";
         }
-        //fermer la connexion
         mysqli_close($db_handle);
     } else {
         echo "Veuillez remplir tous les champs.<br>";

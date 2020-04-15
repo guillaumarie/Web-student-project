@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="CSS/Connexion.css">
+    <link rel="stylesheet" type="text/css" href="css/Connexion.css">
 
 </head>
 
-<body class="pb-5">
 
-    <body>
+<body class="pb-5">
         <nav class="navbar navbar-expand-md">
-            <a class="navbar-brand" href="#"><img src="Images/navbar/logo.png" width="200" height="150" class="d-inline-block align-top" alt="" /></a>
+            <a class="navbar-brand" href="#"><img src="img/navbar/logo.png" width="250" height="150" class="d-inline-block align-top" alt="" /></a>
             <div class="collapse navbar-collapse" id="main-navigation">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="accueil.html"> Accueil</a></li>
@@ -43,7 +42,7 @@
                     </tr>
                     <tr>
                         <td class="pb-4" colspan="2" align="center">
-                            <input type="submit" value="Valider" />
+                            <input type="submit" value="Valider">
                         </td>
                     </tr>
                 </table>
@@ -53,13 +52,13 @@
         <div id="inscription" class="mt-5 pb-4">
             <h1 class="text-center pt-5 pb-4">Créer mon compte Vendeur</h1>
             <form action="inscription_vendeur.php" method="post">
-                <table align="center" width="50%">
+                <table align="center" width="75%">
                     <tr>
                         <td><input class="container-fluid mb-1" type="text" name="nom" placeholder="Nom" size="12"></td>
                         <td><input class="container-fluid mb-1" type="text" name="prenom" placeholder="Prénom" size="12"></td>
                     </tr>
                 </table>
-                <table align="center" width="50%">
+                <table align="center" width="75%">
                     <tr>
                         <td><input class="container-fluid mb-1" type="text" name="email" placeholder="Email" size="30"></td>
                     </tr>
@@ -69,12 +68,15 @@
                     <tr>
                         <td><input class="container-fluid mb-1" type="password" name="password2" placeholder="Confirmez votre mot de passe" size="30"></td>
                     </tr>
+                </table>
+                <table align="center" width="75%">
                     <tr>
-                        <td><label for="photoProfil">Sélectionnez une photo de profil</label></td>
+                        <td><label for="photoProfil">Choisir une photo de profil :</label></td>
+                        <td><input class="container-fluid mb-1" type="file" name="photoProfil" value="Cliquer"></td>
                     </tr>
-                    <tr>
-                        <td><input class="container-fluid mb-1" type="file" name="photoProfil"></td>
-                    </tr>
+                </table>
+                <br>
+                <table align="center" width="75%">
                     <tr>
                         <td colspan="2" align="center">
                             <input type="submit" name="button" value="S'inscrire">
@@ -84,6 +86,8 @@
             </form>
         </div>
         <br></br>
+
+
         <footer class="page-footer">
         <div class="container-fluid">
             <div class="row">
