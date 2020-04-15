@@ -27,6 +27,8 @@
                         echo "Nom : " . $data['Nom'] . "<br>";
                         echo "Prenom : " . $data['Prenom'] . "<br>";
                         echo "Email : " . $data['Email'] . "<br>";
+                        $photoProfil = $data['PhotoProfil'];
+                        echo "<img src='img/vendeur/$photoProfil' alt='photo_profil' height='150'>";
                         echo "<br>";
                     }
                 }
@@ -34,7 +36,6 @@
         } else {
             echo "Database not found.<br>";
         }
-        //fermer la connexion
         mysqli_close($db_handle);
     } else {
         echo "Veuillez remplir tous les champs.<br>";

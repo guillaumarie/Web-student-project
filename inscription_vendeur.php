@@ -4,6 +4,7 @@
     $email = isset($_POST["email"])? $_POST["email"] : "";
     $password1 = isset($_POST["password1"])? $_POST["password1"] : "";
     $password2 = isset($_POST["password2"])? $_POST["password2"] : "";
+    $photoProfil = isset($_POST["photoProfil"])? $_POST["photoProfil"] : "";
 
     if($nom && $prenom && $email && $password1 && $password2) {
         $database = "ebay_ece";
@@ -19,8 +20,8 @@
                 echo "Cet Email est déjà utilisé par un vendeur.<br>";
             } else {
                 if ($password1 === $password2) {
-                    $sqlInsert = "INSERT INTO vendeur (Nom, Prenom, Email, Password)
-                    VALUES ('$nom', '$prenom', '$email', '$password1')";
+                    $sqlInsert = "INSERT INTO vendeur (Nom, Prenom, Email, Password, PhotoProfil)
+                    VALUES ('$nom', '$prenom', '$email', '$password1', '$photoProfil')";
 
                     $result = mysqli_query($db_handle, $sqlInsert);
                     echo "Votre compte vendeur a été créé." . "<br>";
@@ -33,6 +34,8 @@
                     echo "Nom : " . $data['Nom'] . "<br>";
                     echo "Prenom : " . $data['Prenom'] . "<br>";
                     echo "Email : " . $data['Email'] . "<br>";
+                    $photoProfil = $data['PhotoProfil'];
+                    echo "<img src='img/vendeur/$photoProfil' alt='photo_profil' height='150'>";
                     echo "<br>";
                     }
                 } else {
@@ -42,7 +45,6 @@
         } else {
             echo "Database not found";
         }
-        //fermer la connexion
         mysqli_close($db_handle);
     } else {
         echo "Empty fields";
