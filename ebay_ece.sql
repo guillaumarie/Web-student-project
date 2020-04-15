@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Apr 15, 2020 at 05:20 PM
+-- Generation Time: Apr 15, 2020 at 10:15 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -100,8 +100,20 @@ CREATE TABLE IF NOT EXISTS `item` (
   `Prix` int(11) NOT NULL,
   `Categorie` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `TypeAchat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`IdItem`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`IdItem`),
+  KEY `suppression_vendeur` (`IdVendeur`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`IdItem`, `IdVendeur`, `Nom`, `Photo1`, `Photo2`, `Photo3`, `Photo4`, `Photo5`, `Description`, `Prix`, `Categorie`, `TypeAchat`) VALUES
+(4, 3, 'La Joconde', '', '', '', '', '', 'Très célèbre peinture', 10000000, 'musee', 'enchere'),
+(5, 3, 'La Joconde', '', '', '', '', '', 'Très célèbre peinture', 10000000, 'musee', 'enchere'),
+(6, 3, 'La Joconde', 'joconde-1.jpg', '', '', '', '', 'Très belle pièce', 10000000, 'musee', 'enchere'),
+(7, 3, 'La Joconde', 'joconde-1.jpg', 'joconde-2.jpg', '', '', '', 'Belle pièce', 10000000, 'musee', 'enchere'),
+(8, 3, 'La Joconde', 'joconde-1.jpg', 'joconde-2.jpg', 'joconde-3.jpg', 'joconde-4.jpg', '', 'Belle pièce', 10000000, 'musee', 'enchere');
 
 -- --------------------------------------------------------
 
@@ -125,9 +137,8 @@ CREATE TABLE IF NOT EXISTS `vendeur` (
 --
 
 INSERT INTO `vendeur` (`IdVendeur`, `Nom`, `Prenom`, `Email`, `Password`, `PhotoProfil`) VALUES
-(3, 'DUPONT', 'Marc', 'marc@gmail.com', '123', ''),
 (8, 'MARIE', 'Guillaume', 'guillaume@gmail.com', 'azerty', 'guillaume-marie.jpg'),
-(9, 'MACRON', 'Emmanuel', 'macron@gmail.com', '123', 'emmanuel-macron.jpg');
+(3, 'BEZOS', 'Jeff', 'jeff-bezos@gmail.com', '0000', 'jeff-bezos.jpg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
