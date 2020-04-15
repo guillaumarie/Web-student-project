@@ -1,79 +1,54 @@
 <?php
+    $categorie = isset($_POST["categorie"])? $_POST["categorie"] : "";
     $nom = isset($_POST["nom"])? $_POST["nom"] : "";
-    $prenom = isset($_POST["prenom"])? $_POST["prenom"] : "";
-    $email = isset($_POST["email"])? $_POST["email"] : "";
-    $password1 = isset($_POST["password1"])? $_POST["password1"] : "";
-    $password2 = isset($_POST["password2"])? $_POST["password2"] : "";
-    $adresse1 = isset($_POST["adresse1"])? $_POST["adresse1"] : "";
-    $adresse2 = isset($_POST["adresse2"])? $_POST["adresse2"] : "";
-    $cp = isset($_POST["cp"])? $_POST["cp"] : "";
-    $ville = isset($_POST["ville"])? $_POST["ville"] : "";
-    $pays = isset($_POST["pays"])? $_POST["pays"] : "";
-    $tel = isset($_POST["tel"])? $_POST["tel"] : "";
-    $typeCarte = isset($_POST["typeCarte"])? $_POST["typeCarte"] : "";
-    $numeroCarte = isset($_POST["numeroCarte"])? $_POST["numeroCarte"] : "";
-    $titulaire = isset($_POST["titulaire"])? $_POST["titulaire"] : "";
-    $expiration = isset($_POST["expiration"])? $_POST["expiration"] : "";
-    $cvc = isset($_POST["cvc"])? $_POST["cvc"] : "";
-    $clause = isset($_POST["clause"])? $_POST["clause"] : "";
+    $description = isset($_POST["description"])? $_POST["description"] : "";
+    $photo1 = isset($_POST["photo1"])? $_POST["photo1"] : "";
+    $photo2 = isset($_POST["photo2"])? $_POST["photo2"] : "";
+    $photo3 = isset($_POST["photo3"])? $_POST["photo3"] : "";
+    $photo4 = isset($_POST["photo4"])? $_POST["photo4"] : "";
+    $photo5 = isset($_POST["photo5"])? $_POST["photo5"] : "";
+    $prix = isset($_POST["prix"])? $_POST["prix"] : "";
+    $typeAchat = isset($_POST["typeAchat"])? $_POST["typeAchat"] : "";
 
-    if($nom && $prenom && $email && $password1 && $password2 && $adresse1 && $cp && $ville && $pays && $tel
-        && $typeCarte && $numeroCarte && $titulaire && $expiration && $cvc && $clause) {
+    if($categorie && $nom && $description && $photo1 && $prix && $typeAchat) {
         $database = "ebay_ece";
 
         $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
         $db_found = mysqli_select_db($db_handle, $database);
 
         if ($db_found) {
-            $sql = "SELECT * FROM acheteur WHERE Email LIKE '$email'";
+            $sqlInsert = "INSERT INTO item (IdVendeur, Nom, Photo1, Photo2, Photo3, Photo4, Photo5, Description, Prix, Categorie, TypeAchat)
+            VALUES ('3', '$nom', '$photo1', '$photo2', '$photo3', '$photo4', '$photo5', '$description', '$prix', '$categorie', '$typeAchat')";
+
+            $result = mysqli_query($db_handle, $sqlInsert);
+            echo "Votre produit a été mis en vente." . "<br>";
+
+            $sql = "SELECT * FROM item WHERE IdVendeur LIKE '3'";
             $result = mysqli_query($db_handle, $sql);
 
-            if (mysqli_num_rows($result) !== 0) {
-                echo "Cet Email est déjà utilisé par un client.<br>";
-            } else {
-                if ($password1 === $password2) {
-                    if ($adresse2 !== 0) {
-                        $sqlInsert = "INSERT INTO acheteur (Nom, Prenom, Email, Adresse1, Adresse2, CP, Ville, Pays, Telephone,
-                        TypeCarte, NumeroCarte, NomTitulaire, Expiration, CVC, Password)
-                        VALUES ('$nom', '$prenom', '$email', '$adresse1', '$adresse2', '$cp', '$ville', '$pays', '$tel', '$typeCarte',
-                        '$numeroCarte', '$titulaire', '$expiration', '$cvc', '$password1')";
-                    } else {
-                        $sqlInsert = "INSERT INTO acheteur (Nom, Prenom, Email, Adresse1, CP, Ville, Pays, Telephone,
-                        TypeCarte, NumeroCarte, NomTitulaire, Expiration, CVC, Password)
-                        VALUES ('$nom', '$prenom', '$email', '$adresse1', '$cp', '$ville', '$pays', '$tel', '$typeCarte',
-                        '$numeroCarte', '$titulaire', '$expiration', '$cvc', '$password1')";
-                    }
-                    $result = mysqli_query($db_handle, $sqlInsert);
-                    echo "Votre compte client a été créé." . "<br><br>";
-
-                    $result = mysqli_query($db_handle, $sql);
-
-                    while ($data = mysqli_fetch_assoc($result)) {
-                    echo "Informations sur le nouveau client :" . "<br>";
-                    echo "N° Client : " . $data['IdAcheteur'] . "<br>";
-                    echo "Nom : " . $data['Nom'] . "<br>";
-                    echo "Prenom : " . $data['Prenom'] . "<br>";
-                    echo "Email : " . $data['Email'] . "<br>";
-                    echo "Adresse : " . $data['Adresse1'] . $data['Adresse2'] . "<br>";
-                    echo "Code Postal : " . $data['CP'] . "<br>";
-                    echo "Ville : " . $data['Ville'] . "<br>";
-                    echo "Pays : " . $data['Pays'] . "<br>";
-                    echo "N° Téléphone : " . $data['Telephone'] . "<br>";
-                    echo "Type de carte bancaire : " . $data['TypeCarte'] . "<br>";
-                    echo "Numéro de carte : " . $data['NumeroCarte'] . "<br>";
-                    echo "Nom du titualire de la carte : " . $data['NomTitulaire'] . "<br>";
-                    echo "Date d'expiration : " . $data['Expiration'] . "<br>";
-                    echo "Code de sécurité : " . $data['CVC'] . "<br>";
-                    echo "<br>";
-                    }
-                } else {
-                    echo "Les mots de passe ne sont pas les mêmes.<br>";
-                }
+            while ($data = mysqli_fetch_assoc($result)) {
+                echo "Informations sur le produit mis en vente :" . "<br>";
+                echo "ID Produit : " . $data['IdItem'] . "<br>";
+                echo "ID Vendeur : " . $data['IdVendeur'] . "<br>";
+                echo "Catégorie : " . $data['Categorie'] . "<br>";
+                echo "Nom : " . $data['Nom'] . "<br>";
+                echo "Description : " . $data['Description'] . "<br>";
+                echo "Prix : " . $data['Prix'] . " € <br>";
+                $photo1 = $data['Photo1'];
+                $photo2 = $data['Photo2'];
+                $photo3 = $data['Photo3'];
+                $photo4 = $data['Photo4'];
+                $photo5 = $data['Photo5'];
+                echo "<img src='img/item/$photo1' alt='photo1' height='400'><br>
+                <img src='img/item/$photo2' alt='photo2' height='100'>
+                <img src='img/item/$photo3' alt='photo3' height='100'>
+                <img src='img/item/$photo4' alt='photo4' height='100'>
+                <img src='img/item/$photo5' alt='photo5' height='100'><br>";
+                echo "<br>";
             }
         } else {
             echo "Database not found";
         }
-        //fermer la connexion
         mysqli_close($db_handle);
     } else {
         echo "Empty fields";

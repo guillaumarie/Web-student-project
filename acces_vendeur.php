@@ -72,7 +72,7 @@
                 <table align="center" width="75%">
                     <tr>
                         <td><label for="photoProfil">Choisir une photo de profil :</label></td>
-                        <td><input class="container-fluid mb-1" type="file" name="photoProfil" value="Cliquer"></td>
+                        <td><input class="container-fluid mb-1" type="file" name="photoProfil"></td>
                     </tr>
                 </table>
                 <br>
