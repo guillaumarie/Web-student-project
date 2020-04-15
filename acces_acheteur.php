@@ -67,10 +67,14 @@
         <table>
             <tr>
                 <td>Type de carte : </td>
-                <td><input type="radio" id="visa" name="typeCarte" value="Visa"><label for="visa">Visa</label></td>
-                <td><input type="radio" id= "mastercard" name="typeCarte" value="MasterCard"><label for="mastercard">MasterCard</label></td>
-                <td><input type="radio" id="amex" name="typeCarte" value="American Express"><label for="amex">American Express</label></td>
-                <td><input type="radio" id="paypal" name="typeCarte" value="Paypal"><label for="paypal">Paypal</label></td>
+                <td><input type="radio" id="visa" name="typeCarte" value="Visa"><label for="visa">
+                <img src='img/logo_visa.png' alt='logo_visa' height='40'></label></td>
+                <td><input type="radio" id= "mastercard" name="typeCarte" value="MasterCard"><label for="mastercard">
+                <img src='img/logo_mastercard.png' alt='logo_mastercard' height='40'></label></td>
+                <td><input type="radio" id="amex" name="typeCarte" value="American Express"><label for="amex">
+                <img src='img/logo_amex.png' alt='logo_american_express' height='40'></label></td>
+                <td><input type="radio" id="paypal" name="typeCarte" value="Paypal"><label for="paypal">
+                <img src='img/logo_paypal.png' alt='logo_paypal' height='40'></label></td>
             </tr>
         </table>
         <table>

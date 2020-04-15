@@ -42,6 +42,12 @@
                 <td><input type="password" name="password2" placeholder="Confirmez votre mot de passe" size="30"></td>
             </tr>
             <tr>
+                <td><label for="photoProfil">Sélectionnez une photo de profil</label></td>
+            </tr>
+            <tr>
+                <td><input type="file" name="photoProfil"></td>
+            </tr>
+            <tr>
                 <td colspan="2" align="center">
                     <input type="submit" name="button" value="S'inscrire">
                 </td>
