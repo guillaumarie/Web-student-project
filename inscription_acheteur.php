@@ -10,12 +10,12 @@
     $ville = isset($_POST["ville"])? $_POST["ville"] : "";
     $pays = isset($_POST["pays"])? $_POST["pays"] : "";
     $tel = isset($_POST["tel"])? $_POST["tel"] : "";
-    $typeCarte = isset($_POST["typeCarte"])? $_POST["typeCarte"] : "";
     $numeroCarte = isset($_POST["numeroCarte"])? $_POST["numeroCarte"] : "";
     $titulaire = isset($_POST["titulaire"])? $_POST["titulaire"] : "";
     $expiration = isset($_POST["expiration"])? $_POST["expiration"] : "";
     $cvc = isset($_POST["cvc"])? $_POST["cvc"] : "";
     $clause = isset($_POST["clause"])? $_POST["clause"] : "";
+    $typeCarte = isset($_POST["typeCarte"])? $_POST["typeCarte"] : "";
 
     if($nom && $prenom && $email && $password1 && $password2 && $adresse1 && $cp && $ville && $pays && $tel
         && $typeCarte && $numeroCarte && $titulaire && $expiration && $cvc && $clause) {
