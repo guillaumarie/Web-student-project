@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Compte client</title>
+        <title>Ebay ECE</title>
         <meta charset="utf-8">
     </head>
 <body>
