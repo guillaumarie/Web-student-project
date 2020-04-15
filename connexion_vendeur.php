@@ -27,8 +27,6 @@
                         echo "Nom : " . $data['Nom'] . "<br>";
                         echo "Prenom : " . $data['Prenom'] . "<br>";
                         echo "Email : " . $data['Email'] . "<br>";
-                        $photoProfil = $data['PhotoProfil'];
-                        echo "<img src='$photoProfil' alt='photo-profil' height='150' witdh='150'>";
                         echo "<br>";
                     }
                 }
