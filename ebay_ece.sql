@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Apr 14, 2020 at 04:39 PM
+-- Generation Time: Apr 15, 2020 at 09:50 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -59,6 +59,29 @@ INSERT INTO `acheteur` (`IdAcheteur`, `Nom`, `Prenom`, `Adresse1`, `Adresse2`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `IdAdmin` int(11) NOT NULL AUTO_INCREMENT,
+  `Nom` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Prenom` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Email` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `Password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`IdAdmin`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`IdAdmin`, `Nom`, `Prenom`, `Email`, `Password`) VALUES
+(1, 'MACRON', 'Emmanuel', 'emmanuel-macron@gmail.com', '0123456789');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vendeur`
 --
 
@@ -69,16 +92,17 @@ CREATE TABLE IF NOT EXISTS `vendeur` (
   `Prenom` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `Email` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `Password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `PhotoProfil` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`IdVendeur`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `vendeur`
 --
 
-INSERT INTO `vendeur` (`IdVendeur`, `Nom`, `Prenom`, `Email`, `Password`) VALUES
-(2, 'MARIE', 'Guillaume', 'guillaume@gmail.com', 'azerty'),
-(3, 'DUPONT', 'Marc', 'marc@gmail.com', '123');
+INSERT INTO `vendeur` (`IdVendeur`, `Nom`, `Prenom`, `Email`, `Password`, `PhotoProfil`) VALUES
+(3, 'DUPONT', 'Marc', 'marc@gmail.com', '123', ''),
+(8, 'MARIE', 'Guillaume', 'guillaume@gmail.com', 'azerty', 'guillaume-marie.jpg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
