@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Apr 15, 2020 at 09:50 AM
+-- Generation Time: Apr 15, 2020 at 01:36 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -78,6 +78,25 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`IdAdmin`, `Nom`, `Prenom`, `Email`, `Password`) VALUES
 (1, 'MACRON', 'Emmanuel', 'emmanuel-macron@gmail.com', '0123456789');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `item`
+--
+
+DROP TABLE IF EXISTS `item`;
+CREATE TABLE IF NOT EXISTS `item` (
+  `IdItem` int(11) NOT NULL AUTO_INCREMENT,
+  `IdVendeur` int(11) NOT NULL,
+  `Nom` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Photos` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Description` text COLLATE utf8_unicode_ci NOT NULL,
+  `Prix` int(11) NOT NULL,
+  `Categorie` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `TypeAchat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`IdItem`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
