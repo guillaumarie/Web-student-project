@@ -3,14 +3,11 @@
 
 <head>
     <?php include 'includes/head.php'; ?>
-
 </head>
 
-<body class="pb-5">
 
     <body>
         <?php include 'includes/header.php'; ?>
-
 
         <div id="connexion" class="mt-5">
             <h1 class="text-center pt-5 pb-4">Connexion</h1>
@@ -30,7 +27,7 @@
                     </tr>
                     <tr>
                         <td class="pb-4" colspan="2" align="center">
-                            <input type="submit" value="Valider" />
+                            <input type="submit" value="Valider">
                         </td>
                     </tr>
                 </table>
@@ -40,13 +37,13 @@
         <div id="inscription" class="mt-5 pb-4">
             <h1 class="text-center pt-5 pb-4">Créer mon compte Vendeur</h1>
             <form action="inscription_vendeur.php" method="post">
-                <table align="center" width="50%">
+                <table align="center" width="75%">
                     <tr>
                         <td><input class="container-fluid mb-1" type="text" name="nom" placeholder="Nom" size="12"></td>
                         <td><input class="container-fluid mb-1" type="text" name="prenom" placeholder="Prénom" size="12"></td>
                     </tr>
                 </table>
-                <table align="center" width="50%">
+                <table align="center" width="75%">
                     <tr>
                         <td><input class="container-fluid mb-1" type="text" name="email" placeholder="Email" size="30"></td>
                     </tr>
@@ -56,6 +53,15 @@
                     <tr>
                         <td><input class="container-fluid mb-1" type="password" name="password2" placeholder="Confirmez votre mot de passe" size="30"></td>
                     </tr>
+                </table>
+                <table align="center" width="75%">
+                    <tr>
+                        <td><label for="photoProfil">Choisir une photo de profil :</label></td>
+                        <td><input class="container-fluid mb-1" type="file" name="photoProfil"></td>
+                    </tr>
+                </table>
+                <br>
+                <table align="center" width="75%">
                     <tr>
                         <td colspan="2" align="center">
                             <input type="submit" name="button" value="S'inscrire">
@@ -67,8 +73,6 @@
         <br></br>
 
         <?php include 'includes/footer.php'; ?>
-
-
     </body>
 
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Apr 15, 2020 at 09:50 AM
+-- Generation Time: Apr 15, 2020 at 10:15 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -47,14 +47,15 @@ CREATE TABLE IF NOT EXISTS `acheteur` (
   `CVC` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
   `Password` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`IdAcheteur`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `acheteur`
 --
 
 INSERT INTO `acheteur` (`IdAcheteur`, `Nom`, `Prenom`, `Adresse1`, `Adresse2`, `CP`, `Ville`, `Pays`, `Telephone`, `Email`, `TypeCarte`, `NumeroCarte`, `NomTitulaire`, `Expiration`, `CVC`, `Password`) VALUES
-(8, 'MARIE', 'Guillaume', '6 Square du Trocadéro', '', '75116', 'Paris', 'France', '0781986785', 'guillaume@gmail.com', 'Visa', '1111222233334444', 'MR GUILLAUME MARIE', '2022-01-01', '123', 'azerty');
+(8, 'MARIE', 'Guillaume', '6 Square du Trocadéro', '', '75116', 'Paris', 'France', '0781986785', 'guillaume@gmail.com', 'Visa', '1111222233334444', 'MR GUILLAUME MARIE', '2022-01-01', '123', 'azerty'),
+(10, 'SARDOU', 'Michel', '11 Avenue Charles de Gaulle', '', '92200', 'Neuilly-sur-Seine', 'France', '0123401234', 'sardou@gmail.com', 'mastercard', '1234123412341234', 'MR SARDOU', '2021-12-21', '456', '456');
 
 -- --------------------------------------------------------
 
@@ -82,6 +83,41 @@ INSERT INTO `admin` (`IdAdmin`, `Nom`, `Prenom`, `Email`, `Password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `item`
+--
+
+DROP TABLE IF EXISTS `item`;
+CREATE TABLE IF NOT EXISTS `item` (
+  `IdItem` int(11) NOT NULL AUTO_INCREMENT,
+  `IdVendeur` int(11) NOT NULL,
+  `Nom` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Photo1` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Photo2` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `Photo3` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `Photo4` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `Photo5` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `Description` text COLLATE utf8_unicode_ci NOT NULL,
+  `Prix` int(11) NOT NULL,
+  `Categorie` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `TypeAchat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`IdItem`),
+  KEY `suppression_vendeur` (`IdVendeur`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`IdItem`, `IdVendeur`, `Nom`, `Photo1`, `Photo2`, `Photo3`, `Photo4`, `Photo5`, `Description`, `Prix`, `Categorie`, `TypeAchat`) VALUES
+(4, 3, 'La Joconde', '', '', '', '', '', 'Très célèbre peinture', 10000000, 'musee', 'enchere'),
+(5, 3, 'La Joconde', '', '', '', '', '', 'Très célèbre peinture', 10000000, 'musee', 'enchere'),
+(6, 3, 'La Joconde', 'joconde-1.jpg', '', '', '', '', 'Très belle pièce', 10000000, 'musee', 'enchere'),
+(7, 3, 'La Joconde', 'joconde-1.jpg', 'joconde-2.jpg', '', '', '', 'Belle pièce', 10000000, 'musee', 'enchere'),
+(8, 3, 'La Joconde', 'joconde-1.jpg', 'joconde-2.jpg', 'joconde-3.jpg', 'joconde-4.jpg', '', 'Belle pièce', 10000000, 'musee', 'enchere');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vendeur`
 --
 
@@ -94,15 +130,15 @@ CREATE TABLE IF NOT EXISTS `vendeur` (
   `Password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `PhotoProfil` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`IdVendeur`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `vendeur`
 --
 
 INSERT INTO `vendeur` (`IdVendeur`, `Nom`, `Prenom`, `Email`, `Password`, `PhotoProfil`) VALUES
-(3, 'DUPONT', 'Marc', 'marc@gmail.com', '123', ''),
-(8, 'MARIE', 'Guillaume', 'guillaume@gmail.com', 'azerty', 'guillaume-marie.jpg');
+(8, 'MARIE', 'Guillaume', 'guillaume@gmail.com', 'azerty', 'guillaume-marie.jpg'),
+(3, 'BEZOS', 'Jeff', 'jeff-bezos@gmail.com', '0000', 'jeff-bezos.jpg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
