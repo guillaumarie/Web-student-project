@@ -39,11 +39,11 @@
                 $photo3 = $data['Photo3'];
                 $photo4 = $data['Photo4'];
                 $photo5 = $data['Photo5'];
-                echo "<img src='img/item/$photo1' alt='photo1' height='400'><br>
-                <img src='img/item/$photo2' alt='photo2' height='100'>
-                <img src='img/item/$photo3' alt='photo3' height='100'>
-                <img src='img/item/$photo4' alt='photo4' height='100'>
-                <img src='img/item/$photo5' alt='photo5' height='100'><br>";
+                echo "<img src='images/item/$photo1' alt='photo1' height='400'><br>
+                <img src='images/item/$photo2' alt='photo2' height='100'>
+                <img src='images/item/$photo3' alt='photo3' height='100'>
+                <img src='images/item/$photo4' alt='photo4' height='100'>
+                <img src='images/item/$photo5' alt='photo5' height='100'><br>";
                 echo "<br>";
             }
         } else {

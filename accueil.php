@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <?php include 'includes/head.php'; ?>
+    <head>
+        <?php include 'includes/head.php'; ?>
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <?php include 'includes/header.php'; ?>
+        <?php include 'includes/header.php'; ?>
 
-    
+        
 
-    <br></br>
+        <br></br>
 
-    <?php include 'includes/footer.php'; ?>
+        <?php include 'includes/footer.php'; ?>
 
-</body>
-
-
+    </body>
 
 </html>

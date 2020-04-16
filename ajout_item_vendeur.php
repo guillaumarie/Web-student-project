@@ -1,53 +1,38 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Project</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/Connexion.css">
-    
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var compte=1;
-            $("#bouton1").click(function () {
-                if(compte==4) {
-                    $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo5'>");
-                    $(this).hide();
-                    compte++;
-                }
-                if(compte==3) {
-                    $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo4'>");
-                    compte++;
-                }
-                if(compte==2) {
-                    $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo3'>");
-                    compte++;
-                }
-                if(compte==1) {
-                    $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo2'>");
-                    compte++;
-                }
+    <head>
+        <?php include 'includes/head.php'; ?>
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var compte=1;
+                $("#bouton1").click(function () {
+                    if(compte==4) {
+                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo5'>");
+                        $(this).hide();
+                        compte++;
+                    }
+                    if(compte==3) {
+                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo4'>");
+                        compte++;
+                    }
+                    if(compte==2) {
+                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo3'>");
+                        compte++;
+                    }
+                    if(compte==1) {
+                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo2'>");
+                        compte++;
+                    }
+                });
             });
-        });
-    </script>
+        </script>
 
-</head>
+    </head>
 
 
-<body class="pb-5">
-        <nav class="navbar navbar-expand-md">
-            <a class="navbar-brand" href="#"><img src="img/navbar/logo.png" width="250" height="150" class="d-inline-block align-top" alt="" /></a>
-            <div class="collapse navbar-collapse" id="main-navigation">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="accueil.html"> Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Connexion.hmtl"> Déjà membre ?</a></li>
-                </ul>
-            </div>
-        </nav>
+    <body class="pb-5">
 
         <div id="inscription" class="mt-5 pb-4">
             <h1 class="text-center pt-5 pb-4">Vendre un produit</h1>
@@ -108,22 +93,6 @@
             </form>
         </div>
         <br></br>
-
-
-        <footer class="page-footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-12">
-                    <h6 class="text-uppercase font-weight-bold">Information additionnelle</h6>
-                  
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
-                    
-                </div>
-            </div>
-            <div class="footer-copyright text-center">&copy; 2019 Copyright | Droit d'auteur: webDynamique.ece.fr</div>
-    </footer>
     
     </body>
 

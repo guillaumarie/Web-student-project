@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <?php include 'includes/head.php'; ?>
-</head>
+    <head>
+        <?php include 'includes/head.php'; ?>
+    </head>
 
 
     <body>
