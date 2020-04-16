@@ -1,39 +1,64 @@
-#connexion{
-    margin : auto;
+#connexion {
+    margin: auto;
     max-width: 40%;
-    border : thick double #32a1ce;
-}
-#inscription{
-    margin : auto;
-    max-width: 55%;
-    border : thick double #32a1ce;
+    border: thick double #020c0f;
 }
 
-.container-fluid{
+#inscription {
+    margin: auto;
+    max-width: 55%;
+    border: thick double #32a1ce;
+}
+
+
+
+.container-fluid {
     width: 100%;
 }
+
 .navbar {
-    background:#f2f6e9;
-    }
-   .nav-link, .navbar-brand {
+    background: #30302e;
+}
+
+.nav-link, .navbar-brand {
     color: black;
     cursor: pointer;
-   }
-   .nav-link {
+}
+
+
+.nav-link {
     margin-right: 1em !important;
-   }
-   .nav-link:hover {
-    color:red;
-   }
-   .navbar-collapse {
+}
+
+.nav-link:hover {
+    color: red;
+}
+
+.navbar-collapse {
     justify-content: flex-end;
-   }
-   .page-footer {
+}
+
+.page-footer {
     background-color: #222;
     color: #ccc;
     padding: 60px 0 30px;
-   }
-   .footer-copyright {
+}
+
+.footer-copyright {
     color: #666;
     padding: 40px 0;
-   }
+}
+
+.feature-title {
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.Img_Cat{
+    vertical-align: center;
+}
+

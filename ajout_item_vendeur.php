@@ -1,53 +1,99 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html>
+
     <head>
-        <title>Ebay ECE</title>
-        <meta charset="utf-8">
+        <?php include 'includes/head.php'; ?>
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var compte=1;
+                $("#bouton1").click(function () {
+                    if(compte==4) {
+                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo5'>");
+                        $(this).hide();
+                        compte++;
+                    }
+                    if(compte==3) {
+                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo4'>");
+                        compte++;
+                    }
+                    if(compte==2) {
+                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo3'>");
+                        compte++;
+                    }
+                    if(compte==1) {
+                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo2'>");
+                        compte++;
+                    }
+                });
+            });
+        </script>
+
     </head>
-<body>
-    <h1>Vendre un produit</h1>
-    <h2>Informations sur le produit</h2>
-    <form action="ajout_item_vendeur_back.php" method="post">
-        <table>
-            <tr>
-                <td><select name="categorie" required>
-                    <option value="">Choisir une catégorie</option>
-                    <option value="ferraille">Ferraille ou Trésor</option>
-                    <option value="musee">Bon pour le Musée</option>
-                    <option value="vip">Accessoire VIP</option>
-                </select></td>
-            </tr>
-            <tr>
-                <td><input type="text" name="nom" placeholder="Nom du produit" size="30"></td>
-            </tr>
-            <tr>
-                <td><input type="text" name="description" placeholder="Description" size="30"></td>
-            </tr>
-            <tr>
-                <td><label for="photoProduit">Ajouter des photos de votre produit :</label></td>
-            </tr>
-            <tr>
-                <td><input type="file" name="photoProduit" multiple></td>
-            </tr>
-            <tr>
-                <td><input type="number" name="prix" placeholder="Prix" size="10"> €</td>
-            </tr>
-            <tr>
-                <td><select name="achat" required>
-                    <option value="">Choisir un type de vente</option>
-                    <option value="ferraille">Ferraille ou Trésor</option>
-                    <option value="musee">Bon pour le Musée</option>
-                    <option value="vip">Accessoire VIP</option>
-                </select></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" name="button" value="Mettre en vente">
-                </td>
-            </tr>
-        </table>
-    </form>
-</body>
+
+
+    <body class="pb-5">
+
+        <div id="inscription" class="mt-5 pb-4">
+            <h1 class="text-center pt-5 pb-4">Vendre un produit</h1>
+            <form action="ajout_item_vendeur_back.php" method="post">
+                <table align="center" width="50%">
+                    <tr>
+                        <td><select class="container-fluid mb-1" name="categorie">
+                        <option value="">Choisir une catégorie</option>
+                        <option value="ferraille">Ferraille ou Trésor</option>
+                        <option value="musee">Bon pour le musée</option>
+                        <option value="vip">Accessoire VIP</option></td>
+                    </tr>
+                    <tr>
+                        <td><select class="container-fluid mb-1" name="typeAchat">
+                        <option value="">Choisir un mode d'achat</option>
+                        <option value="immediat">Achat immédiat</option>
+                        <option value="offre">Meilleure offre</option>
+                        <option value="enchere">Vente aux enchères</option>
+                        <option value="immediat_offre">Achat immédiat ou meilleure offre</option></td>
+                    </tr>
+                    <tr>
+                        <td><input class="container-fluid mb-1" type="text" name="nom" placeholder="Nom"></td>
+                    </tr>
+                    <tr>
+                        <td><textarea class="container-fluid mb-1" name="description" rows="4" cols="30" maxlenght="300"
+                        placeholder="Description (300 caractères max)"></textarea></td>
+                    </tr>
+                </table>
+                <table align="center" width="50%">
+                    <tr>
+                        <td><input class="container-fluid mb-1" type="number" name="prix" placeholder="Prix" min="0" step="0.01"></td>
+                        <td><label> €</label></td>
+                    </tr>
+                </table>
+                <br>
+                <table align="center" width="50%">
+                    <tr>
+                        <td><label for="photosProduit">Ajouter des photos de votre produit (maximum 5) :</label></td>
+                    </tr>
+                    <tr>
+                        <td><input class="container-fluid mb-1" type="file" name="photo1"></td>
+                    </tr>
+                    <tr>
+                        <td><div id="ajout"></div></td>
+                    </tr>
+                    <tr>
+                        <td><input class="container-fluid mb-1" type="button" id="bouton1" value="Ajouter 1 autre photo..."></td>
+                    </tr>
+                </table>
+                <br>
+                <table align="center" width="50%">
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" name="button" value="Vendre">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <br></br>
+    
+    </body>
+
 </html>
