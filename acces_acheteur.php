@@ -1,34 +1,15 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Ebay ECE</title>
-        <meta charset="utf-8">
-    </head>
-    <!DOCTYPE html>
-<html>
+
 
 <head>
-    <title>Project</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/Connexion.css">
-
+    <?php include 'includes/head.php'; ?>
 </head>
 
 
 <body>
-    <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand" href="#"><img src="img/navbar/logo.png" width="250" height="150" class="d-inline-block align-top" alt="" /></a>
-        <div class="collapse navbar-collapse" id="main-navigation">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="accueil.html"> Accueil</a></li>
-                <li class="nav-item"><a class="nav-link" href="Connexion.hmtl"> Déjà membre ?</a></li>
-            </ul>
-        </div>
-    </nav>
+    <?php include 'includes/header.php'; ?>
+
 
     <div id="connexion" class="mt-5">
         <h1 class="text-center pt-5 pb-4">Connexion</h1>
@@ -46,22 +27,24 @@
                 <tr>
                     <td class="pb-3"><input class="container-fluid mb-1" type="password" name="password" placeholder="Mot de passe" size="40"></td>
                 </tr>
-                <tr >
+                <tr>
                     <td class="pb-4" colspan="2" align="center">
                         <input type="submit" value="Valider">
                     </td>
                 </tr>
-            </table >
+            </table>
         </form>
     </div>
     <br><br>
+
+
     <div id="inscription" class="mt-5">
         <h1 class="text-center pt-5 pb-4">Créer mon compte COVID-BAY</h1>
         <form action="inscription_acheteur.php" method="post">
             <h5 class="text-center pt-3 pb-2">Informations utilisateur</h5>
             <table align="center" width="75%">
                 <tr>
-                    <td><input class="container-fluid mb-1"  type="text" name="nom" placeholder="Nom" size="18"></td>
+                    <td><input class="container-fluid mb-1" type="text" name="nom" placeholder="Nom" size="18"></td>
                     <td><input class="container-fluid mb-1" type="text" name="prenom" placeholder="Prénom" size="17"></td>
                 </tr>
             </table>
@@ -74,8 +57,7 @@
                     <td><input class="container-fluid mb-1" type="password" name="password1" placeholder="Nouveau mot de passe" size="40"></td>
                 </tr>
                 <tr>
-                    <td><input class="container-fluid mb-1" type="password" name="password2" 
-                        placeholder="Confirmez votre mot de passe" size="40"></td>
+                    <td><input class="container-fluid mb-1" type="password" name="password2" placeholder="Confirmez votre mot de passe" size="40"></td>
                 </tr>
             </table>
             <br><h5 class="text-center pt-3 pb-2">Coordonnées de livraison</h5>
@@ -119,7 +101,7 @@
             </table>
             <table align="center" width="75%">
                 <tr>
-                    <td><input class="container-fluid mb-1"  type="text" name="numeroCarte" placeholder="N° Carte Bancaire" size="40"></td>
+                    <td><input class="container-fluid mb-1" type="text" name="numeroCarte" placeholder="N° Carte Bancaire" size="40"></td>
                 </tr>
                 <tr>
                     <td><input class="container-fluid mb-1" type="text" name="titulaire" placeholder="Nom du titualaire de la carte" size="40"></td>
@@ -148,22 +130,7 @@
     </div>
     <br></br>
 
-    
-    <footer class="page-footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-12">
-                    <h6 class="text-uppercase font-weight-bold">Information additionnelle</h6>
-                  
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
-                    
-                </div>
-            </div>
-            <div class="footer-copyright text-center">&copy; 2019 Copyright | Droit d'auteur: webDynamique.ece.fr</div>
-    </footer>
-    
+    <?php include 'includes/footer.php'; ?>
 
 </body>
 
