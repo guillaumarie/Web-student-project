@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -24,15 +26,18 @@
                     if(compte==1) {
                         $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo2'>");
                         compte++;
+                    
                     }
                 });
             });
+            
         </script>
 
     </head>
 
 
     <body class="pb-5">
+    
 
         <div id="inscription" class="mt-5 pb-4">
             <h1 class="text-center pt-5 pb-4">Vendre un produit</h1>
