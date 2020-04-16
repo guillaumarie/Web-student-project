@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <?php include 'includes/header.php'; ?>
+        
 
         <div class="container features">
             <div class="row">
