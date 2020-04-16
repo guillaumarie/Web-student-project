@@ -1,3 +1,18 @@
+<?php
+session_start();
+$_SESSION['verif']=0;
+if($_SESSION['']!=""){
+    $_SESSION['verif'] = 2;
+    header('Location: connexion_vendeur.php');
+    exit();
+}
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 
