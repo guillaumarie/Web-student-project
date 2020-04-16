@@ -5,9 +5,12 @@
         <?php include 'includes/head.php'; ?>
     </head>
 
-
     <body>
         <?php include 'includes/header.php'; ?>
+        <?php include 'includes/header.php'; 
+
+      
+        ?>
 
         <div id="connexion" class="mt-5">
             <h1 class="text-center pt-5 pb-4">Connexion</h1>
