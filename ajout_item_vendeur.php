@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
+    
         <?php include 'includes/head.php'; ?>
         
         <script type="text/javascript">
@@ -39,7 +39,7 @@
             
         </script>
 
-    </head>
+    
 
 
     <body class="pb-5">
