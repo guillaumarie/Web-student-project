@@ -39,7 +39,7 @@
 
 
         <div id="inscription" class="mt-5">
-            <h1 class="text-center pt-5 pb-4">Créer mon compte COVID-BAY</h1>
+            <h1 class="text-center pt-5 pb-4">Créer mon compte EBAY ECE</h1>
             <form action="inscription_acheteur.php" method="post">
                 <h5 class="text-center pt-3 pb-2">Informations utilisateur</h5>
                 <table align="center" width="75%">

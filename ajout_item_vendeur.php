@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 
@@ -45,8 +43,6 @@
 
 
     <body class="pb-5">
-    
-
         <div id="inscription" class="mt-5 pb-4">
             <h1 class="text-center pt-5 pb-4">Vendre un produit</h1>
             <form action="ajout_item_vendeur_back.php" method="post">
