@@ -26,15 +26,6 @@ session_start();
                     echo "Votre mot de passe est incorrect.<br>";
                 } else {
                     $data = mysqli_fetch_assoc($result);
-                    echo "Informations sur le vendeur connecté :" . "<br>";
-                    echo "ID Vendeur : " . $data['IdVendeur'] . "<br>";
-                    echo "Nom : " . $data['Nom'] . "<br>";
-                    echo "Prenom : " . $data['Prenom'] . "<br>";
-                    echo "Email : " . $data['Email'] . "<br>";
-                    $photoProfil = $data['PhotoProfil'];
-                    echo "<img src='$photoProfil' alt='photo_profil' height='150'><br>";
-                    $banniere = $data['ImageFond'];
-                    echo "<img src='$banniere' alt='banniere' height='300'><br>";
                     $_SESSION["connected"] = 2 ;
                     $_SESSION["prenom"] = $data["Prenom"];
                     $_SESSION["id"] = $data["IdVendeur"];
@@ -44,6 +35,7 @@ session_start();
             echo "Database not found.<br>";
         }
         mysqli_close($db_handle);
+        header('Location: espace_vendeur.php');
     } else {
         echo "Veuillez remplir tous les champs.<br>";
     }
