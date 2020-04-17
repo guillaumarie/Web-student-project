@@ -1,45 +1,60 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <?php include 'includes/head.php'; ?>
+    <?php include 'includes/head.php'; ?>
         
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#encheres").hide();
-                var compte=1;
-                $("#bouton1").click(function () {
-                    if(compte==4) {
-                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo5'>");
-                        $(this).hide();
-                        compte++;
-                    }
-                    if(compte==3) {
-                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo4'>");
-                        compte++;
-                    }
-                    if(compte==2) {
-                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo3'>");
-                        compte++;
-                    }
-                    if(compte==1) {
-                        $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo2'>");
-                        compte++;
-                    
-                    }
-                });
-                $("#type").click(function () {
-                    if (type.value === "enchere") {
-                        $("#encheres").show();
-                    } else {
-                        $("#encheres").hide();
-                    }
-                });
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#encheres").hide();
+            var compte=1;
+            $("#bouton1").click(function () {
+                if(compte==4) {
+                    $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo5'>");
+                    $(this).hide();
+                    compte++;
+                }
+                if(compte==3) {
+                    $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo4'>");
+                    compte++;
+                }
+                if(compte==2) {
+                    $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo3'>");
+                    compte++;
+                }
+                if(compte==1) {
+                    $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo2'>");
+                    compte++;
+                
+                }
             });
-            
-        </script>
-
-    </head>
+            $("#type").click(function () {
+                if (type.value === "enchere") {
+                    $("#encheres").show();
+                } else {
+                    $("#encheres").hide();
+                }
+            });
+            // Obtenir la date du jour
+            // https://stackoverflow.com/questions/32378590/set-date-input-fields-max-date-to-today
+            var maintenant = new Date();
+            var jour = maintenant.getDate();
+            var mois = maintenant.getMonth()+1;
+            var an = maintenant.getFullYear();
+            if(jour < 10){
+                jour = '0' + jour;
+            }
+            if(mois < 10){
+                mois = '0' + mois;
+            }
+            maintenant = an + '-' + mois + '-' + jour;
+            document.getElementById("datedebut").setAttribute("min", maintenant);
+            // Fin source
+            $("#datefin").click(function () {
+                var debut = document.getElementById("datedebut").value;
+                document.getElementById("datefin").setAttribute("min", debut);
+            });
+        });
+    </script>
 
 
     <body class="pb-5">
@@ -66,11 +81,11 @@
                 <table align="center" id="encheres" width="50%">
                     <tr>
                         <td><label for="debut"><i>Début de la vente</i></label></td>
-                        <td><input class="container-fluid mb-1" type="date" name="debut"></td>
+                        <td><input class="container-fluid mb-1" type="date" id="datedebut" name="debut"></td>
                     </tr>
                     <tr>
                         <td><label for="fin"><i>Fin de la vente</i></label></td>
-                        <td><input class="container-fluid mb-1" type="date" name="fin"></td>
+                        <td><input class="container-fluid mb-1" type="date" id="datefin" name="fin"></td>
                     </tr>
                 </table>
                 <br>
@@ -92,7 +107,7 @@
                 <br>
                 <table align="center" width="50%">
                     <tr>
-                        <td><label for="photosProduit">Ajouter des photos de votre produit (maximum 5) :</label></td>
+                        <td><label for="photosProduit" align="center">Ajouter au moins une photo (maximum 5) :</label></td>
                     </tr>
                     <tr>
                         <td><input class="container-fluid mb-1" type="file" name="photo1"></td>

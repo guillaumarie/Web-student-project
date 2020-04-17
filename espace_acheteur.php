@@ -1,29 +1,15 @@
-<?php
-session_start();
-$_SESSION['verif']=0;
-if($_SESSION['']!=""){
-    $_SESSION['verif'] = 2;
-    header('Location: connexion_acheteur.php');
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <?php include 'includes/head.php'; ?>
+    <?php include 'includes/head.php'; ?>
 
-    </head>
 
-    <body class="pb-5">
+    <body>
 
-        <?php include 'includes/header.php'; ?>
-
- <?php       
+        <?php include 'includes/header.php';     
         
-        $email = isset($_POST["email"])? $_POST["email"] : "";
-
+        $email = isset($_SESSION["email"])? $_SESSION["email"] : "";
+        
         if($email ) {
             $database = "ebay_ece";
     
@@ -32,9 +18,38 @@ if($_SESSION['']!=""){
             if ($db_found) {
                 $sql = "SELECT * FROM acheteur WHERE Email LIKE '$email'"; 
                 $result = mysqli_query($db_handle, $sql);
-    
-
-
+            } 
+            while ($data = mysqli_fetch_assoc($result)) {
+                echo'
+                    <div id="espace_acheteur" class="mt-5">
+                    <h1 class="text-center pt-5 pb-4"> Mes infos</h1>
+                    <form class="pt-2" method="post">
+                        <table align="center" width="55%">
+                    <tr>
+                        <td class="pb-2">ID Client : '. $data['IdAcheteur'] . '<br></td>
+                    </tr>
+                    <tr>
+                        <td class="pb-3">Nom : ' . $data['Nom'] . '<br></td>
+                    </tr>
+                    <tr>
+                        <td class="pb-2">Prenom : ' . $data['Prenom'] . '<br></td>
+                    </tr>
+                    <tr>
+                        <td class="pb-3"> Email :  '. $data['Email'] . '<br></td>
+                    </tr>
+                    <tr>
+                    </table>
+                    </form>
+                    </div>
+                    ';
             }
         }
-        
+            
+    ?>  
+    </body>
+    <br></br>
+    <br></br>
+    <br></br>
+    <?php include 'includes/footer.php'; ?>
+</html>        
+                        
