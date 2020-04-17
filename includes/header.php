@@ -1,6 +1,9 @@
 <?php 
 
     session_start();
+    $_SESSION["email"] = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
+    $_SESSION["job"] = isset($_SESSION["job"]) ? $_SESSION["job"] : "";
+    $_SESSION["connected"] = isset($_SESSION["connected"]) ? $_SESSION["connected"] : 1;
     
 	echo '
     	<header>
