@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Apr 17, 2020 at 12:29 PM
+-- Generation Time: Apr 17, 2020 at 08:18 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -94,7 +94,11 @@ CREATE TABLE IF NOT EXISTS `enchere` (
 --
 
 INSERT INTO `enchere` (`IdItem`, `IdAcheteur`, `Prix`, `Debut`, `Fin`) VALUES
-(9, 0, 10000000, '2020-05-23', '2020-05-31');
+(9, 0, 10000000, '2020-05-23', '2020-05-31'),
+(11, 0, 200000, '2020-04-21', '2020-04-30'),
+(12, 0, 200000, '2020-04-21', '2020-04-30'),
+(13, 0, 200000, '2020-04-21', '2020-04-30'),
+(23, 0, 250000, '2020-04-21', '2020-04-30');
 
 -- --------------------------------------------------------
 
@@ -112,24 +116,24 @@ CREATE TABLE IF NOT EXISTS `item` (
   `Photo3` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `Photo4` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `Photo5` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `Description` text COLLATE utf8_unicode_ci NOT NULL,
+  `Description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Prix` int(11) NOT NULL,
   `Categorie` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `TypeAchat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`IdItem`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `item`
 --
 
 INSERT INTO `item` (`IdItem`, `IdVendeur`, `Nom`, `Photo1`, `Photo2`, `Photo3`, `Photo4`, `Photo5`, `Description`, `Prix`, `Categorie`, `TypeAchat`) VALUES
-(4, 3, 'La Joconde', '', '', '', '', '', 'Très célèbre peinture', 10000000, 'musee', 'enchere'),
-(5, 3, 'La Joconde', '', '', '', '', '', 'Très célèbre peinture', 10000000, 'musee', 'enchere'),
-(6, 3, 'La Joconde', 'joconde-1.jpg', '', '', '', '', 'Très belle pièce', 10000000, 'musee', 'enchere'),
-(7, 3, 'La Joconde', 'joconde-1.jpg', 'joconde-2.jpg', '', '', '', 'Belle pièce', 10000000, 'musee', 'enchere'),
-(10, 2, 'Bague Cartier', 'joconde-2.jpg', '', '', '', '', 'Belle', 5000, 'vip', 'offre'),
-(9, 2, 'La Joconde', 'joconde-1.jpg', 'joconde-2.jpg', 'joconde-3.jpg', 'joconde-4.jpg', '', 'Belle pièce', 10000000, 'musee', 'enchere');
+(28, 2, 'Obus', 'images/item/obus_1.jpg', 'images/item/obus_2.jpg', '', '', '', 'Datant de la Première Guerre Mondiale', 10000, 'ferraille', 'immediat'),
+(7, 3, 'La Joconde', 'images/item/joconde-1.jpg', 'images/item/joconde-2.jpg', '', '', '', 'Belle pièce', 10000000, 'musee', 'enchere'),
+(9, 2, 'La Joconde', 'images/item/joconde-1.jpg', 'images/item/joconde-2.jpg', 'images/item/joconde-3.jpg', 'images/item/joconde-4.jpg', '', 'Belle pièce', 10000000, 'musee', 'enchere'),
+(23, 2, 'Montre Rolex', 'images/item/img_rolex.jpg', 'images/item/img_rolex_2.jpg', '', '', '', 'Très bon état', 250000, 'vip', 'offre'),
+(27, 2, 'Guernica', 'images/item/guernica.jpg', '', '', '', '', 'Pablo s\'amuse à dessiner sur les murs de la maison quand j\'ai le dos tourné...', 50000000, 'musee', 'immediat_offre'),
+(33, 8, 'Villa', 'images/item/villa.jpg', '', '', '', '', 'Très sympathique', 3000000, 'vip', 'offre');
 
 -- --------------------------------------------------------
 
@@ -149,7 +153,34 @@ CREATE TABLE IF NOT EXISTS `offre` (
 --
 
 INSERT INTO `offre` (`IdItem`, `IdAcheteur`, `Prix`) VALUES
-(10, 0, 5000);
+(10, 0, 5000),
+(14, 0, 250000),
+(15, 0, 250000),
+(16, 0, 250000),
+(17, 0, 250000),
+(18, 0, 250000),
+(19, 0, 250000),
+(20, 0, 250000),
+(21, 0, 250000),
+(22, 0, 250000),
+(23, 0, 250000),
+(23, 0, 250000),
+(23, 0, 250000),
+(23, 0, 250000),
+(23, 0, 250000),
+(23, 0, 250000),
+(23, 0, 250000),
+(23, 0, 250000),
+(24, 0, 50000000),
+(23, 0, 250000),
+(25, 0, 50000000),
+(26, 0, 50000000),
+(27, 0, 50000000),
+(29, 0, 3000000),
+(30, 0, 3000000),
+(31, 0, 3000000),
+(32, 0, 3000000),
+(33, 0, 3000000);
 
 -- --------------------------------------------------------
 
@@ -189,7 +220,8 @@ INSERT INTO `vendeur` (`IdVendeur`, `Nom`, `Prenom`, `Email`, `Password`, `Photo
 (8, 'MARIE', 'Guillaume', 'guillaume@gmail.com', 'azerty', 'images/vendeur/guillaume-marie.jpg', ''),
 (3, 'BEZOS', 'Jeff', 'jeff-bezos@gmail.com', '0000', 'images/vendeur/jeff-bezos.jpg', ''),
 (1, 'MACRON', 'Emmanuel', 'macron@gmail.com', 'root', '', ''),
-(10, 'FEDERER', 'Roger', 'roger-federer@gmail.com', '00', 'images/vendeur/roger-federer.jpg', 'images/vendeur/banniere-roger.jpg');
+(10, 'FEDERER', 'Roger', 'roger-federer@gmail.com', '00', 'images/vendeur/roger-federer.jpg', 'images/vendeur/banniere-roger.jpg'),
+(2, 'OBAMA', 'Barack', 'obama@gmail.com', 'obama', '', '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
