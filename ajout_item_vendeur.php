@@ -35,10 +35,27 @@
                         $("#encheres").hide();
                     }
                 });
+                // Obtenir la date du jour
+                // https://stackoverflow.com/questions/32378590/set-date-input-fields-max-date-to-today
+                var maintenant = new Date();
+                var jour = maintenant.getDate();
+                var mois = maintenant.getMonth()+1;
+                var an = maintenant.getFullYear();
+                if(jour < 10){
+                    jour = '0' + jour;
+                }
+                if(mois < 10){
+                    mois = '0' + mois;
+                }
+                maintenant = an + '-' + mois + '-' + jour;
+                document.getElementById("datedebut").setAttribute("min", maintenant);
+                // Fin source
+                $("#datefin").click(function () {
+                    var debut = document.getElementById("datedebut").value;
+                    document.getElementById("datefin").setAttribute("min", debut);
+                });
             });
-            
         </script>
-
     </head>
 
 
@@ -66,11 +83,11 @@
                 <table align="center" id="encheres" width="50%">
                     <tr>
                         <td><label for="debut"><i>Début de la vente</i></label></td>
-                        <td><input class="container-fluid mb-1" type="date" name="debut"></td>
+                        <td><input class="container-fluid mb-1" type="date" id="datedebut" name="debut"></td>
                     </tr>
                     <tr>
                         <td><label for="fin"><i>Fin de la vente</i></label></td>
-                        <td><input class="container-fluid mb-1" type="date" name="fin"></td>
+                        <td><input class="container-fluid mb-1" type="date" id="datefin" name="fin"></td>
                     </tr>
                 </table>
                 <br>
@@ -92,7 +109,7 @@
                 <br>
                 <table align="center" width="50%">
                     <tr>
-                        <td><label for="photosProduit">Ajouter des photos de votre produit (maximum 5) :</label></td>
+                        <td><label for="photosProduit" align="center">Ajouter au moins une photo (maximum 5) :</label></td>
                     </tr>
                     <tr>
                         <td><input class="container-fluid mb-1" type="file" name="photo1"></td>
