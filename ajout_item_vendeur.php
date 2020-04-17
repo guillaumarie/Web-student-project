@@ -8,6 +8,7 @@
         
         <script type="text/javascript">
             $(document).ready(function () {
+                $("#encheres").hide();
                 var compte=1;
                 $("#bouton1").click(function () {
                     if(compte==4) {
@@ -27,6 +28,13 @@
                         $("#ajout").append("<input class='container-fluid mb-1' type='file' name='photo2'>");
                         compte++;
                     
+                    }
+                });
+                $("#type").click(function () {
+                    if (type.value === "enchere") {
+                        $("#encheres").show();
+                    } else {
+                        $("#encheres").hide();
                     }
                 });
             });
@@ -51,13 +59,26 @@
                         <option value="vip">Accessoire VIP</option></td>
                     </tr>
                     <tr>
-                        <td><select class="container-fluid mb-1" name="typeAchat">
+                        <td><select class="container-fluid mb-1" id="type" name="typeAchat">
                         <option value="">Choisir un mode d'achat</option>
                         <option value="immediat">Achat immédiat</option>
                         <option value="offre">Meilleure offre</option>
                         <option value="enchere">Vente aux enchères</option>
                         <option value="immediat_offre">Achat immédiat ou meilleure offre</option></td>
                     </tr>
+                </table>
+                <table align="center" id="encheres" width="50%">
+                    <tr>
+                        <td><label for="debut"><i>Début de la vente</i></label></td>
+                        <td><input class="container-fluid mb-1" type="date" name="debut"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="fin"><i>Fin de la vente</i></label></td>
+                        <td><input class="container-fluid mb-1" type="date" name="fin"></td>
+                    </tr>
+                </table>
+                <br>
+                <table align="center" width="50%">
                     <tr>
                         <td><input class="container-fluid mb-1" type="text" name="nom" placeholder="Nom"></td>
                     </tr>

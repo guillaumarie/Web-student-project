@@ -61,6 +61,10 @@
                         <td><label for="photoProfil">Choisir une photo de profil :</label></td>
                         <td><input class="container-fluid mb-1" type="file" name="photoProfil"></td>
                     </tr>
+                    <tr>
+                        <td><label for="banniere">Choisir une bannière :</label></td>
+                        <td><input class="container-fluid mb-1" type="file" name="banniere"></td>
+                    </tr>
                 </table>
                 <br>
                 <table align="center" width="75%">
