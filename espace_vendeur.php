@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <?php include 'includes/head.php'; ?>
-    </head>
+    <?php include 'includes/head.php'; ?>
+    
 
     <body class="pb-5">
 
