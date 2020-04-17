@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     $email = isset($_POST["email"])? $_POST["email"] : "";
     $password = isset($_POST["password"])? $_POST["password"] : "";
 
@@ -31,6 +33,8 @@
                         echo "<img src='$photoProfil' alt='photo_profil' height='150'><br>";
                         $banniere = $data['ImageFond'];
                         echo "<img src='$banniere' alt='banniere' height='300'><br>";
+                        $_SESSION["connected"] = 2 ;
+                        $_SESSION["prenom"] = $data["Prenom"]; 
                     }
                 }
             }
