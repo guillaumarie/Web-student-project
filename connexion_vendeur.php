@@ -30,13 +30,13 @@ session_start();
                     $_SESSION["connected"] = 2 ;
                     $_SESSION["prenom"] = $data["Prenom"];
                     $_SESSION["id"] = $data["IdVendeur"];
+                    header('Location: espace_vendeur.php');
                 }
             }
         } else {
             echo "Database not found.<br>";
         }
         mysqli_close($db_handle);
-        header('Location: espace_vendeur.php');
     } else {
         echo "Veuillez remplir tous les champs.<br>";
     }

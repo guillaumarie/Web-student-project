@@ -28,18 +28,12 @@
                 if (mysqli_num_rows($result) === 0) {
                     echo "Votre mot de passe est incorrect.<br>";
                 } else {
-                    while ($data = mysqli_fetch_assoc($result)) {
-                        echo "Informations sur le client connecté :" . "<br>";
-                        echo "ID Client : " . $data['IdAcheteur'] . "<br>";
-                        echo "Nom : " . $data['Nom'] . "<br>";
-                        echo "Prenom : " . $data['Prenom'] . "<br>";
-                        echo "Email : " . $data['Email'] . "<br>";
-                        echo "<br>";
-                        $_SESSION["prenom"] = $data["Prenom"]; 
-                        $_SESSION["email"]=$data["Email"];
-                        $_SESSION["connected"] = 2;
-                        
-                    }
+                    $data = mysqli_fetch_assoc($result);
+                    $_SESSION["prenom"] = $data["Prenom"]; 
+                    $_SESSION["email"]=$data["Email"];
+                    $_SESSION["connected"] = 2;
+                    $_SESSION["id"] = $data["IdAcheteur"];
+                    header('Location: espace_acheteur.php');
                 }
             }
         } else {
