@@ -6,11 +6,7 @@ if($_SESSION['']!=""){
     header('Location: connexion_vendeur.php');
     exit();
 }
-
-
 ?>
-
-
 
 
 <!DOCTYPE html>

@@ -6,10 +6,7 @@ if($_SESSION['']!=""){
     header('Location: connexion_acheteur.php');
     exit();
 }
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html>

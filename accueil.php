@@ -11,7 +11,6 @@
         <?php include 'includes/header.php'; ?>
         <br></br>
 
-        <?php include 'categories.php'; ?>
         
 
         <br></br>
