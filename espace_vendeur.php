@@ -1,10 +1,13 @@
+
+
+
 <!DOCTYPE html>
 <html>
 
-    <head>
+    
         <?php include 'includes/head.php'; ?>
 
-    </head>
+    
 
     <body class="pb-5">
 
