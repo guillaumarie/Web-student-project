@@ -6,6 +6,7 @@ session_start();
 
 
     $_SESSION["job"] = 'vendeur';
+   
     $email = isset($_POST["email"])? $_POST["email"] : "";
     $password = isset($_POST["password"])? $_POST["password"] : "";
 
@@ -13,6 +14,7 @@ session_start();
         $database = "ebay_ece";
 
         $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
+        $db_handle = mysqli_connect('127.0.0.1:3306', 'root', 'root');
         $db_found = mysqli_select_db($db_handle, $database);
 
         if ($db_found) {
@@ -40,6 +42,7 @@ session_start();
                         echo "<img src='$banniere' alt='banniere' height='300'><br>";
                         $_SESSION["connected"] = 2 ;
                         $_SESSION["prenom"] = $data["Prenom"]; 
+                        $_SESSION["email"]=$data["Email"];
                     }
                 }
             }
