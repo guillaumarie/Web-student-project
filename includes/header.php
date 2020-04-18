@@ -37,7 +37,7 @@
 
     elseif($_SESSION["job"]=="acheteur"){
        
-        echo '<li class="nav-item"><a class="nav-link" href="espace_acheteur">'.$_SESSION["prenom"].'</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="espace_acheteur.php">'.$_SESSION["prenom"].'</a></li>';
        
 
     }
