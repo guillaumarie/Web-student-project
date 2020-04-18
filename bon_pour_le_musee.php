@@ -32,8 +32,8 @@
 
                     <div class="panel panel-primary"> 
                     <a style="text-decoration:none" <?php echo 'href="fiche_article.php?id='.$data["IdItem"].'"';?> >
-                            <div class="panel-heading" align="center"><?php echo $data['Nom']; ?></div><br>
-                                <div class="panel-body" align="center"><?php $photo = $data['Photo1'];
+                            <div class="btn btn-outline-secondary btn-lg"  class="panel-heading" align="center"><?php echo $data['Nom']; ?></div><br>
+                                <div   class="panel-body" align="center"><?php $photo = $data['Photo1'];
                                   echo "<img src='$photo' class='img-responsive' style='width:50%' alt='photo_1'>"; ?></div><br> </a>
                                     <div class="panel-footer" align="center">
                                  <?php if ($data['TypeAchat'] == "immediat_offre") { echo 'Achat immédiat ou par meilleure offre'; }
