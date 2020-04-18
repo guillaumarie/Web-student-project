@@ -122,6 +122,15 @@
                 <br>
                 <table align="center" width="50%">
                     <tr>
+                        <td><label for="videoProduit" align="center">Ajouter une video (optionnel) :</label></td>
+                    </tr>
+                    <tr>
+                        <td><input class="container-fluid mb-1" type="file" name="video"></td>
+                    </tr>
+                </table>
+                <br>
+                <table align="center" width="50%">
+                    <tr>
                         <td colspan="2" align="center">
                             <input type="submit" name="button" value="Vendre">
                         </td>

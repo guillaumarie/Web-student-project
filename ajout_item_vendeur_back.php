@@ -17,6 +17,8 @@
     $photo4 .= isset($_POST["photo4"])? $_POST["photo4"] : "";
     $photo5 = "images/item/";
     $photo5 .= isset($_POST["photo5"])? $_POST["photo5"] : "";
+    $video = "images/item/";
+    $video .= isset($_POST["video"])? $_POST["video"] : "";
     $prix = isset($_POST["prix"])? $_POST["prix"] : "";
     $typeAchat = isset($_POST["typeAchat"])? $_POST["typeAchat"] : "";
     $debut = isset($_POST["debut"])? $_POST["debut"] : "";
@@ -56,6 +58,10 @@
                     $sqlInsert = "UPDATE item SET Photo5 = '$photo5' WHERE IdItem LIKE '$iditem'";
                     $result = mysqli_query($db_handle, $sqlInsert);
                 }
+                if ($video !== "images/item/") {
+                    $sqlInsert = "UPDATE item SET Video = '$video' WHERE IdItem LIKE '$iditem'";
+                    $result = mysqli_query($db_handle, $sqlInsert);
+                }
 
                 echo "Votre produit a été mis en vente." . "<br>";
 
@@ -75,11 +81,13 @@
                     $photo3 = $data['Photo3'];
                     $photo4 = $data['Photo4'];
                     $photo5 = $data['Photo5'];
+                    $video = $data['Video'];
                     echo "<img src='$photo1' alt='photo1' height='400'><br>
                     <img src='$photo2' alt='photo2' height='100'>
                     <img src='$photo3' alt='photo3' height='100'>
                     <img src='$photo4' alt='photo4' height='100'>
-                    <img src='$photo5' alt='photo5' height='100'><br>";
+                    <img src='$photo5' alt='photo5' height='100'>
+                    <embed src='$video' allowfullscreen='true' allowscriptaccess='always' bgcolor='#000000' height='200'><br>";
                 }
             }
 
@@ -111,8 +119,12 @@
                     $sqlInsert = "UPDATE item SET Photo5 = '$photo5' WHERE IdItem LIKE '$iditem'";
                     $result = mysqli_query($db_handle, $sqlInsert);
                 }
+                if ($video !== "images/item/") {
+                    $sqlInsert = "UPDATE item SET Video = '$video' WHERE IdItem LIKE '$iditem'";
+                    $result = mysqli_query($db_handle, $sqlInsert);
+                }
 
-                $sqlInsert = "INSERT INTO offre (IdItem, Prix) VALUES ('$iditem', '$prix')";
+                $sqlInsert = "INSERT INTO offre (IdItem, Proposition) VALUES ('$iditem', '$prix')";
                 $result = mysqli_query($db_handle, $sqlInsert);
 
                 echo "Votre produit a été mis en vente." . "<br>";
@@ -127,17 +139,19 @@
                     echo "Catégorie : " . $data['Categorie'] . "<br>";
                     echo "Nom : " . $data['Nom'] . "<br>";
                     echo "Description : " . $data['Description'] . "<br>";
-                    echo "Prix : " . $data['Prix'] . " € <br>";
+                    echo "Prix : " . $data['Proposition'] . " € <br>";
                     $photo1 = $data['Photo1'];
                     $photo2 = $data['Photo2'];
                     $photo3 = $data['Photo3'];
                     $photo4 = $data['Photo4'];
                     $photo5 = $data['Photo5'];
+                    $video = $data['Video'];
                     echo "<img src='$photo1' alt='photo1' height='400'><br>
                     <img src='$photo2' alt='photo2' height='100'>
                     <img src='$photo3' alt='photo3' height='100'>
                     <img src='$photo4' alt='photo4' height='100'>
-                    <img src='$photo5' alt='photo5' height='100'><br>";
+                    <img src='$photo5' alt='photo5' height='100'>
+                    <embed src='$video' allowfullscreen='true' allowscriptaccess='always' bgcolor='#000000' height='200'><br>";
                 }
             }
 
@@ -169,6 +183,10 @@
                     $sqlInsert = "UPDATE item SET Photo5 = '$photo5' WHERE IdItem LIKE '$iditem'";
                     $result = mysqli_query($db_handle, $sqlInsert);
                 }
+                if ($video !== "images/item/") {
+                    $sqlInsert = "UPDATE item SET Video = '$video' WHERE IdItem LIKE '$iditem'";
+                    $result = mysqli_query($db_handle, $sqlInsert);
+                }
                 
                 $sqlInsert = "INSERT INTO enchere (IdItem, Prix, Debut, Fin) VALUES ('$iditem', '$prix', '$debut', '$fin')";
                 $result = mysqli_query($db_handle, $sqlInsert);
@@ -193,11 +211,13 @@
                     $photo3 = $data['Photo3'];
                     $photo4 = $data['Photo4'];
                     $photo5 = $data['Photo5'];
+                    $video = $data['Video'];
                     echo "<img src='$photo1' alt='photo1' height='400'><br>
                     <img src='$photo2' alt='photo2' height='100'>
                     <img src='$photo3' alt='photo3' height='100'>
                     <img src='$photo4' alt='photo4' height='100'>
-                    <img src='$photo5' alt='photo5' height='100'><br>";
+                    <img src='$photo5' alt='photo5' height='100'>
+                    <embed src='$video' allowfullscreen='true' allowscriptaccess='always' bgcolor='#000000' height='200'><br>";
                 }
             }
 

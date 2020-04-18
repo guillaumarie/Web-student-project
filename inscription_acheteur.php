@@ -48,7 +48,7 @@
 
                     $result = mysqli_query($db_handle, $sql);
 
-                    while ($data = mysqli_fetch_assoc($result)) {
+                    $data = mysqli_fetch_assoc($result);
                     echo "Informations sur le nouveau client :" . "<br>";
                     echo "N° Client : " . $data['IdAcheteur'] . "<br>";
                     echo "Nom : " . $data['Nom'] . "<br>";
@@ -65,7 +65,6 @@
                     echo "Date d'expiration : " . $data['Expiration'] . "<br>";
                     echo "Code de sécurité : " . $data['CVC'] . "<br>";
                     echo "<br>";
-                    }
                 } else {
                     echo "Les mots de passe ne sont pas les mêmes.<br>";
                 }
