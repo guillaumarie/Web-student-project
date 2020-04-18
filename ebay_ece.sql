@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Apr 17, 2020 at 08:18 PM
+-- Generation Time: Apr 18, 2020 at 11:53 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -64,15 +64,15 @@ CREATE TABLE IF NOT EXISTS `acheteur` (
   `CVC` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
   `Password` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`IdAcheteur`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `acheteur`
 --
 
 INSERT INTO `acheteur` (`IdAcheteur`, `Nom`, `Prenom`, `Adresse1`, `Adresse2`, `CP`, `Ville`, `Pays`, `Telephone`, `Email`, `TypeCarte`, `NumeroCarte`, `NomTitulaire`, `Expiration`, `CVC`, `Password`) VALUES
-(8, 'MARIE', 'Guillaume', '6 Square du Trocadéro', '', '75116', 'Paris', 'France', '0781986785', 'guillaume@gmail.com', 'Visa', '1111222233334444', 'MR GUILLAUME MARIE', '2022-01-01', '123', 'azerty'),
-(10, 'SARDOU', 'Michel', '11 Avenue Charles de Gaulle', '', '92200', 'Neuilly-sur-Seine', 'France', '0123401234', 'sardou@gmail.com', 'mastercard', '1234123412341234', 'MR SARDOU', '2021-12-21', '456', '456');
+(10, 'SARDOU', 'Michel', '11 Avenue Charles de Gaulle', '', '92200', 'Neuilly-sur-Seine', 'France', '0123401234', 'sardou@gmail.com', 'mastercard', '1234123412341234', 'MR SARDOU', '2021-12-21', '456', '456'),
+(8, 'MARIE', 'Guillaume', '6 Square du Trocadéro', '', '75116', 'Paris', 'France', '0781986785', 'guillaume@gmail.com', 'Visa', '1111222233334444', 'MR GUILLAUME MARIE', '2022-01-01', '123', 'azerty');
 
 -- --------------------------------------------------------
 
@@ -116,24 +116,27 @@ CREATE TABLE IF NOT EXISTS `item` (
   `Photo3` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `Photo4` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `Photo5` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `Video` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `Description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Prix` int(11) NOT NULL,
   `Categorie` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `TypeAchat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`IdItem`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`IdItem`, `IdVendeur`, `Nom`, `Photo1`, `Photo2`, `Photo3`, `Photo4`, `Photo5`, `Description`, `Prix`, `Categorie`, `TypeAchat`) VALUES
-(28, 2, 'Obus', 'images/item/obus_1.jpg', 'images/item/obus_2.jpg', '', '', '', 'Datant de la Première Guerre Mondiale', 10000, 'ferraille', 'immediat'),
-(7, 3, 'La Joconde', 'images/item/joconde-1.jpg', 'images/item/joconde-2.jpg', '', '', '', 'Belle pièce', 10000000, 'musee', 'enchere'),
-(9, 2, 'La Joconde', 'images/item/joconde-1.jpg', 'images/item/joconde-2.jpg', 'images/item/joconde-3.jpg', 'images/item/joconde-4.jpg', '', 'Belle pièce', 10000000, 'musee', 'enchere'),
-(23, 2, 'Montre Rolex', 'images/item/img_rolex.jpg', 'images/item/img_rolex_2.jpg', '', '', '', 'Très bon état', 250000, 'vip', 'offre'),
-(27, 2, 'Guernica', 'images/item/guernica.jpg', '', '', '', '', 'Pablo s\'amuse à dessiner sur les murs de la maison quand j\'ai le dos tourné...', 50000000, 'musee', 'immediat_offre'),
-(33, 8, 'Villa', 'images/item/villa.jpg', '', '', '', '', 'Très sympathique', 3000000, 'vip', 'offre');
+INSERT INTO `item` (`IdItem`, `IdVendeur`, `Nom`, `Photo1`, `Photo2`, `Photo3`, `Photo4`, `Photo5`, `Video`, `Description`, `Prix`, `Categorie`, `TypeAchat`) VALUES
+(28, 2, 'Obus', 'images/item/obus_1.jpg', 'images/item/obus_2.jpg', '', '', '', '', 'Datant de la Première Guerre Mondiale', 10000, 'ferraille', 'immediat'),
+(7, 3, 'La Joconde', 'images/item/joconde-1.jpg', 'images/item/joconde-2.jpg', '', '', '', '', 'Belle pièce', 10000000, 'musee', 'enchere'),
+(9, 2, 'La Joconde', 'images/item/joconde-1.jpg', 'images/item/joconde-2.jpg', 'images/item/joconde-3.jpg', 'images/item/joconde-4.jpg', '', '', 'Belle pièce', 10000000, 'musee', 'enchere'),
+(27, 2, 'Guernica', 'images/item/guernica.jpg', '', '', '', '', '', 'Pablo s\'amuse à dessiner sur les murs de la maison quand j\'ai le dos tourné...', 50000000, 'musee', 'immediat_offre'),
+(33, 8, 'Villa', 'images/item/villa.jpg', '', '', '', '', '', 'Très sympathique', 3000000, 'vip', 'offre'),
+(34, 8, 'Joconde', 'images/item/joconde-1.jpg', '', '', '', '', 'images/item/une-minute-au-musee-ep07-la-joconde.mp4', 'Bien', 50000000, 'musee', 'immediat'),
+(35, 8, 'Joconde', 'images/item/joconde-1.jpg', '', '', '', '', 'images/item/une-minute-au-musee-ep07-la-joconde.mp4', 'Bien', 50000000, 'musee', 'immediat'),
+(36, 8, 'Obus', 'images/item/obus_1.jpg', '', '', '', '', '', 'Guerre', 15000, 'ferraille', 'offre');
 
 -- --------------------------------------------------------
 
@@ -143,44 +146,28 @@ INSERT INTO `item` (`IdItem`, `IdVendeur`, `Nom`, `Photo1`, `Photo2`, `Photo3`, 
 
 DROP TABLE IF EXISTS `offre`;
 CREATE TABLE IF NOT EXISTS `offre` (
+  `IdOffre` int(11) NOT NULL AUTO_INCREMENT,
   `IdItem` int(11) NOT NULL,
   `IdAcheteur` int(11) NOT NULL,
-  `Prix` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `Proposition` int(11) NOT NULL,
+  `Accepte` tinyint(1) NOT NULL,
+  PRIMARY KEY (`IdOffre`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `offre`
 --
 
-INSERT INTO `offre` (`IdItem`, `IdAcheteur`, `Prix`) VALUES
-(10, 0, 5000),
-(14, 0, 250000),
-(15, 0, 250000),
-(16, 0, 250000),
-(17, 0, 250000),
-(18, 0, 250000),
-(19, 0, 250000),
-(20, 0, 250000),
-(21, 0, 250000),
-(22, 0, 250000),
-(23, 0, 250000),
-(23, 0, 250000),
-(23, 0, 250000),
-(23, 0, 250000),
-(23, 0, 250000),
-(23, 0, 250000),
-(23, 0, 250000),
-(23, 0, 250000),
-(24, 0, 50000000),
-(23, 0, 250000),
-(25, 0, 50000000),
-(26, 0, 50000000),
-(27, 0, 50000000),
-(29, 0, 3000000),
-(30, 0, 3000000),
-(31, 0, 3000000),
-(32, 0, 3000000),
-(33, 0, 3000000);
+INSERT INTO `offre` (`IdOffre`, `IdItem`, `IdAcheteur`, `Proposition`, `Accepte`) VALUES
+(1, 27, 0, 50000000, 0),
+(2, 27, 8, 40000000, 0),
+(3, 33, 0, 3000000, 0),
+(4, 27, 8, 45000000, 0),
+(5, 36, 0, 15000, 0),
+(6, 36, 10, 12000, 0),
+(7, 36, 10, 14000, 0),
+(8, 33, 8, 2500000, 0),
+(9, 33, 10, 2700000, 0);
 
 -- --------------------------------------------------------
 
@@ -193,6 +180,17 @@ CREATE TABLE IF NOT EXISTS `panier` (
   `IdAcheteur` int(11) NOT NULL,
   `IdItem` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `panier`
+--
+
+INSERT INTO `panier` (`IdAcheteur`, `IdItem`) VALUES
+(8, 27),
+(8, 33),
+(10, 7),
+(8, 7),
+(10, 9);
 
 -- --------------------------------------------------------
 
