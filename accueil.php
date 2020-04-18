@@ -16,8 +16,8 @@
                 $('.header').height($(window).height());
             });
         </script>
-        <div class="overlay"></div>
-        <div class="description">
+        
+     
             <h1>Bienvenue sur le site de vente en ligne EBAY ECE!</h1>
             
             <button class="btn btn-outline-secondary btn-lg">Visiter le site</button>
