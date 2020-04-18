@@ -9,7 +9,7 @@
         <?php include 'includes/header.php'; 
             
         
-        $IdItem = isset($_SESSION["IdItem"])? $_SESSION["IdItem"] : "";
+        $id = isset($_SESSION["id"])? $_SESSION["id"] : "";
         
         if($id ) {
             $database = "ebay_ece";
