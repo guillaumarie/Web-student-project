@@ -15,7 +15,11 @@
     max-width: 55%;
     border: thick double rgb(87, 9, 9);
 }
-
+#fiche_vendeur {
+    margin: auto;
+    max-width: 55%;
+    border: thick double rgb(87, 9, 9);
+}
 
 
 
@@ -104,6 +108,33 @@
     }
     .features {
         margin: 0;
+    }
+    .dropdown-submenu {
+        position: relative;
+        
+    }
+    .navbar_Dropdown{
+        background: white;
+    }
+    .dropdown-submenu>.dropdown-menu {
+        top: 0;
+        left: 100%;
+        
+        margin-top: -6px;
+        margin-left: -1px;
+        -webkit-border-radius: 0 6px 6px 6px;
+        -moz-border-radius: 0 6px 6px;
+        border-radius: 0 6px 6px 6px;
+    }
+    
+    .dropdown-submenu:hover>.dropdown-menu {
+        display: block;
+        
+    }
+    
+    .dropdown-submenu>a:after {
+        border-color: white;
+        
     }
 }
 /*Fin page d'accueil*/
