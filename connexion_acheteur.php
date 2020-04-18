@@ -12,7 +12,7 @@
     if($email && $password) {
         $database = "ebay_ece";
 
-        $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
+        $db_handle = mysqli_connect('127.0.0.1:3306', 'root', 'root');
         $db_found = mysqli_select_db($db_handle, $database);
 
         if ($db_found) {
@@ -46,6 +46,7 @@
             echo "Database not found.<br>";
         }
         mysqli_close($db_handle);
+        header('Location: accueil.php');
     } else {
         echo "Veuillez remplir tous les champs.<br>";
     }
