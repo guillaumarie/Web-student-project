@@ -15,7 +15,11 @@
     max-width: 55%;
     border: thick double rgb(87, 9, 9);
 }
-
+#fiche_vendeur {
+    margin: auto;
+    max-width: 55%;
+    border: thick double rgb(87, 9, 9);
+}
 
 
 .container-fluid {
@@ -104,5 +108,16 @@
     .features {
         margin: 0;
     }
+    .dropdown-submenu {
+        position: relative;
+        
+    }
+    .navbar_Dropdown{
+        background: white;
+    }
+    
+    
+    
+
 }
 /*Fin page d'accueil*/

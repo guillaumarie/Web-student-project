@@ -15,7 +15,7 @@
         $db_found = mysqli_select_db($db_handle, $database);
 
         if ($db_found) {
-            $sql = "SELECT * FROM item WHERE Categorie LIKE 'musee'"; 
+            $sql = "SELECT * FROM item WHERE TypeAchat LIKE 'achat_immediat'"; 
             $result = mysqli_query($db_handle, $sql);
 
 
@@ -32,8 +32,8 @@
 
                     <div class="panel panel-primary"> 
                     <a style="text-decoration:none" <?php echo 'href="fiche_article.php?id='.$data["IdItem"].'"';?> >
-                            <div class="btn btn-outline-secondary btn-lg"  class="panel-heading" align="center"><?php echo $data['Nom']; ?></div><br>
-                                <div   class="panel-body" align="center"><?php $photo = $data['Photo1'];
+                            <div class="panel-heading" align="center"><?php echo $data['Nom']; ?></div><br>
+                                <div class="panel-body" align="center"><?php $photo = $data['Photo1'];
                                   echo "<img src='$photo' class='img-responsive' style='width:50%' alt='photo_1'>"; ?></div><br> </a>
                                     <div class="panel-footer" align="center">
                                  <?php if ($data['TypeAchat'] == "immediat_offre") { echo 'Achat immédiat ou par meilleure offre'; }
