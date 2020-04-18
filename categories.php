@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                 <h3 class="feature-title">Accessoire VIP</h3>
-                    <a class="Img_Cat" href="accessoire_VIP">
+                    <a class="Img_Cat" href="accessoire_VIP.php">
                         <img src="images\categories\Img_Cat_VIP.jpg" class="img-fluid">
                     </a>
                 </div>
