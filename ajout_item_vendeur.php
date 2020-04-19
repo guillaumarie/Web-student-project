@@ -122,7 +122,7 @@
                 <br>
                 <table align="center" width="50%">
                     <tr>
-                        <td><label for="videoProduit" align="center">Ajouter une video (optionnel) :</label></td>
+                        <td><label for="videoProduit" align="center">Ajouter une vidéo (optionnel) :</label></td>
                     </tr>
                     <tr>
                         <td><input class="container-fluid mb-1" type="file" name="video"></td>

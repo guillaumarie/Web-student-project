@@ -39,9 +39,9 @@
                                  <?php if ($data['TypeAchat'] == "immediat_offre") { echo 'Achat immédiat ou par meilleure offre'; }
                                        if ($data['TypeAchat'] == "immediat") { echo 'Achat immédiat'; }
                                        if ($data['TypeAchat'] == "offre") { echo 'Achat par meilleure offre'; }
-                                       if ($data['TypeAchat'] == "enchere") { echo 'Achat par enchères'; } ?><br>
-                                       <?php $_SESSION["item"]=$data["IdItem"];?>
-                                       <?php $prix = number_format($data['Prix'], 2, ',', ' '); echo $prix . " €"; ?></div><br>
+                                       if ($data['TypeAchat'] == "enchere") { echo 'Achat par enchères'; } echo "<br>";
+                                       $_SESSION["item"]=$data["IdItem"];
+                                       $prix = number_format($data['Prix'], 2, ',', ' '); echo $prix . " €"; ?></div><br>
                 
                        </div>
                    

@@ -27,20 +27,7 @@
                     VALUES ('$nom', '$prenom', '$email', '$password1', '$photoProfil', '$banniere')";
 
                     $result = mysqli_query($db_handle, $sqlInsert);
-                    echo "Votre compte vendeur a été créé." . "<br>";
-
-                    $result = mysqli_query($db_handle, $sql);
-
-                    while ($data = mysqli_fetch_assoc($result)) {
-                    echo "Informations sur le nouveau vendeur :" . "<br>";
-                    echo "ID Vendeur : " . $data['IdVendeur'] . "<br>";
-                    echo "Nom : " . $data['Nom'] . "<br>";
-                    echo "Prenom : " . $data['Prenom'] . "<br>";
-                    echo "Email : " . $data['Email'] . "<br>";
-                    $photoProfil = $data['PhotoProfil'];
-                    echo "<img src='$photoProfil' alt='photo_profil' height='150'><br>";
-                    $banniere = $data['ImageFond'];
-                    echo "<img src='$banniere' alt='banniere' height='150'><br>";
+                    header('Location: acces_vendeur.php');
                     }
                 } else {
                     echo "Les mots de passe ne sont pas les mêmes.<br>";
