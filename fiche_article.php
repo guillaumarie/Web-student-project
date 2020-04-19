@@ -18,6 +18,8 @@
     $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
     $db_found = mysqli_select_db($db_handle, $database);
 
+    $date = date("Y-m-d");
+
     if ($db_found) {
         $sql = "SELECT * FROM item WHERE IdItem LIKE '$idItem'";
         $result = mysqli_query($db_handle, $sql);
@@ -151,6 +153,7 @@
                         <?php
                     }
                 }
+                // Meilleure offre
                 if ($data["TypeAchat"] == 'offre'){
                     $sqlOffre = "SELECT IdAcheteur FROM offre WHERE IdItem LIKE '$idItem' AND IdAcheteur LIKE '$idAcheteur'";
                     $resultOffre = mysqli_query($db_handle, $sqlOffre);
@@ -181,6 +184,7 @@
                         <?php
                     }
                 }
+                // Enchère
                 if ($data["TypeAchat"] == 'enchere'){
                     $sqlVerif = "SELECT IdAcheteur FROM enchere WHERE IdItem LIKE '$idItem' AND IdAcheteur LIKE '$idAcheteur'";
                     $resultVerif = mysqli_query($db_handle, $sqlVerif);
@@ -193,25 +197,53 @@
                         <?php
                     }
                     else {
-                        $sqlEnchere = "SELECT Plafond FROM enchere WHERE IdItem LIKE '$idItem' AND IdAcheteur LIKE '0'";
-                        $resultEnchere = mysqli_query($db_handle, $sqlEnchere);
-                        $Enchere = mysqli_fetch_assoc($resultEnchere);
-                        ?>
-                        <div class="well">
-                            <p><?php $prix = number_format($Enchere['Plafond'], 2, ',', ' '); echo "Prix actuel : " . $prix . " €<br>"; ?></p>
-                        </div>
-                        <form action="ajout_item_acheteur.php" method="post">
-                            <div class="well">
-                                <p><input class="container-fluid mb-1" type="number" name="prix"
-                                placeholder="Indiquez votre plafond pour cette enchère..." size="18"></p>
-                                <p><?php echo "<input type='hidden' name='idItem' value='$idItem'>";
-                                echo "<input type='hidden' name='idAcheteur' value='$idAcheteur'>" ?></p>
-                            </div>
-                            <div>
-                                <p><input type="submit" name="button3" value="Enchérir"></p>
-                            </div>
-                        </form>
-                        <?php
+                        $sqlDates = "SELECT DISTINCT Debut, Fin FROM enchere WHERE IdItem LIKE '$idItem'";
+                        $resultDates = mysqli_query($db_handle, $sqlDates);
+                        while ($Dates = mysqli_fetch_assoc($resultDates)) {
+                            if ($Dates["Debut"] > $date) {
+                                ?>
+                                <div class="well">
+                                    <p><?php $debut = $Dates["Debut"];
+                                    list($a, $m, $j) = explode("-", $debut);
+                                    if($m=="01"){$mois="janvier";} if($m=="02"){$mois="février";} if($m=="03"){$mois="mars";}
+                                    if($m=="04"){$mois="avril";} if($m=="05"){$mois="mai";} if($m=="06"){$mois="juin";}
+                                    if($m=="07"){$mois="juillet";} if($m=="08"){$mois="août";} if($m=="09"){$mois="septembre";}
+                                    if($m=="10"){$mois="octobre";} if($m=="11"){$mois="novembre";} if($m=="12"){$mois="décembre";}
+                                    echo "Les enchères ne sont pas encore ouvertes pour cet article.<br>
+                                    Date d'ouverture : " . $j . " " . $mois . " " . $a . "<br>";
+                                     ?></p>
+                                </div>
+                                <?php
+                            }
+                            if ($Dates["Fin"] < $date) {
+                                ?>
+                                <div class="well">
+                                    <p><?php echo "Les enchères sont fermées pour cet article.<br>"; ?></p>
+                                </div>
+                                <?php
+                            }
+                            if ($Dates["Debut"] <= $date && $Dates["Fin"] >= $date) {
+                                $sqlEnchere = "SELECT Plafond FROM enchere WHERE IdItem LIKE '$idItem' AND IdAcheteur LIKE '0'";
+                                $resultEnchere = mysqli_query($db_handle, $sqlEnchere);
+                                $Enchere = mysqli_fetch_assoc($resultEnchere);
+                                ?>
+                                <div class="well">
+                                    <p><?php $prix = number_format($Enchere['Plafond'], 2, ',', ' '); echo "Prix actuel : " . $prix . " €<br>"; ?></p>
+                                </div>
+                                <form action="ajout_item_acheteur.php" method="post">
+                                    <div class="well">
+                                        <p><input class="container-fluid mb-1" type="number" name="prix"
+                                        placeholder="Indiquez votre plafond pour cette enchère..." size="18"></p>
+                                        <p><?php echo "<input type='hidden' name='idItem' value='$idItem'>";
+                                        echo "<input type='hidden' name='idAcheteur' value='$idAcheteur'>" ?></p>
+                                    </div>
+                                    <div>
+                                        <p><input type="submit" name="button3" value="Enchérir"></p>
+                                    </div>
+                                </form>
+                                <?php
+                            }
+                        }
                     }
                 }
             }

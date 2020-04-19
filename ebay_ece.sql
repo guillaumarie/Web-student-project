@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Apr 19, 2020 at 10:17 PM
+-- Generation Time: Apr 19, 2020 at 11:11 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -97,6 +97,7 @@ CREATE TABLE IF NOT EXISTS `enchere` (
 --
 
 INSERT INTO `enchere` (`IdItem`, `IdAcheteur`, `Plafond`, `Debut`, `Fin`) VALUES
+(46, 0, 200000, '2020-04-29', '2020-05-13'),
 (44, 12, 100000, '2020-04-19', '2020-05-15'),
 (44, 10, 120000, '2020-04-19', '2020-05-15'),
 (44, 8, 90000, '2020-04-19', '2020-05-15'),
@@ -125,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `item` (
   `Categorie` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `TypeAchat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`IdItem`)
-) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `item`
@@ -138,7 +139,8 @@ INSERT INTO `item` (`IdItem`, `IdVendeur`, `Nom`, `Photo1`, `Photo2`, `Photo3`, 
 (41, 1, 'La Joconde', 'images/item/joconde-1.jpg', 'images/item/joconde-2.jpg', 'images/item/joconde-3.jpg', 'images/item/joconde-4.jpg', 'images/item/joconde-5.jpg', 'images/item/une-minute-au-musee-ep07-la-joconde.mp4', 'Pas mal...', 2500000, 'musee', 'offre'),
 (39, 10, 'Guernica', 'images/item/guernica.jpg', '', '', '', '', '', 'Joli !', 5000000, 'musee', 'immediat_offre'),
 (40, 10, 'Obus', 'images/item/obus_1.jpg', 'images/item/obus_2.jpg', '', '', '', '', 'Datant de la Première Guerre Mondiale', 15000, 'ferraille', 'immediat'),
-(38, 8, 'Villa', 'images/item/villa.jpg', '', '', '', '', '', 'Belle et bien située', 3000000, 'ferraille', 'offre');
+(38, 8, 'Villa', 'images/item/villa.jpg', '', '', '', '', '', 'Belle et bien située', 3000000, 'ferraille', 'offre'),
+(46, 2, 'Venus de Milo', 'images/item/venus_de_milo.jpg', '', '', '', '', '', 'I found it in Paris!', 200000, 'musee', 'enchere');
 
 -- --------------------------------------------------------
 
