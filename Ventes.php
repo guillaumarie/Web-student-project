@@ -16,12 +16,12 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                 <h3 class="feature-title">Encheres</h3>
-                    <a class="Img_Cat" href="encheres.php">
+                    <a class="Img_Cat" href="achat_encheres.php">
                         <img src="images\ventes\encheres.png" class="img-fluid">
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
-                <h3 class="feature-title">Achat immediat ou meilleure offre</h3>
+                <h3 class="feature-title">Meilleure offre</h3>
                     <a class="Img_Cat" href="achat_offre.php">
                         <img src="images\ventes\achat_offre.png" class="img-fluid">
                     </a>

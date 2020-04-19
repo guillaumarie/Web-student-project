@@ -38,7 +38,7 @@
             </div>
             <div class="col-sm-8 text-left">
                 <h1 align="center"><?php echo $data['Categorie']; ?></h1>
-                <p align="center"><img src="<?php $photo = $data['Photo1']?>;" width="600" height="400" /></p>
+                <p align="center"><?php $image = $data['Photo1']; echo "<img src='$image' width='600' height='400'>"; ?></p>
                 
                 <h3>Description</h3>
                 <p><?php echo $data['Description'];?></p>

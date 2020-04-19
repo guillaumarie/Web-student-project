@@ -34,108 +34,143 @@
                     $tousLesItems = mysqli_query($db_handle, $sqlItem);
                     while ($idItems = mysqli_fetch_assoc($tousLesItems)) {
                         $item = $idItems["IdItem"];
-                        // Nombre d'offres par item
-                        $sqlNbreOffres = "SELECT COUNT(IdOffre) AS NbreOffre FROM offre WHERE IdAcheteur = '$id' AND IdItem = '$item'"; 
-                        $result = mysqli_query($db_handle, $sqlNbreOffres);
-                        $nbrOffres = mysqli_fetch_assoc($result);
                         
                         $sqlProduit = "SELECT * FROM item WHERE item.IdItem = '$item'"; 
-                        $result = mysqli_query($db_handle, $sqlProduit);
-                        $produit = mysqli_fetch_assoc($result);
+                        $resultproduit = mysqli_query($db_handle, $sqlProduit);
+                        $produit = mysqli_fetch_assoc($resultproduit);
                         ?>
 
                         <div class="col-sm-9">
                             <div class="well">
                                 <span><?php $photo = $produit['Photo1']; echo "<img src='$photo' width='200' align='left'>"; ?></span>
-                                <span><h5><?php echo $produit['Nom'] . "<br>"; ?></h5><?php echo $produit['Description'] . "<br>"; ?></span>
+                                <span><h5><?php echo $produit['Nom'] . "<br>"; ?></h5><?php echo $produit['Description'] . "<br><br>"; ?></span>
                             </div>
                         </div>
 
                         <?php
-                        // Si 1 seule offre en cours pour l'item traité
-                        if ($nbrOffres["NbreOffre"] == 1) {
-                            $sqlOffre = "SELECT * FROM offre WHERE IdAcheteur = '$id' AND IdItem = '$item'";
-                            $result = mysqli_query($db_handle, $sqlOffre);
-                            $derniereOffre = mysqli_fetch_assoc($result);
+                        // Nombre d'offres par item
+                        $sqlNbreOffres = "SELECT COUNT(IdOffre) AS NbreOffre FROM offre WHERE IdAcheteur = '$id' AND IdItem = '$item'"; 
+                        $resultnbrOffres = mysqli_query($db_handle, $sqlNbreOffres);
+                        $nbrOffres = mysqli_fetch_assoc($resultnbrOffres);
+                        // On récupère les Id des offres
+                        $limite = $nbrOffres["NbreOffre"]-1;
+                        $vendeur = FALSE;
+                        $numeroIdEnCours = 0;
+                        $sqlIdOffre = "SELECT IdOffre FROM offre WHERE IdAcheteur='$id' AND IdItem = '$item' ORDER BY IdOffre
+                        LIMIT $limite";
+                        $resultidOffres = mysqli_query($db_handle, $sqlIdOffre);
+                        while ($idOffres = mysqli_fetch_assoc($resultidOffres)) {
+                            $numeroIdEnCours++;
+                            $vendeur = !$vendeur;
+                            $IdEnCours = $idOffres["IdOffre"];
+                            $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$IdEnCours'";
+                            $resultOffreEnCours = mysqli_query($db_handle, $sqlOffre);
+                            $OffreEnCours = mysqli_fetch_assoc($resultOffreEnCours);
+
+                            // Si on parcourt l'avant-dernière offre
+                            if ($numeroIdEnCours == $limite) {
+                                // On récupère l'id de la dernière offre
+                                $sqlIdOffreSuivante = "SELECT IdOffre FROM offre WHERE IdAcheteur='$id' AND IdItem = '$item' ORDER BY IdOffre
+                                LIMIT 1 OFFSET $limite";
+                                $resultidOffreSuivante = mysqli_query($db_handle, $sqlIdOffreSuivante);
+                                $idOffreSuivante = mysqli_fetch_assoc($resultidOffreSuivante);
+                                $IdSuivant = $idOffreSuivante["IdOffre"];
+                                // Et donc la dernière offre
+                                $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$IdSuivant'";
+                                $resultOffreSuivante = mysqli_query($db_handle, $sqlOffre);
+                                $OffreSuivante = mysqli_fetch_assoc($resultOffreSuivante);
+                                if ($OffreSuivante['Accepte'] == 0) {
+                                    ?>
+                                    <div class="col-sm-9">
+                                    <div class="well">
+                                        <span><?php $prix = number_format($OffreEnCours['Proposition'], 2, ',', ' ');
+                                        echo "Offre refusée ";
+                                        if ($vendeur === TRUE) {
+                                            echo "par le vendeur : ";
+                                        }
+                                        if ($vendeur === FALSE) {
+                                            echo "par vous-même : ";
+                                        }
+                                        echo $prix . " €";
+                                        ?></span>
+                                    </div>
+                                    </div>
+                                <?php
+                                }
+                                else {break;} // Si dernière offre acceptée, on ignore l'avant-dernière (qui est le même mais non acceptée)
+                            }
+                            else {
+                                ?>
+                                    <div class="col-sm-9">
+                                    <div class="well">
+                                        <span><?php $prix = number_format($OffreEnCours['Proposition'], 2, ',', ' ');
+                                        echo "Offre refusée ";
+                                        if ($vendeur === TRUE) {
+                                            echo "par le vendeur : ";
+                                        }
+                                        if ($vendeur === FALSE) {
+                                            echo "par vous-même : ";
+                                        }
+                                        echo $prix . " €";
+                                        ?></span>
+                                    </div>
+                                    </div>
+                                <?php
+                            }
+                        }
+                        // Si la dernière offre vient de l'acheteur
+                        // Donc nombre impair d'offres (contre-offres comprises)
+                        if ($nbrOffres["NbreOffre"]%2 != 0) {
+                            $sqlIdDerniereOffre = "SELECT MAX(IdOffre) AS IdOffre FROM offre WHERE IdAcheteur='$id' AND IdItem = '$item'";
+                            $result = mysqli_query($db_handle, $sqlIdDerniereOffre);
+                            $IdEnCours = mysqli_fetch_assoc($result);
+                            $offre = $IdEnCours["IdOffre"];
+                            $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
+                            $resultderniereOffre = mysqli_query($db_handle, $sqlOffre);
+                            $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
                             ?>
                             <div class="col-sm-9">
                                 <div class="well">
-                                    <span><?php $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
-                                    echo "Vous avez soumis une offre pour ce produit : " . $prix . " €" . "<br>";
-                                    echo "Le vendeur n'y a pas encore répondu...<br>";
+                                    <span><?php
+                                    if ($derniereOffre['Accepte'] == 1) {
+                                        echo "Vous avez accepté la dernière offre du vendeur à : ";
+                                    }
+                                    if ($derniereOffre['Accepte'] == 0) {
+                                        echo "Le vendeur n'a pas encore répondu à votre offre à : ";
+                                    }
+                                    $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
+                                    echo $prix . " €" . "<br>";
                                     ?></span>
                                 </div>
-                            </div><br>
+                            </div>
                             <?php
                         }
-                        // Si au moins 2 offres en cours pour l'item traité
-                        if ($nbrOffres["NbreOffre"] >= 2) {
-                            // On récupère les Id des offres
-                            $sqlIdOffre = "SELECT IdOffre FROM offre WHERE IdAcheteur='$id' AND IdItem = '$item' ORDER BY IdOffre";
-                            $result = mysqli_query($db_handle, $sqlIdOffre);
-                            while ($idOffres = mysqli_fetch_assoc($result)) {
-                                $IdEnCours = $idOffres["IdOffre"];
-                                $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$IdEnCours'";
-                                $result = mysqli_query($db_handle, $sqlOffre);
-                                $OffreEnCours = mysqli_fetch_assoc($result);
-                                ?>
-                                <div class="col-sm-9">
-                                    <div class="well">
-                                        <span><?php $prix = number_format($OffreEnCours['Proposition'], 2, ',', ' ');
-                                        echo "Offre refusée : " . $prix . " €";
-                                        ?></span>
-                                    </div>
+                        // Si la dernière offre vient du vendeur
+                        // Donc nombre pair d'offres (contre-offres comprises)
+                        if ($nbrOffres["NbreOffre"]%2 == 0) {
+                            $sqlIdDerniereOffre = "SELECT MAX(IdOffre) AS IdOffre FROM offre WHERE IdAcheteur='$id' AND IdItem = '$item'";
+                            $result = mysqli_query($db_handle, $sqlIdDerniereOffre);
+                            $IdEnCours = mysqli_fetch_assoc($result);
+                            $offre = $IdEnCours["IdOffre"];
+                            $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
+                            $resultderniereOffre = mysqli_query($db_handle, $sqlOffre);
+                            $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
+                            ?>
+                            <div class="col-sm-9">
+                                <div class="well">
+                                    <span><?php
+                                    if ($derniereOffre['Accepte'] == 1) {
+                                        echo "Le vendeur a accepté votre offre à ";
+                                    }
+                                    if ($derniereOffre['Accepte'] == 0) {
+                                        echo "Voici sa dernière offre : ";
+                                    }
+                                    $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
+                                    echo $prix . " €" . "<br>";
+                                    ?></span>
                                 </div>
-                                <?php
-                            }
-                            // Si la dernière offre vient de l'acheteur
-                            // Donc nombre impair d'offres (contre-offres comprises)
-                            if ($nbrOffres["NbreOffre"]%2 != 0) {
-                                echo "Et voici votre dernière offre :<br>";
-                                $sqlIdDerniereOffre = "SELECT MAX(IdOffre) AS IdOffre FROM offre WHERE IdAcheteur='$id' AND IdItem = '$item'";
-                                $result = mysqli_query($db_handle, $sqlIdDerniereOffre);
-                                $IdEnCours = mysqli_fetch_assoc($result);
-                                $offre = $IdEnCours["IdOffre"];
-                                $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
-                                $result = mysqli_query($db_handle, $sqlOffre);
-                                $derniereOffre = mysqli_fetch_assoc($result);
-                                ?>
-                                <div class="col-sm-9">
-                                    <div class="well">
-                                        <span><?php $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
-                                        echo $prix . " €" . "<br>"; echo "Le vendeur n'a pas encore répondu à votre offre...<br>";
-                                        ?></span>
-                                    </div>
-                                </div>
-                                <?php
-                            }
-                            // Si la dernière offre vient du vendeur
-                            // Donc nombre pair d'offres (contre-offres comprises)
-                            if ($nbrOffres["NbreOffre"]%2 == 0) {
-                                $sqlIdDerniereOffre = "SELECT MAX(IdOffre) AS IdOffre FROM offre WHERE IdAcheteur='$id' AND IdItem = '$item'";
-                                $result = mysqli_query($db_handle, $sqlIdDerniereOffre);
-                                $IdEnCours = mysqli_fetch_assoc($result);
-                                $offre = $IdEnCours["IdOffre"];
-                                $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
-                                $result = mysqli_query($db_handle, $sqlOffre);
-                                $derniereOffre = mysqli_fetch_assoc($result);
-                                ?>
-                                <div class="col-sm-9">
-                                    <div class="well">
-                                        <span><?php
-                                        if ($derniereOffre['Accepte'] === 1) {
-                                            echo "Le vendeur a accepté votre offre à ";
-                                        }
-                                        if ($derniereOffre['Accepte'] === 0) {
-                                            echo "Le vendeur a refusé votre offre...<br>Voici sa dernière contre-offre : <br>";
-                                        }
-                                        $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
-                                        echo $prix . " €" . "<br>";
-                                        ?></span>
-                                    </div>
-                                </div>
-                                <?php
-                            }
+                            </div>
+                            <?php
                         }
                         echo "<br><br>";
                     }
@@ -162,119 +197,154 @@
                     while ($idItems = mysqli_fetch_assoc($tousLesItems)) {
                         $item = $idItems["IdItem"];
                         $acheteur = $idItems["IdAcheteur"];
-                        // Nombre d'offres par item et par acheteur
-                        $sqlNbreOffres = "SELECT COUNT(offre.IdOffre) AS NbreOffre FROM item, offre WHERE item.IdVendeur = '$id'
-                        AND offre.IdAcheteur='$acheteur' AND item.IdItem = offre.IdItem AND offre.IdAcheteur NOT LIKE '0'
-                        AND offre.IdItem='$item'"; 
-                        $result = mysqli_query($db_handle, $sqlNbreOffres);
-                        $nbrOffres = mysqli_fetch_assoc($result);
                         
                         $sqlProduit = "SELECT * FROM item WHERE item.IdItem = '$item'"; 
-                        $result = mysqli_query($db_handle, $sqlProduit);
-                        $produit = mysqli_fetch_assoc($result);
+                        $resultproduit = mysqli_query($db_handle, $sqlProduit);
+                        $produit = mysqli_fetch_assoc($resultproduit);
                         ?>
 
                         <div class="col-sm-9">
                             <div class="well">
                                 <span><?php $photo = $produit['Photo1']; echo "<img src='$photo' width='200' align='left'>"; ?></span>
-                                <span><h5><?php echo $produit['Nom'] . "<br>"; ?></h5><?php echo $produit['Description'] . "<br>"; ?></span>
+                                <span><h5><?php echo $produit['Nom'] . "<br>"; ?></h5><?php echo $produit['Description'] . "<br><br>";
+                                echo "Négociation avec le client N°" . $acheteur . " :<br>"; ?></span>
                             </div>
                         </div>
 
                         <?php
-                        // Si 1 seule offre en cours pour l'item traité
-                        if ($nbrOffres["NbreOffre"] == 1) {
-                            $sqlOffre = "SELECT offre.Proposition FROM item, offre WHERE item.IdVendeur = '$id'
+                        // Nombre d'offres par item et par acheteur
+                        $sqlNbreOffres = "SELECT COUNT(offre.IdOffre) AS NbreOffre FROM item, offre WHERE item.IdVendeur = '$id'
+                        AND offre.IdAcheteur='$acheteur' AND item.IdItem = offre.IdItem AND offre.IdAcheteur NOT LIKE '0'
+                        AND offre.IdItem='$item'"; 
+                        $resultnbrOffres = mysqli_query($db_handle, $sqlNbreOffres);
+                        $nbrOffres = mysqli_fetch_assoc($resultnbrOffres);
+                        // On récupère les Id des offres
+                        $limite = $nbrOffres["NbreOffre"]-1;
+                        $vendeur = FALSE;
+                        $numeroIdEnCours = 0;
+                        $sqlIdOffre = "SELECT offre.IdOffre FROM offre, item WHERE item.IdVendeur = '$id'
+                        AND offre.IdAcheteur='$acheteur' AND item.IdItem = offre.IdItem AND offre.IdAcheteur NOT LIKE '0'
+                        AND offre.IdItem='$item' ORDER BY offre.IdOffre LIMIT $limite";
+                        $resultidOffres = mysqli_query($db_handle, $sqlIdOffre);
+                        while ($idOffres = mysqli_fetch_assoc($resultidOffres)) {
+                            $numeroIdEnCours++;
+                            $vendeur = !$vendeur;
+                            $IdEnCours = $idOffres["IdOffre"];
+                            $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$IdEnCours'";
+                            $resultOffreEnCours = mysqli_query($db_handle, $sqlOffre);
+                            $OffreEnCours = mysqli_fetch_assoc($resultOffreEnCours);
+
+                            // Si on parcourt l'avant-dernière offre
+                            if ($numeroIdEnCours == $limite) {
+                                // On récupère l'id de la dernière offre
+                                $sqlIdOffreSuivante = "SELECT offre.IdOffre FROM offre, item WHERE item.IdVendeur = '$id'
+                                AND offre.IdAcheteur='$acheteur' AND item.IdItem = offre.IdItem AND offre.IdAcheteur NOT LIKE '0'
+                                AND offre.IdItem='$item' ORDER BY offre.IdOffre LIMIT 1 OFFSET $limite";
+                                $resultidOffreSuivante = mysqli_query($db_handle, $sqlIdOffreSuivante);
+                                $idOffreSuivante = mysqli_fetch_assoc($resultidOffreSuivante);
+                                $IdSuivant = $idOffreSuivante["IdOffre"];
+                                // Et donc la dernière offre
+                                $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$IdSuivant'";
+                                $resultOffreSuivante = mysqli_query($db_handle, $sqlOffre);
+                                $OffreSuivante = mysqli_fetch_assoc($resultOffreSuivante);
+                                if ($OffreSuivante['Accepte'] == 0) {
+                                    ?>
+                                    <div class="col-sm-9">
+                                    <div class="well">
+                                        <span><?php $prix = number_format($OffreEnCours['Proposition'], 2, ',', ' ');
+                                        echo "Offre refusée ";
+                                        if ($vendeur === TRUE) {
+                                            echo "par vous-même : ";
+                                        }
+                                        if ($vendeur === FALSE) {
+                                            echo "par le client : ";
+                                        }
+                                        echo $prix . " €";
+                                        ?></span>
+                                    </div>
+                                    </div>
+                                <?php
+                                }
+                                else {break;} // Si dernière offre acceptée, on ignore l'avant dernière (qui est le même mais non acceptée)
+                            }
+                            else {
+                                ?>
+                                    <div class="col-sm-9">
+                                    <div class="well">
+                                        <span><?php $prix = number_format($OffreEnCours['Proposition'], 2, ',', ' ');
+                                        echo "Offre refusée ";
+                                        if ($vendeur === TRUE) {
+                                            echo "par vous-même : ";
+                                        }
+                                        if ($vendeur === FALSE) {
+                                            echo "par le client : ";
+                                        }
+                                        echo $prix . " €";
+                                        ?></span>
+                                    </div>
+                                    </div>
+                                <?php
+                            }
+                        }
+                        // Si la dernière offre vient de l'acheteur
+                        // Donc nombre impair d'offres (contre-offres comprises)
+                        if ($nbrOffres["NbreOffre"]%2 != 0) {
+                            $sqlIdDerniereOffre = "SELECT MAX(offre.IdOffre) AS IdOffre FROM offre, item WHERE item.IdVendeur = '$id'
                             AND offre.IdAcheteur='$acheteur' AND item.IdItem = offre.IdItem AND offre.IdAcheteur NOT LIKE '0'
                             AND offre.IdItem='$item'";
-                            $result = mysqli_query($db_handle, $sqlOffre);
-                            $derniereOffre = mysqli_fetch_assoc($result);
+                            $result = mysqli_query($db_handle, $sqlIdDerniereOffre);
+                            $IdEnCours = mysqli_fetch_assoc($result);
+                            $offre = $IdEnCours["IdOffre"];
+                            $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
+                            $resultderniereOffre = mysqli_query($db_handle, $sqlOffre);
+                            $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
                             ?>
                             <div class="col-sm-9">
                                 <div class="well">
-                                    <span><?php $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
-                                    echo "Vous avez recu une offre du client N°" . $acheteur . " : " . $prix . " €" . "<br>";
-                                    ?></span>
+                                <span><?php
+                                if ($derniereOffre['Accepte'] == 1) {
+                                    echo "Le client N°" . $acheteur . " a accepté votre offre à : ";
+                                }
+                                if ($derniereOffre['Accepte'] == 0) {
+                                    echo "Voici la dernière offre du client : ";
+                                }
+                                $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
+                                echo $prix . " €" . "<br>";
+                                ?></span>
                                 </div>
-                            </div><br>
+                            </div>
                             <?php
                         }
-                        // Si au moins 2 offres en cours pour l'item traité
-                        if ($nbrOffres["NbreOffre"] >= 2) {
-                            // On récupère les Id des offres
-                            $sqlIdOffre = "SELECT offre.IdOffre FROM offre, item WHERE item.IdVendeur = '$id'
+                        // Si la dernière offre vient du vendeur
+                        // Donc nombre pair d'offres (contre-offres comprises)
+                        if ($nbrOffres["NbreOffre"]%2 == 0) {
+                            $sqlIdDerniereOffre = "SELECT MAX(IdOffre) AS IdOffre FROM offre ,item WHERE item.IdVendeur = '$id'
                             AND offre.IdAcheteur='$acheteur' AND item.IdItem = offre.IdItem AND offre.IdAcheteur NOT LIKE '0'
-                            AND offre.IdItem='$item' ORDER BY offre.IdOffre";
-                            $result = mysqli_query($db_handle, $sqlIdOffre);
-                            while ($idOffres = mysqli_fetch_assoc($result)) {
-                                $IdEnCours = $idOffres["IdOffre"];
-                                $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$IdEnCours'";
-                                $result = mysqli_query($db_handle, $sqlOffre);
-                                $OffreEnCours = mysqli_fetch_assoc($result);
-                                ?>
-                                <div class="col-sm-9">
-                                    <div class="well">
-                                        <span><?php $prix = number_format($OffreEnCours['Proposition'], 2, ',', ' ');
-                                        echo "Offre refusée : " . $prix . " €";
-                                        ?></span>
-                                    </div>
-                                </div>
-                                <?php
-                            }
-                            // Si la dernière offre vient de l'acheteur
-                            // Donc nombre impair d'offres (contre-offres comprises)
-                            if ($nbrOffres["NbreOffre"]%2 != 0) {
-                                $sqlIdDerniereOffre = "SELECT MAX(offre.IdOffre) AS IdOffre FROM offre, item WHERE item.IdVendeur = '$id'
-                                AND offre.IdAcheteur='$acheteur' AND item.IdItem = offre.IdItem AND offre.IdAcheteur NOT LIKE '0'
-                                AND offre.IdItem='$item'";
-                                $result = mysqli_query($db_handle, $sqlIdDerniereOffre);
-                                $IdEnCours = mysqli_fetch_assoc($result);
-                                $offre = $IdEnCours["IdOffre"];
-                                $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
-                                $result = mysqli_query($db_handle, $sqlOffre);
-                                $derniereOffre = mysqli_fetch_assoc($result);
-                                ?>
-                                <div class="col-sm-9">
-                                    <div class="well">
+                            AND offre.IdItem='$item'";
+                            $result = mysqli_query($db_handle, $sqlIdDerniereOffre);
+                            $IdEnCours = mysqli_fetch_assoc($result);
+                            $offre = $IdEnCours["IdOffre"];
+                            $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
+                            $resultderniereOffre = mysqli_query($db_handle, $sqlOffre);
+                            $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
+                            ?>
+                            <div class="col-sm-9">
+                                <div class="well">
                                     <span><?php
-                                    if ($derniereOffre['Accepte'] === 1) {
-                                        echo "Le client N°" . $acheteur . " a accepté votre offre à : ";
+                                    if ($derniereOffre['Accepte'] == 1) {
+                                        echo "Vous avez accepté l'offre du client à : ";
                                     }
-                                    if ($derniereOffre['Accepte'] === 0) {
-                                        echo "Le client a refusé votre offre...<br>Voici sa dernière contre-offre : <br>";
+                                    if ($derniereOffre['Accepte'] == 0) {
+                                        echo "Le client n'a pas encore répondu à votre offre à : ";
                                     }
                                     $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
                                     echo $prix . " €" . "<br>";
                                     ?></span>
-                                    </div>
                                 </div>
-                                <?php
-                            }
-                            // Si la dernière offre vient du vendeur
-                            // Donc nombre pair d'offres (contre-offres comprises)
-                            if ($nbrOffres["NbreOffre"]%2 == 0) {
-                                $sqlIdDerniereOffre = "SELECT MAX(IdOffre) AS IdOffre FROM offre ,item WHERE item.IdVendeur = '$id'
-                                AND offre.IdAcheteur='$acheteur' AND item.IdItem = offre.IdItem AND offre.IdAcheteur NOT LIKE '0'
-                                AND offre.IdItem='$item'";
-                                $result = mysqli_query($db_handle, $sqlIdDerniereOffre);
-                                $IdEnCours = mysqli_fetch_assoc($result);
-                                $offre = $IdEnCours["IdOffre"];
-                                $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
-                                $result = mysqli_query($db_handle, $sqlOffre);
-                                $derniereOffre = mysqli_fetch_assoc($result);
-                                ?>
-                                <div class="col-sm-9">
-                                    <div class="well">
-                                        <span><?php $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
-                                        echo "Vous avez soumis une contre-offre pour ce produit : " . $prix . " €" . "<br>";
-                                        echo "Le client n'y a pas encore répondu...<br>";
-                                        ?></span>
-                                    </div>
-                                </div>
-                                <?php
-                            }
+                            </div>
+                            <?php
                         }
-                        echo "<br><br>";
+                        echo "<br><br><br><br>";
                     }
                 }
             }
