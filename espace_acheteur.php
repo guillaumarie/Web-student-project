@@ -8,41 +8,60 @@
 
         <?php include 'includes/header.php';     
         
-        $email = isset($_SESSION["email"])? $_SESSION["email"] : "";
-        
-        if($email ) {
-            $database = "ebay_ece";
-    
-            $db_handle = mysqli_connect('127.0.0.1:3306', 'root', 'root');
-            $db_found = mysqli_select_db($db_handle, $database);
-            if ($db_found) {
-                $sql = "SELECT * FROM acheteur WHERE Email LIKE '$email'"; 
-                $result = mysqli_query($db_handle, $sql);
-            } 
-            while ($data = mysqli_fetch_assoc($result)) {
-                echo'
-                    <div id="espace_acheteur" class="mt-5">
-                    <h1 class="text-center pt-5 pb-4"> Mes infos</h1>
-                    <form class="pt-2" method="post">
-                        <table align="center" width="55%">
+        $id = $_SESSION["id"];
+
+        $database = "ebay_ece";
+
+        $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
+        $db_found = mysqli_select_db($db_handle, $database);
+        if ($db_found) {
+            $sql = "SELECT * FROM acheteur WHERE IdAcheteur LIKE '$id'"; 
+            $result = mysqli_query($db_handle, $sql);
+
+            $data = mysqli_fetch_assoc($result); ?>
+                <div id="espace_acheteur" class="mt-5">
+                <h1 class="text-center pt-5 pb-3">Mes infos</h1>
+                <table align="center" width="55%">
                     <tr>
-                        <td class="pb-2">ID Client : '. $data['IdAcheteur'] . '<br></td>
+                        <td class="pb-2">Identifiant Client : <?php echo $data['IdAcheteur'] . "<br>"; ?></td>
                     </tr>
                     <tr>
-                        <td class="pb-3">Nom : ' . $data['Nom'] . '<br></td>
+                        <td class="pb-2">Nom : <?php echo $data['Nom'] . "<br>"; ?></td>
                     </tr>
                     <tr>
-                        <td class="pb-2">Prenom : ' . $data['Prenom'] . '<br></td>
+                        <td class="pb-2">Prénom : <?php echo $data['Prenom'] . "<br>"; ?></td>
                     </tr>
                     <tr>
-                        <td class="pb-3"> Email :  '. $data['Email'] . '<br></td>
+                        <td class="pb-2"> Email : <?php echo $data['Email'] . "<br>"; ?></td>
                     </tr>
                     <tr>
-                    </table>
-                    </form>
-                    </div>
-                    ';
-            }
+                        <td class="pb-2"> N° Téléphone : <?php echo $data['Telephone'] . "<br>"; ?></td>
+                    </tr>
+                </table>
+                <h3 class="text-center pt-5 pb-3">Mes coordonnées de livraison</h3>
+                <table align="center" width="55%">
+                    <tr>
+                        <td class="pb-2"><?php echo $data['Adresse1']; ?></td>
+                    </tr>
+                    <?php if ($data['Adresse2'] !== "") { ?>
+                        <tr>
+                            <td class="pb-2"><?php echo $data['Adresse2']; ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                    <tr>
+                        <td class="pb-2"><?php echo $data['CP'] . " " . $data['Ville']; ?></td>
+                    </tr>
+                    <tr>
+                        <td class="pb-2"><?php echo $data['Pays'] . "<br><br>"; ?></td>
+                    </tr>
+                    <tr>
+                        <td><a href="modifier_infos_client.php"><input type="button" value="Modifier mes infos"></input></a></td>
+                    </tr>
+                </table><br><br>
+                </div>
+        <?php
         }
             
     ?>  

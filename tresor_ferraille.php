@@ -11,7 +11,7 @@
 
         $database = "ebay_ece";
 
-        $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
+        $db_handle = mysqli_connect('127.0.0.1:3306', 'root', 'root');
         $db_found = mysqli_select_db($db_handle, $database);
 
         if ($db_found) {
@@ -29,7 +29,7 @@
                 <div class="col-sm-4">
                     <a style="text-decoration:none" href="fiche_article.php">
                         <div class="panel panel-primary">
-                            <div class="panel-heading" align="center"><?php echo $data['Nom']; ?></div><br>
+                            <div class="btn btn-outline-secondary btn-lg" class="panel-heading" align="center"><?php echo $data['Nom']; ?></div><br>
                             <div class="panel-body" align="center"><?php $photo = $data['Photo1'];
                             echo "<img src='$photo' class='img-responsive' style='width:50%' alt='photo_1'>"; ?></div><br>
                             <div class="panel-footer" align="center">
