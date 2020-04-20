@@ -1,4 +1,15 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<?php include 'includes/head.php'; ?>
+<body>
+<?php include 'includes/header.php'; ?>
+<h2 align = "center">Merci d'avoir commandé chez ebay_ece</h2>
+<?php include 'includes/footer.php'; ?>
+</body>
+</html>
+
+
 <?php
 session_start();
 
@@ -153,6 +164,8 @@ $message .= 'Recevez nos sincères salutations EBAY ECE, Paris, ebayece2020@gmai
 
 mail("killian95840@gmail.com", "Confirmation de votre commande chez EBAY ECE", $message, $header);
 /*mail($Email, "Confirmation de votre commande chez EBAY ECE", $message, $header);*/
+
+
 
 ?>
 
