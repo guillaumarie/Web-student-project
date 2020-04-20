@@ -24,6 +24,7 @@
 
 .container-fluid {
     width: 100%;
+   
 }
 
 .navbar {
@@ -52,6 +53,8 @@
     background-color: #222;
     color: #ccc;
     padding: 60px 0 30px;
+    
+    
 }
 
 .footer-copyright {
@@ -116,11 +119,22 @@
         background: white;
     }
     #Affaire1{
-        height: 300px;
-        width: 500px;
-        float:left;
+        height: 1000px;
+        width: 1000px;
         text-align: center;
     }
+    #Affaire1 h3{
+        text-align: center;
+    }
+    .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23111' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+        }
+    
+      .carousel-control-next-icon {
+          background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23111' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+      }
+    
+
    
 
   
