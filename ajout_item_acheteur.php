@@ -2,15 +2,26 @@
     $idItem = isset($_POST["idItem"])? $_POST["idItem"] : "";
     $idAcheteur = isset($_POST["idAcheteur"])? $_POST["idAcheteur"] : "";
     $prix = isset($_POST["prix"])? $_POST["prix"] : "";
+    $idOffre = isset($_POST["idOffre"])? $_POST["idOffre"] : "";
+    
+    include 'includes/bdd.php';
 
-    if($idItem && $idAcheteur) {
-        include 'includes/bdd.php';
+    if ($idOffre) {
+        $sql = "SELECT IdItem, IdAcheteur, Proposition FROM offre WHERE IdOffre LIKE '$idOffre'";
+        $result = mysqli_query($db_handle, $sql);
+        $data = mysqli_fetch_assoc($result);
+        $idItem = $data["IdItem"];
+        $idAcheteur = $data["IdAcheteur"];
+        $prix = $data["Proposition"];
+    }
 
+    if ($idItem && $idAcheteur) {
         if ($db_found) {
             if (isset($_POST["button1"])) {    // Si achat immédiat
                 $sqlInsert = "INSERT INTO panier (IdAcheteur, IdItem) VALUES ($idAcheteur, $idItem)";
                 $result = mysqli_query($db_handle, $sqlInsert);
-                header('Location: fiche_article.php?id='.$idItem.'');
+                if ($idOffre) {header('Location: offre.php');}
+                else {header('Location: fiche_article.php?id='.$idItem.'');}
             }
             if (isset($_POST["button2"])) {    // Si offre
                 if ($prix) {
@@ -65,6 +76,6 @@
         } else {
             echo "Database not found";
         }
-    mysqli_close($db_handle);
     }
+    mysqli_close($db_handle);
 ?>

@@ -125,18 +125,34 @@
                             $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
                             $resultderniereOffre = mysqli_query($db_handle, $sqlOffre);
                             $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
+                            $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
                             ?>
                             <div class="col-sm-9">
                                 <div class="well">
                                     <span><?php
                                     if ($derniereOffre['Accepte'] == 1) {
-                                        echo "Vous avez accepté la dernière offre du vendeur à : ";
+                                        echo "Vous avez accepté la dernière offre du vendeur à : " . $prix . " €" . "<br>";
+                                        $sqlVerifPanier = "SELECT IdItem FROM panier WHERE IdAcheteur = '$id' AND IdItem = '$item'";
+                                        $resultVerifPanier = mysqli_query($db_handle, $sqlVerifPanier);
+                                        if (mysqli_num_rows($resultVerifPanier) === 0) {
+                                            ?>
+                                            <form action="ajout_item_acheteur.php" method="post">
+                                                <div class="well">
+                                                    <p><?php echo "<input type='hidden' name='idOffre' value='$offre'>"; ?></p>
+                                                </div>
+                                                <div>
+                                                    <p><input type="submit" name="button1" value="Ajouter l'article au panier">
+                                                </div>
+                                            </form>
+                                            <?php
+                                        }
+                                        else {
+                                            echo "Vous avez déjà ajouté cet article au panier.<br>";
+                                        }
                                     }
                                     if ($derniereOffre['Accepte'] == 0) {
-                                        echo "Le vendeur n'a pas encore répondu à votre offre à : ";
+                                        echo "Le vendeur n'a pas encore répondu à votre offre à : " . $prix . " €" . "<br>";
                                     }
-                                    $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
-                                    echo $prix . " €" . "<br>";
                                     ?></span>
                                 </div>
                             </div>
@@ -152,33 +168,46 @@
                             $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
                             $resultderniereOffre = mysqli_query($db_handle, $sqlOffre);
                             $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
+                            $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
                             ?>
                             <div class="col-sm-9">
                                 <div class="well">
                                     <span><?php
                                     if ($derniereOffre['Accepte'] == 1) {
-                                        echo "Le vendeur a accepté votre offre à ";
-                                       
-                                        echo'<a href="#"</a><input type="submit" name="button" value="Procéder au Paiement">';
-
-                                        
+                                        echo "Le vendeur a accepté votre offre à " . $prix . " €" . "<br>";
+                                        $sqlVerifPanier = "SELECT IdItem FROM panier WHERE IdAcheteur = '$id' AND IdItem = '$item'";
+                                        $resultVerifPanier = mysqli_query($db_handle, $sqlVerifPanier);
+                                        if (mysqli_num_rows($resultVerifPanier) === 0) {
+                                            ?>
+                                            <form action="ajout_item_acheteur.php" method="post">
+                                                <div class="well">
+                                                    <p><?php echo "<input type='hidden' name='idOffre' value='$offre'>"; ?></p>
+                                                </div>
+                                                <div>
+                                                    <p><input type="submit" name="button1" value="Ajouter l'article au panier">
+                                                </div>
+                                            </form>
+                                            <?php
+                                        }
+                                        else {
+                                            echo "Vous avez déjà ajouté cet article au panier.<br>";
+                                        }
                                     }
                                     if ($derniereOffre['Accepte'] == 0) {
-                                        echo "Voici sa dernière offre : ";
-                                        echo'<form action="formulaire_offre.php?id='.$derniereOffre["IdItem"].' method="post">
-                                        <input type="number" name="contre_offre" >
-                                        <button type="submit" name="valider">Contre offre</button>
-                                        </form>';
-                                        
-                                    
-                                        
-
+                                        echo "Voici sa dernière offre : " . $prix . " €" . "<br>"; ?>
+                                        <form action="formulaire_offre.php" method="post">
+                                            <div class="well">
+                                                <p><?php echo "<input type='hidden' name='idOffre' value='$offre'>"; ?>
+                                                <input type="number" name="offre" placeholder="Montant de votre contre-offre..."
+                                                min="0" step="0.01"></p>
+                                            </div>
+                                            <div>
+                                                <p><input type="submit" name="button1" value="Soumettre une contre-offre">
+                                                <input type="submit" name="button2" value="Accepeter l'offre"></p>
+                                            </div>
+                                        </form>
+                                        <?php
                                     }
-                                    $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
-                                    echo $prix . " €" . "<br>";
-                                    
-                                
-                                    
                                     ?></span>
                                 </div>
                             </div>
@@ -310,26 +339,30 @@
                             $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
                             $resultderniereOffre = mysqli_query($db_handle, $sqlOffre);
                             $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
+                            $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
                             ?>
                             <div class="col-sm-9">
                                 <div class="well">
                                 <span><?php
                                 if ($derniereOffre['Accepte'] == 1) {
-                                    echo "Le client N°" . $acheteur . " a accepté votre offre à : ";
-                                    echo'<form action="accueil.php?id='.$derniereOffre["IdItem"].' method="post">
-                                        <input type="number" name="contre_offre" >
-                                        <button type="submit" name="valider">Contre offre</button>
-                                        </form>';
-                                    
+                                    echo "Le client N°" . $acheteur . " a accepté votre offre à : " . $prix . " €." . "<br>";
+                                    echo "Vous recevrez les informations sur la transaction très prochainement.<br>";
                                 }
                                 if ($derniereOffre['Accepte'] == 0) {
-                                    echo "Voici la dernière offre du client : ";
-                                    echo'<a href="#"</a><input type="submit" name="button" value="Procéder au Paiement">';
-
-
+                                    echo "Voici la dernière offre du client : " . $prix . " €<br>"; ?>
+                                    <form action="formulaire_offre.php" method="post">
+                                        <div class="well">
+                                            <p><?php echo "<input type='hidden' name='idOffre' value='$offre'>"; ?>
+                                            <input type="number" name="offre" placeholder="Montant de votre contre-offre..."
+                                            min="0" step="0.01"></p>
+                                        </div>
+                                        <div>
+                                            <p><input type="submit" name="button1" value="Soumettre une contre-offre">
+                                            <input type="submit" name="button2" value="Accepter l'offre"></p>
+                                        </div>
+                                    </form>
+                                    <?php
                                 }
-                                $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
-                                echo $prix . " €" . "<br>";
                                 ?></span>
                                 </div>
                             </div>
@@ -347,18 +380,18 @@
                             $sqlOffre = "SELECT * FROM offre WHERE IdOffre = '$offre'";
                             $resultderniereOffre = mysqli_query($db_handle, $sqlOffre);
                             $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
+                            $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
                             ?>
                             <div class="col-sm-9">
                                 <div class="well">
                                     <span><?php
                                     if ($derniereOffre['Accepte'] == 1) {
-                                        echo "Vous avez accepté l'offre du client à : ";
+                                        echo "Vous avez accepté l'offre du client à : " . $prix . " €" . "<br>";
+                                        echo "Vous recevrez les informations sur la transaction quand le client aura payé.<br>";
                                     }
                                     if ($derniereOffre['Accepte'] == 0) {
-                                        echo "Le client n'a pas encore répondu à votre offre à : ";
+                                        echo "Le client n'a pas encore répondu à votre offre à : " . $prix . " €" . "<br>";
                                     }
-                                    $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
-                                    echo $prix . " €" . "<br>";
                                     ?></span>
                                 </div>
                             </div>

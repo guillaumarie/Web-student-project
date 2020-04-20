@@ -19,7 +19,7 @@
 
     if($nom && $prenom && $email && $password1 && $password2 && $adresse1 && $cp && $ville && $pays && $tel
         && $typeCarte && $numeroCarte && $titulaire && $expiration && $cvc && $clause) {
-        
+            
         include 'includes/bdd.php';
 
         if ($db_found) {

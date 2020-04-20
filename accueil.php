@@ -26,9 +26,14 @@
         $rows2 = mysqli_fetch_row($result);
         $rows3 = mysqli_fetch_row($result);
     ?>
+    <?php echo $_SESSION["id"]?>
+<div class="row">
 
-        <div id="Affaire1" class="carousel slide col-md-3" data-ride="carousel">
-            <h3>Affaire du Moment</h3>
+       <div class="col-lg-5 col-md-4 col-sm-12">
+    </div>
+        <div id="Affaire1"   class="carousel slide col-md-6"  data-ride="carousel">
+            
+        <h3>     Affaire du Moment     </h3>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <?php echo '<a href="fiche_article.php?id='.$rows[0].'">'; ?>
@@ -51,7 +56,17 @@
                 <span class="carousel-control-next-icon" aria-hidden="false"></span>
                 <span class="sr-only">Next</span>
             </a>
+    </div>
         </div>
+
     <?php
     }
     ?>
+
+     <br></br>
+
+    <?php include 'includes/footer.php'; ?>
+
+</body>
+</html>
+

@@ -115,8 +115,8 @@
                         </div>
                         <form action="ajout_item_acheteur.php" method="post">
                             <div class="well">
-                                <p><input class="container-fluid mb-1" type="number" name="prix"
-                                placeholder="Vous pouvez proposer un nouveau prix..." size="18"></p>
+                                <p><?php echo "<input class='container-fluid mb-1' type='number' name='prix'
+                                placeholder='Vous pouvez proposer un nouveau prix...' size='18' min='0' step='0.01'>"; ?></p>
                                 <p><?php echo "<input type='hidden' name='idItem' value='$idItem'>";
                                 echo "<input type='hidden' name='idAcheteur' value='$idAcheteur'>" ?></p>
                             </div>
@@ -136,8 +136,8 @@
                         </div>
                         <form action="ajout_item_acheteur.php" method="post">
                             <div class="well">
-                                <p><input class="container-fluid mb-1" type="number" name="prix"
-                                placeholder="Vous pouvez proposer un nouveau prix..." size="18"></p>
+                            <p><?php echo "<input class='container-fluid mb-1' type='number' name='prix'
+                                placeholder='Vous pouvez proposer un nouveau prix...' size='18' min='0' step='0.01'>"; ?></p>
                                 <p><?php echo "<input type='hidden' name='idItem' value='$idItem'>";
                                 echo "<input type='hidden' name='idAcheteur' value='$idAcheteur'>" ?></p>
                             </div>
@@ -168,8 +168,8 @@
                         </div>
                         <form action="ajout_item_acheteur.php" method="post">
                             <div class="well">
-                                <p><input class="container-fluid mb-1" type="number" name="prix"
-                                placeholder="Vous pouvez proposer un nouveau prix..." size="18"></p>
+                            <p><?php echo "<input class='container-fluid mb-1' type='number' name='prix'
+                                placeholder='Vous pouvez proposer un nouveau prix...' size='18' min='0' step='0.01'>"; ?></p>
                                 <p><?php echo "<input type='hidden' name='idItem' value='$idItem'>";
                                 echo "<input type='hidden' name='idAcheteur' value='$idAcheteur'>" ?></p>
                             </div>
@@ -228,8 +228,8 @@
                                 </div>
                                 <form action="ajout_item_acheteur.php" method="post">
                                     <div class="well">
-                                        <p><input class="container-fluid mb-1" type="number" name="prix"
-                                        placeholder="Indiquez votre plafond pour cette enchère..." size="18"></p>
+                                        <p><?php echo "<input class='container-fluid mb-1' type='number' name='prix'
+                                        placeholder='Indiquez votre plafond pour cette enchère...' size='18' min='$prix' step='0.01'>"; ?></p>
                                         <p><?php echo "<input type='hidden' name='idItem' value='$idItem'>";
                                         echo "<input type='hidden' name='idAcheteur' value='$idAcheteur'>" ?></p>
                                     </div>
