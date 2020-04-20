@@ -37,12 +37,13 @@
                         $produit = mysqli_fetch_assoc($resultproduit);
                         ?>
 
-                        <div class="col-sm-9">
+                        <br><br>
+                        <div class="d-flex justify-content-center">
                             <div class="well">
-                                <span><?php $photo = $produit['Photo1']; echo "<img src='$photo' width='200' align='left'>"; ?></span>
-                                <span><h5><?php echo $produit['Nom'] . "<br>"; ?></h5><?php echo $produit['Description'] . "<br><br>"; ?></span>
+                            <span><h2 align="center"><?php echo $produit['Nom'] . "<br>" ; ?></h2><p align="center"><?php echo $produit['Description'] . "<br><br>"; ?></p></span>
+                                <span><?php $photo = $produit['Photo1']; echo "<img src='$photo' style=\"max-height:300px\">"; ?><br></span>
                             </div>
-                        </div>
+                        </div><br>
 
                         <?php
                         // Nombre d'offres par item
@@ -78,7 +79,7 @@
                                 $OffreSuivante = mysqli_fetch_assoc($resultOffreSuivante);
                                 if ($OffreSuivante['Accepte'] == 0) {
                                     ?>
-                                    <div class="col-sm-9">
+                                    <div class="d-flex justify-content-center">
                                     <div class="well">
                                         <span><?php $prix = number_format($OffreEnCours['Proposition'], 2, ',', ' ');
                                         echo "Offre refusée ";
@@ -98,7 +99,7 @@
                             }
                             else {
                                 ?>
-                                    <div class="col-sm-9">
+                                    <div class="d-flex justify-content-center">
                                     <div class="well">
                                         <span><?php $prix = number_format($OffreEnCours['Proposition'], 2, ',', ' ');
                                         echo "Offre refusée ";
@@ -127,7 +128,7 @@
                             $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
                             $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
                             ?>
-                            <div class="col-sm-9">
+                            <div class="d-flex justify-content-center">
                                 <div class="well">
                                     <span><?php
                                     if ($derniereOffre['Accepte'] == 1) {
@@ -170,7 +171,7 @@
                             $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
                             $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
                             ?>
-                            <div class="col-sm-9">
+                            <div class="d-flex justify-content-center">
                                 <div class="well">
                                     <span><?php
                                     if ($derniereOffre['Accepte'] == 1) {
@@ -243,14 +244,13 @@
                         $resultproduit = mysqli_query($db_handle, $sqlProduit);
                         $produit = mysqli_fetch_assoc($resultproduit);
                         ?>
-
-                        <div class="col-sm-9">
+                        <br><br>
+                        <div class="d-flex justify-content-center">
                             <div class="well">
-                                <span><?php $photo = $produit['Photo1']; echo "<img src='$photo' width='200' align='left'>"; ?></span>
-                                <span><h5><?php echo $produit['Nom'] . "<br>"; ?></h5><?php echo $produit['Description'] . "<br><br>";
-                                echo "Négociation avec le client N°" . $acheteur . " :<br>"; ?></span>
+                            <span><h2 align="center"><?php echo $produit['Nom'] . "<br>" ; ?></h2><p align="center"><?php echo $produit['Description'] . "<br><br>"; ?></p></span>
+                                <span><?php $photo = $produit['Photo1']; echo "<img src='$photo' style=\"max-height:300px\">"; ?><br></span>
                             </div>
-                        </div>
+                        </div><br>
 
                         <?php
                         // Nombre d'offres par item et par acheteur
@@ -290,7 +290,7 @@
                                 $OffreSuivante = mysqli_fetch_assoc($resultOffreSuivante);
                                 if ($OffreSuivante['Accepte'] == 0) {
                                     ?>
-                                    <div class="col-sm-9">
+                                    <div class="d-flex justify-content-center">
                                     <div class="well">
                                         <span><?php $prix = number_format($OffreEnCours['Proposition'], 2, ',', ' ');
                                         echo "Offre refusée ";
@@ -310,7 +310,7 @@
                             }
                             else {
                                 ?>
-                                    <div class="col-sm-9">
+                                    <div class="d-flex justify-content-center">
                                     <div class="well">
                                         <span><?php $prix = number_format($OffreEnCours['Proposition'], 2, ',', ' ');
                                         echo "Offre refusée ";
@@ -341,7 +341,7 @@
                             $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
                             $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
                             ?>
-                            <div class="col-sm-9">
+                            <div class="d-flex justify-content-center">
                                 <div class="well">
                                 <span><?php
                                 if ($derniereOffre['Accepte'] == 1) {
@@ -382,7 +382,7 @@
                             $derniereOffre = mysqli_fetch_assoc($resultderniereOffre);
                             $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
                             ?>
-                            <div class="col-sm-9">
+                            <div class="d-flex justify-content-center">
                                 <div class="well">
                                     <span><?php
                                     if ($derniereOffre['Accepte'] == 1) {

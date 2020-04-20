@@ -231,7 +231,7 @@
                                         <p><?php echo "<input class='container-fluid mb-1' type='number' name='prix'
                                         placeholder='Indiquez votre plafond pour cette enchère...' size='18' min='$prix' step='0.01'>"; ?></p>
                                         <p><?php echo "<input type='hidden' name='idItem' value='$idItem'>";
-                                        echo "<input type='hidden' name='idAcheteur' value='$idAcheteur'>" ?></p>
+                                        echo "<input type='hidden' name='idAcheteur' value='$idAcheteur'>"; ?></p>
                                     </div>
                                     <div>
                                         <p><input type="submit" name="button3" value="Enchérir"></p>

@@ -3,6 +3,7 @@
     $idAcheteur = isset($_POST["idAcheteur"])? $_POST["idAcheteur"] : "";
     $prix = isset($_POST["prix"])? $_POST["prix"] : "";
     $idOffre = isset($_POST["idOffre"])? $_POST["idOffre"] : "";
+    $Enchere = isset($_POST["Enchere"])? $_POST["Enchere"] : "";
     
     include 'includes/bdd.php';
 
@@ -14,6 +15,9 @@
         $idAcheteur = $data["IdAcheteur"];
         $prix = $data["Proposition"];
     }
+    if ($Enchere) {
+        $prix = $Enchere;
+    }
 
     if ($idItem && $idAcheteur) {
         if ($db_found) {
@@ -21,6 +25,7 @@
                 $sqlInsert = "INSERT INTO panier (IdAcheteur, IdItem) VALUES ($idAcheteur, $idItem)";
                 $result = mysqli_query($db_handle, $sqlInsert);
                 if ($idOffre) {header('Location: offre.php');}
+                if ($Enchere) {header('Location: enchere.php');}
                 else {header('Location: fiche_article.php?id='.$idItem.'');}
             }
             if (isset($_POST["button2"])) {    // Si offre

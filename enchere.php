@@ -68,13 +68,32 @@
                                 }
                                 if ($enchere["Plafond"] < $enchereActuelle["Plafond"]) {
                                     echo "Votre plafond d'enchère pour cet article fixé à " . $prix . " € a été dépassé.<br>
-                                    Vous ne remporterez malheuereusement pas cette vente...<br>";
+                                    Vous ne remporterez malheureusement pas cette vente...<br>";
                                 }
                             }
                             if ($enchereActuelle["Fin"] <= $date) {   // Enchères terminées
                                 if ($enchere["Plafond"] >= $enchereActuelle["Plafond"]) {
                                     echo "Les enchères sont terminées pour cet article et vous remportez la vente !<br>
                                     Vous pouvez valider l'achat à " . $prixgagnant . " €.<br>";
+                                    $sqlVerifPanier = "SELECT IdItem FROM panier WHERE IdAcheteur = '$id' AND IdItem = '$item'";
+                                    $resultVerifPanier = mysqli_query($db_handle, $sqlVerifPanier);
+                                    if (mysqli_num_rows($resultVerifPanier) === 0) {
+                                        ?>
+                                        <form action="ajout_item_acheteur.php" method="post">
+                                            <div class="well">
+                                                <p><?php echo "<input type='hidden' name='idItem' value='$item'>";
+                                                echo "<input type='hidden' name='idAcheteur' value='$id'>";
+                                                echo "<input type='hidden' name='Enchere' value='$prixgagnant'>"; ?></p>
+                                            </div>
+                                            <div>
+                                                <p><input type="submit" name="button1" value="Ajouter l'article au panier">
+                                            </div>
+                                        </form>
+                                        <?php
+                                    }
+                                    else {
+                                        echo "Vous avez déjà ajouté cet article au panier.<br>";
+                                    }
                                 }
                                 if ($enchere["Plafond"] < $enchereActuelle["Plafond"]) {
                                     echo "Les enchères sont terminées pour cet article, mais vous ne remportez malheureusement pas la vente...<br>";
