@@ -15,7 +15,7 @@
         $db_found = mysqli_select_db($db_handle, $database);
 
         if ($db_found) {
-            $sql = "SELECT * FROM item WHERE TypeAchat LIKE 'achat_immediat'"; 
+            $sql = "SELECT * FROM item WHERE TypeAchat LIKE 'immediat' OR TypeAchat LIKE 'immediat_offre'"; 
             $result = mysqli_query($db_handle, $sql);
 
 
