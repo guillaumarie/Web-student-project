@@ -6,14 +6,9 @@
 
 <body>
 
-    <?php include 'includes/header.php'; ?>
-
-    <?php
-
-    $database = "ebay_ece";
-
-    $db_handle = mysqli_connect('127.0.0.1:3306', 'root', 'root');
-    $db_found = mysqli_select_db($db_handle, $database);
+    <?php include 'includes/header.php';
+    
+    include 'includes/bdd.php';
 
     if ($db_found) {
         $sql = "SELECT*
@@ -37,15 +32,15 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <?php echo '<a href="fiche_article.php?id='.$rows[0].'">'; ?>
-                    <?php echo '<img src="'.$rows[3].'" alt ="images/item/guernica.jpg" width="350" height="200"> </a>'; ?>
+                    <?php echo '<img src="'.$rows[3].'" alt ="bonne_affaire_vip" width="350" height="200"> </a>'; ?>
                 </div>
                 <div class="carousel-item">
                     <?php echo '<a href="fiche_article.php?id='.$rows2[0].'">'; ?>
-                    <?php echo '<img src="'.$rows2[3].'" alt="images/item/villa.jpg" width="350" height="200"> </a>'; ?>
+                    <?php echo '<img src="'.$rows2[3].'" alt="bonne_affaire_musee" width="350" height="200"> </a>'; ?>
                 </div>
                 <div class="carousel-item">
                     <?php echo '<a href="fiche_article.php?id='.$rows3[0].'">'; ?>
-                    <?php echo '<img src="'.$rows3[3].'" alt="images/item/villa.jpg" width="350" height="200"> </a>'; ?>
+                    <?php echo '<img src="'.$rows3[3].'" alt="bonne_affaire_tresor" width="350" height="200"> </a>'; ?>
                 </div>
             </div>
             <a class="carousel-control-prev" href="#Affaire1" role="button" data-slide="prev">

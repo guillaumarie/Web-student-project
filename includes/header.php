@@ -17,6 +17,20 @@
     if ($_SESSION['connected']==2){if($_SESSION['job']=="vendeur"){
         $connexion = 1;
         echo '<li class="nav-item"><a class="nav-link" href="fiche_vendeur.php">'.$_SESSION["prenom"].'</a></li>';
+        echo '
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color:white" id="navbar_Dropdown" role="button" data-toggle="dropdown">
+        Ventes
+        </a>
+         <ul class="dropdown-menu">
+         <li><a class="dropdown-item" href="categories.php">Par categories</a></li>
+         <li class="dropdown-divider"></li>
+         <li><a class="dropdown-item" href="Ventes.php">Par type de ventes</a></li>
+         <li class="dropdown-divider"></li>
+         <li><a class="dropdown-item" href="toutes_ventes.php">Tous type</a></li>
+         <li class="dropdown-divider"></li>
+         </ul>
+         ';
         echo '<li class="nav-item"><a class="nav-link" href="espace_vendeur.php">Vendre</a></li>';
         echo '<li class="nav-item"><a class="nav-link" href="offre.php">Offres en cours</a></li>';
     }

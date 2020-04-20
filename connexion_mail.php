@@ -21,10 +21,7 @@ $Prix = "";
 $TypeAchat = "";
 
 if ($IdAcheteur) {
-    $database = "ebay_ece";
-
-    $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
-    $db_found = mysqli_select_db($db_handle, $database);
+    include 'includes/bdd.php';
 
     if ($db_found) {
         $sql = "SELECT * FROM acheteur WHERE IdAcheteur LIKE '$IdAcheteur'";

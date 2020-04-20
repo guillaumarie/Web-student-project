@@ -6,17 +6,13 @@
 
 
 <body>
-    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/header.php';
 
+    include 'includes/bdd.php';
 
-<?php
     $idAcheteur = isset($_SESSION["id"])? $_SESSION["id"] : "";
     $job = isset($_SESSION["job"])? $_SESSION["job"] : "";
     $idItem = isset($_GET['id']) ? $_GET['id'] : "";
-
-    $database = "ebay_ece";
-    $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
-    $db_found = mysqli_select_db($db_handle, $database);
 
     $date = date("Y-m-d");
 

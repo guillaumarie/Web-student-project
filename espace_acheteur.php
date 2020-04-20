@@ -10,10 +10,8 @@
         
         $id = $_SESSION["id"];
 
-        $database = "ebay_ece";
+        include 'includes/bdd.php';
 
-        $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
-        $db_found = mysqli_select_db($db_handle, $database);
         if ($db_found) {
             $sql = "SELECT * FROM acheteur WHERE IdAcheteur LIKE '$id'"; 
             $result = mysqli_query($db_handle, $sql);
