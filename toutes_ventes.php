@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
+
     
-    <?php include 'includes/head.php'; ?>
+        <?php include 'includes/head.php'; ?>
+
+
 
     <body>
         <?php include 'includes/header.php';
 
         $database = "ebay_ece";
 
-        $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
+        $db_handle = mysqli_connect('127.0.0.1:3306', 'root', 'root');
         $db_found = mysqli_select_db($db_handle, $database);
 
         if ($db_found) {
-            $sql = "SELECT * FROM item"; 
+            $sql = "SELECT * FROM item  "; 
             $result = mysqli_query($db_handle, $sql);
-
 
             ?>
             <div>
             <div class="container">
-
             <h3 class="feature-title" align="center">Toutes les ventes</h3><br>
 
             <div class="row">

@@ -11,6 +11,20 @@
         <img src="images/navbar/logo.png" width="250" height="120"/></a><div class="collapse navbar-collapse" id="main-navigation">
         <ul class="navbar-nav">
         ';
+        
+         
+                  
+    if ($_SESSION['connected']==2){if($_SESSION['job']=="vendeur"){
+        $connexion = 1;
+        echo '<li class="nav-item"><a class="nav-link" href="fiche_vendeur.php">'.$_SESSION["prenom"].'</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="espace_vendeur.php">Vendre</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="offre.php">Offres en cours</a></li>';
+    }
+
+
+    elseif($_SESSION["job"]=="acheteur"){
+       
+        echo '<li class="nav-item"><a class="nav-link" href="espace_acheteur.php">'.$_SESSION["prenom"].'</a></li>';
         echo '
        
         <li class="nav-item dropdown">
@@ -26,19 +40,7 @@
          <li class="dropdown-divider"></li>
          </ul>
          ';
-         
-                  
-    if ($_SESSION['connected']==2){if($_SESSION['job']=="vendeur"){
-        $connexion = 1;
-        echo '<li class="nav-item"><a class="nav-link" href="fiche_vendeur.php">'.$_SESSION["prenom"].'</a></li>';
-        echo '<li class="nav-item"><a class="nav-link" href="espace_vendeur.php">Vendre</a></li>';
-    }
-
-
-    elseif($_SESSION["job"]=="acheteur"){
-       
-        echo '<li class="nav-item"><a class="nav-link" href="espace_acheteur.php">'.$_SESSION["prenom"].'</a></li>';
-       
+         echo '<li class="nav-item"><a class="nav-link" href="offre.php">Offres en cours</a></li>';
 
     }
 }

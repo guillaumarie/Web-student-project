@@ -9,7 +9,7 @@
 
         $database = "ebay_ece";
 
-        $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
+        $db_handle = mysqli_connect('127.0.0.1:3306', 'root', 'root');
         $db_found = mysqli_select_db($db_handle, $database);
 
         if ($db_found) {
@@ -161,12 +161,27 @@
                                     <span><?php
                                     if ($derniereOffre['Accepte'] == 1) {
                                         echo "Le vendeur a accepté votre offre à ";
+                                       
+                                        echo'<a href="#"</a><input type="submit" name="button" value="Procéder au Paiement">';
+
+                                        
                                     }
                                     if ($derniereOffre['Accepte'] == 0) {
                                         echo "Voici sa dernière offre : ";
+                                        echo'<form action="formulaire_offre.php?id='.$derniereOffre["IdItem"].' method="post">
+                                        <input type="number" name="contre_offre" >
+                                        <button type="submit" name="valider">Contre offre</button>
+                                        </form>';
+                                        
+                                    
+                                        
+
                                     }
                                     $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
                                     echo $prix . " €" . "<br>";
+                                    
+                                
+                                    
                                     ?></span>
                                 </div>
                             </div>
@@ -304,9 +319,17 @@
                                 <span><?php
                                 if ($derniereOffre['Accepte'] == 1) {
                                     echo "Le client N°" . $acheteur . " a accepté votre offre à : ";
+                                    echo'<form action="accueil.php?id='.$derniereOffre["IdItem"].' method="post">
+                                        <input type="number" name="contre_offre" >
+                                        <button type="submit" name="valider">Contre offre</button>
+                                        </form>';
+                                    
                                 }
                                 if ($derniereOffre['Accepte'] == 0) {
                                     echo "Voici la dernière offre du client : ";
+                                    echo'<a href="#"</a><input type="submit" name="button" value="Procéder au Paiement">';
+
+
                                 }
                                 $prix = number_format($derniereOffre['Proposition'], 2, ',', ' ');
                                 echo $prix . " €" . "<br>";
