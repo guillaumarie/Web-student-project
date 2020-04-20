@@ -47,7 +47,7 @@
                 <h4>Total de votre panier</h4><br>
                 <h5><?php $prixTot = number_format($prixTot, 2, ',', ' '); echo $prixTot . " €" . "<br>"; ?></h5>
                 <br><br>
-                <input type="submit" name="button" value="Procéder au paiement">
+                <a href="ecran_paiement.php"><input type="submit" name="button" value="Procéder au paiement" ></a>
             </div>
 
                     
