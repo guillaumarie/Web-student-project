@@ -34,7 +34,8 @@
                 <div class="col-sm-4">
                     <div class="panel panel-primary"> 
                         <a style="text-decoration:none" <?php echo 'href="fiche_article.php?id='.$data["IdItem"].'"';?> >
-                        <div class="btn btn-outline-secondary btn-lg" class="panel-heading" align="center"><?php echo $data['Nom']; ?></div><br>
+                        <div class="btn btn-outline-secondary btn-lg panel-heading d-flex justify-content-center"
+                        align="center"><?php echo $data['Nom']; ?></div><br>
                         <div class="panel-body" align="center"><?php $photo = $data['Photo1'];
                             echo "<img src='$photo' class='img-responsive' style='width:50%' alt='photo_1'>"; ?>
                         </div><br>

@@ -6,19 +6,33 @@
     <body>
         <?php include 'includes/header.php'; ?>
 
-        <div id="connexion" class="mt-5">
-            <h1 class="text-center pt-5 pb-4">Rechercher un vendeur</h1>
+        <div id="inscription" class="mt-5 pb-4">
+            <h1 class="text-center pt-5 pb-4">Supprimer un compte vendeur</h1>
             <form class="pt-2" action="gestion_admin.php" method="post">
-                <table align="center" width="50%">
+                <table align="center" width="75%">
                     <tr>
-                        <td class="pb-2"><strong>Veuilez remplir au moins un champ :</strong></td>
+                        <td class="d-flex justify-content-center pb-2"><strong>Veuilez renseigner au moins un champ :</strong></td>
                     </tr>
+                </table>
+                <table align="center" width="50%">
                     <tr>
                         <td class="pb-3"><input class="container-fluid mb-1" type="text" name="id" placeholder="Numéro vendeur" size="30"></td>
                     </tr>
                     <tr>
                         <td class="pb-3"><input class="container-fluid mb-1" type="text" name="email" placeholder="Email" size="30"></td>
                     </tr>
+                    <tr>
+                        <td><select class="container-fluid mb-1" name="typeAchat">
+                                <option value="">Motif de suppression</option>
+                                <option value="immediat">Comportement inadapté</option>
+                                <option value="offre">Inactif</option>
+                                <option value="enchere">Suppression suite à sa demande</option>
+                                <option value="immediat_offre">Autre</option>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <table align="center" width="50%">
                     <tr>
                         <td class="pb-4" colspan="2" align="center">
                             <input type="submit" name="button2" value="Supprimer vendeur">

@@ -26,7 +26,6 @@
         $rows2 = mysqli_fetch_row($result);
         $rows3 = mysqli_fetch_row($result);
     ?>
-    <?php echo $_SESSION["id"]?>
 <div class="row">
 
        <div class="col-lg-5 col-md-4 col-sm-12">

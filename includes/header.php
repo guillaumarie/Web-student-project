@@ -8,7 +8,7 @@
     
 	echo '
         <header><nav class="navbar navbar-expand-md"><a class="navbar-brand" href="accueil.php">
-        <img src="images/navbar/logo.png" width="250" height="120"/></a><div class="collapse navbar-collapse" id="main-navigation">
+        <img src="images/navbar/logo_final.png" width="230" height="130"/></a><div class="collapse navbar-collapse" id="main-navigation">
         <ul class="navbar-nav">
         ';
         
@@ -23,12 +23,12 @@
         Ventes
         </a>
          <ul class="dropdown-menu">
-         <li><a class="dropdown-item" href="categories.php">Par categories</a></li>
-         <li class="dropdown-divider"></li>
-         <li><a class="dropdown-item" href="Ventes.php">Par type de ventes</a></li>
-         <li class="dropdown-divider"></li>
-         <li><a class="dropdown-item" href="toutes_ventes.php">Tous type</a></li>
-         <li class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="categories.php">Par categorie</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="Ventes.php">Par type de vente</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="toutes_ventes.php">Toutes les ventes</a></li>
+            <li class="dropdown-divider"></li>
          </ul>
          ';
         echo '<li class="nav-item"><a class="nav-link" href="espace_vendeur.php">Vendre</a></li>';
@@ -50,11 +50,11 @@
               Ventes
               </a>
                <ul class="dropdown-menu">
-               <li><a class="dropdown-item" href="categories.php">Par categories</a></li>
+               <li><a class="dropdown-item" href="categories.php">Par categorie</a></li>
                <li class="dropdown-divider"></li>
-               <li><a class="dropdown-item" href="Ventes.php">Par type de ventes</a></li>
+               <li><a class="dropdown-item" href="Ventes.php">Par type de vente</a></li>
                <li class="dropdown-divider"></li>
-               <li><a class="dropdown-item" href="toutes_ventes.php">Tous type</a></li>
+               <li><a class="dropdown-item" href="toutes_ventes.php">Toutes les ventes</a></li>
                <li class="dropdown-divider"></li>
                </ul>
                ';
@@ -71,13 +71,13 @@
         <a class="nav-link dropdown-toggle" style="color:white" id="navbar_Dropdown" role="button" data-toggle="dropdown">
         Ventes
         </a>
-         <ul class="dropdown-menu">
-         <li><a class="dropdown-item" href="categories.php">Par categories</a></li>
-         <li class="dropdown-divider"></li>
-         <li><a class="dropdown-item" href="Ventes.php">Par type de ventes</a></li>
-         <li class="dropdown-divider"></li>
-         <li><a class="dropdown-item" href="toutes_ventes.php">Tous type</a></li>
-         <li class="dropdown-divider"></li>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="categories.php">Par categorie</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="Ventes.php">Par type de vente</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="toutes_ventes.php">Toutes les ventes</a></li>
+            <li class="dropdown-divider"></li>
          </ul>
          ';
         echo '<li class="nav-item"><a class="nav-link" href="espace_vendeur.php">Vendre</a></li>';
@@ -131,9 +131,8 @@
         else {
             $connexion = 0;
         }
-
-    echo'
-        <li class="nav-item"><a class="nav-link" href="panier.php"><img src="images/navbar/logo_panier.jpg" width="30" height="30"/>
+        echo '
+        <li class="nav-item"><a class="nav-link" href="panier.php"><img src="images/navbar/logo_panier_final.png" width="30" height="30"/>
         </a></li></ul></div></nav><br></br></header>
         ';
 ?>
