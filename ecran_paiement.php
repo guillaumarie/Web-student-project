@@ -44,11 +44,6 @@
             </table>
             <table align="center" width="75%">
                 <tr>
-                    <td><input type="checkbox" name="Clause"></td>
-                    <td><label for="clause"> Pour les achats dans la catégorie "Meilleure offre", je reconnais être dans l'obligation
-                            d'acheter l'article après acceptation de mon offre par le vendeur.</label></td>
-                </tr>
-                <tr>
                     <td colspan="2" align="center">
                         <input type="submit" name="button" value="Payer">
                     </td>

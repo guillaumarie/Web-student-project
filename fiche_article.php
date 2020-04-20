@@ -32,7 +32,7 @@
                 <div class="col-sm-8 text-left">
                     <h1 align="center"><?php echo $data['Categorie']; ?></h1>
                     <p align="center"><?php $image = $data['Photo1'];
-                                        echo "<img src='$image' width='600' height='400'>"; ?></p <div class="row">
+                                        echo "<img src='$image' style='max-height:300px'>"; ?></p <div class="row">
 
                     <!--<div class="col-lg-4 col-md-5 col-sm-12"> -->
                     </div>
@@ -46,27 +46,27 @@
                             <div class="carousel-item active">
 
                                 <?php $image1 = $data['Photo1'];
-                                echo "<img src='$image1' width='200' height='200'>"; ?>
+                                echo "<img src='$image1' style='max-height:200px'>"; ?>
                             </div>
                             <div class="carousel-item">
 
                                 <?php $image2 = $data['Photo2'];
-                                echo "<img src='$image2' width='200' height='200'>"; ?>
+                                echo "<img src='$image2' style='max-height:200px'>"; ?>
                             </div>
                                 <div class="carousel-item">
 
                                     <?php $image3 = $data['Photo3'];
-                                    echo "<img src='$image3' width='200' height='200'>"; ?>
+                                    echo "<img src='$image3' style='max-height:200px'>"; ?>
                                 </div>
                                 <div class="carousel-item">
 
                                     <?php $image4 = $data['Photo4'];
-                                    echo "<img src='$image4' width='200' height='200'>"; ?>
+                                    echo "<img src='$image4' style='max-height:200px'>"; ?>
                                 </div>
                                 <div class="carousel-item">
 
                                     <?php $image5 = $data['Photo5'];
-                                    echo "<img src='$image5' width='200' height='200'>"; ?>
+                                    echo "<img src='$image5' style='max-height:200px'>"; ?>
                                 </div>
                             </div>
                             <a class="carousel-control-prev"  <a href="#Affaire2" role="button" data-slide="prev">

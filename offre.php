@@ -195,8 +195,10 @@
                                         }
                                     }
                                     if ($derniereOffre['Accepte'] == 0) {
-                                        echo "Voici sa dernière offre : " . $prix . " €" . "<br>"; ?>
-                                        <form action="formulaire_offre.php" method="post">
+                                        echo "Voici sa dernière offre : " . $prix . " €" . "<br>";
+                                        if ($nbrOffres["NbreOffre"] <= 9) {
+                                            ?>
+                                            <form action="formulaire_offre.php" method="post">
                                             <div class="well">
                                                 <p><?php echo "<input type='hidden' name='idOffre' value='$offre'>"; ?>
                                                 <input type="number" name="offre" placeholder="Montant de votre contre-offre..."
@@ -204,10 +206,25 @@
                                             </div>
                                             <div>
                                                 <p><input type="submit" name="button1" value="Soumettre une contre-offre">
-                                                <input type="submit" name="button2" value="Accepeter l'offre"></p>
+                                                <input type="submit" name="button2" value="Accepter l'offre"></p>
                                             </div>
-                                        </form>
-                                        <?php
+                                            </form>
+                                            <?php
+                                        }
+                                        if ($nbrOffres["NbreOffre"] > 9) {
+                                            ?>
+                                            <form action="formulaire_offre.php" method="post">
+                                                <div class="well">
+                                                    <p><?php echo "<input type='hidden' name='idOffre' value='$offre'>";
+                                                    echo "Vous avez atteint le nombre maximum d'offres proposées.
+                                                    Vous n'avez désormais plus que le choix d'accepter cette offre ou d'en rester là."; ?>
+                                                </div>
+                                                <div>
+                                                    <input type="submit" name="button2" value="Accepter l'offre"></p>
+                                                </div>
+                                            </form>
+                                            <?php
+                                        }
                                     }
                                     ?></span>
                                 </div>
