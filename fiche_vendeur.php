@@ -12,10 +12,8 @@
         $id = isset($_SESSION["id"])? $_SESSION["id"] : "";
         
         if($id ) {
-            $database = "ebay_ece";
-    
-            $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
-            $db_found = mysqli_select_db($db_handle, $database);
+            include 'includes/bdd.php';
+
             if ($db_found) {
                 $sql = "SELECT * FROM vendeur WHERE IdVendeur LIKE '$id'"; 
                 $result = mysqli_query($db_handle, $sql);

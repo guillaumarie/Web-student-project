@@ -8,10 +8,8 @@
     $idAcheteur = $_SESSION["id"];
 
     
-    $database = "ebay_ece";
+    include 'includes/bdd.php';
 
-    $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
-    $db_found = mysqli_select_db($db_handle, $database);
 
     if ($db_found) {
         if(isset($_POST["button1"])) {      // Suppression article du site
