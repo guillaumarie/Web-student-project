@@ -45,7 +45,7 @@
                 <h3><?php echo $data['TypeAchat']; ?></h3>
             </div>
             <?php
-            if ($idAcheteur != 0 && $job === "acheteur") {
+            if ($job === "acheteur") {
                 // Achat immédiat
                 if ($data["TypeAchat"] == 'immediat'){
                     $sqlImmediat = "SELECT IdAcheteur FROM panier WHERE IdItem LIKE '$idItem' AND IdAcheteur LIKE '$idAcheteur'";
@@ -247,12 +247,23 @@
                     }
                 }
             }
-            elseif ($idAcheteur != 0 && $job === "vendeur") {
+            elseif ($job === "vendeur") {
                 ?>
                 <div class="well">
                     <p><?php echo "Vous devez vous connecter en tant que client pour acheter cet article.<br>"; ?></p>
                 </div>
+                <br><br>
                 <?php
+                if ($idAcheteur == 1) { // Si admin
+                    ?>
+                    <form action="gestion_admin.php" method="post">
+                    <div class="well">
+                        <p><?php echo "<input type='hidden' name='idItem' value='$idItem'>";
+                        echo "<input type='submit' name='button1' value='Supprimer cet article'>"; ?></p>
+                    </div>
+                    </form>
+                    <?php
+                }
             }
             else {
                 ?>
