@@ -10,24 +10,42 @@
 
     <?php include 'includes/header.php'; ?>
 
-    <header class="page-header header container-fluid">
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('.header').height($(window).height());
-            });
-        </script>
-        
-     
-            <h1>Bienvenue sur le site de vente en ligne EBAY ECE!</h1>
-            
-            <button class="btn btn-outline-secondary btn-lg">Visiter le site</button>
+<?php
+
+if ($db_found){
+    $sql=="SELECT*
+    FROM item i
+    INNER JOIN
+    (
+    SELECT Categorie, min(Prix) AS min_price
+    FROM item
+    GROUP BY Categorie
+    )i2";
+
+    $result= mysqli_query($db_handle,$sql);
+
+
+    while($data = mysqli_fetch_assoc($result)){
+        echo'
+        <div id="Affaire1" class="carousel slide col-md-3 data-ride="carousel">
+        <h3>Affaire du Moment</3>
+        <div class="carousel-inner">
         </div>
-    </header>
+        <a class="carousel-control-prev" href="#Affaire1" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+        <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#Affaire1" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="false"></span>
+        <span class="sr-only">Next</span>
+        </a>
+    </div>';
 
-    <br></br>
+    echo'
+        <a href="fiche_article.php?id='.$data["IdItem"].'"> '.$photo=$data['Photo1'].';
+        <img src="'.$photo.'" width"260" height="200">
+        </a>';
 
-    <?php include 'includes/footer.php'; ?>
-
-</body>
-
-</html>
+        
+    }
+}

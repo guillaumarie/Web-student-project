@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Apr 18, 2020 at 11:53 PM
+-- Generation Time: Apr 19, 2020 at 06:12 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -84,7 +84,7 @@ DROP TABLE IF EXISTS `enchere`;
 CREATE TABLE IF NOT EXISTS `enchere` (
   `IdItem` int(11) NOT NULL,
   `IdAcheteur` int(11) NOT NULL,
-  `Prix` int(11) NOT NULL,
+  `Plafond` int(11) NOT NULL,
   `Debut` date NOT NULL,
   `Fin` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -93,12 +93,18 @@ CREATE TABLE IF NOT EXISTS `enchere` (
 -- Dumping data for table `enchere`
 --
 
-INSERT INTO `enchere` (`IdItem`, `IdAcheteur`, `Prix`, `Debut`, `Fin`) VALUES
+INSERT INTO `enchere` (`IdItem`, `IdAcheteur`, `Plafond`, `Debut`, `Fin`) VALUES
 (9, 0, 10000000, '2020-05-23', '2020-05-31'),
 (11, 0, 200000, '2020-04-21', '2020-04-30'),
 (12, 0, 200000, '2020-04-21', '2020-04-30'),
 (13, 0, 200000, '2020-04-21', '2020-04-30'),
-(23, 0, 250000, '2020-04-21', '2020-04-30');
+(23, 0, 250000, '2020-04-21', '2020-04-30'),
+(9, 8, 11000000, '2020-05-23', '2020-05-31'),
+(9, 10, 12000000, '2020-05-23', '2020-05-31'),
+(11, 10, 250000, '2020-04-21', '2020-04-30'),
+(12, 10, 220000, '2020-04-21', '2020-04-30'),
+(12, 8, 250000, '2020-04-21', '2020-04-30'),
+(23, 8, 300000, '2020-04-21', '2020-04-30');
 
 -- --------------------------------------------------------
 
@@ -152,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `offre` (
   `Proposition` int(11) NOT NULL,
   `Accepte` tinyint(1) NOT NULL,
   PRIMARY KEY (`IdOffre`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `offre`
@@ -167,7 +173,10 @@ INSERT INTO `offre` (`IdOffre`, `IdItem`, `IdAcheteur`, `Proposition`, `Accepte`
 (6, 36, 10, 12000, 0),
 (7, 36, 10, 14000, 0),
 (8, 33, 8, 2500000, 0),
-(9, 33, 10, 2700000, 0);
+(9, 33, 10, 2700000, 0),
+(10, 27, 8, 42000000, 0),
+(11, 36, 10, 13000, 0),
+(12, 36, 10, 13000, 1);
 
 -- --------------------------------------------------------
 
