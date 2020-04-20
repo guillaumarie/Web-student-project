@@ -79,7 +79,7 @@
                             </a>
                         </div>
                     </div>
-
+                <br><br><br>
                 <div>
                     <h3>Description</h3>
                     <p><?php echo $data['Description']; ?></p>

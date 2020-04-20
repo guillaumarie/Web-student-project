@@ -126,7 +126,7 @@
         
     if ($_SESSION['connected']==2) {
         $connexion = 1;
-        echo '<li class="nav-item"><a class="nav-link" href="Deconnexion.php">Deconnexion</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="Deconnexion.php">Déconnexion</a></li>';
         }
         else {
             $connexion = 0;

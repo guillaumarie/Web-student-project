@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Apr 20, 2020 at 09:37 PM
+-- Generation Time: Apr 20, 2020 at 11:05 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -118,7 +118,13 @@ INSERT INTO `enchere` (`IdItem`, `IdAcheteur`, `Plafond`, `Debut`, `Fin`) VALUES
 (45, 10, 170000, '2020-04-10', '2020-04-15'),
 (47, 0, 150000, '2020-04-20', '2020-05-21'),
 (50, 0, 40, '2020-05-22', '2020-06-25'),
-(51, 0, 700, '2020-06-10', '2020-09-04');
+(51, 0, 700, '2020-06-10', '2020-09-04'),
+(53, 0, 9000001, '2020-04-02', '2020-05-22'),
+(53, 13, 10000000, '2020-04-02', '2020-05-22'),
+(53, 12, 6000000, '2020-04-02', '2020-05-22'),
+(53, 10, 8000000, '2020-04-02', '2020-05-22'),
+(53, 14, 9000000, '2020-04-02', '2020-05-22'),
+(56, 0, 1500000, '2020-04-21', '2020-05-21');
 
 -- --------------------------------------------------------
 
@@ -142,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `item` (
   `Categorie` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `TypeAchat` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`IdItem`)
-) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `item`
@@ -154,11 +160,16 @@ INSERT INTO `item` (`IdItem`, `IdVendeur`, `Nom`, `Photo1`, `Photo2`, `Photo3`, 
 (43, 3, 'Montre Richard Mille', 'images/item/img_richard_mille.jpg', '', '', '', '', '', 'Achetée il y a 30 ans !', 45000, 'vip', 'offre'),
 (41, 1, 'La Joconde', 'images/item/joconde-1.jpg', 'images/item/joconde-2.jpg', 'images/item/joconde-3.jpg', 'images/item/joconde-4.jpg', 'images/item/joconde-5.jpg', 'images/item/une-minute-au-musee-ep07-la-joconde.mp4', 'Pas mal...', 2500000, 'musee', 'offre'),
 (51, 2, 'Chaise', 'images/item/chaise.jpg', '', '', '', '', '', 'Date du 18ème siècle', 700, 'ferraille', 'enchere'),
+(52, 2, 'Bateau Bavaria', 'images/item/883960.jpg', 'images/item/unnamed (1).jpg', 'images/item/unnamed.jpg', 'images/item/fsdwhfx.jpg', 'images/item/unnamed (2).jpg', '', 'Très beau bateau pour des vacances paisibles', 1000000, 'vip', 'offre'),
 (38, 8, 'Villa', 'images/item/villa.jpg', '', '', '', '', '', 'Belle et bien située', 3000000, 'ferraille', 'offre'),
 (46, 2, 'Venus de Milo', 'images/item/venus_de_milo.jpg', '', '', '', '', '', 'I found it in Paris!', 200000, 'musee', 'enchere'),
 (47, 8, 'Trésor de pirate', 'images/item/pirate1.jpg', 'images/item/pirate2.jpg', '', '', '', '', 'Trouvé aux Caraïbes', 150000, 'ferraille', 'enchere'),
 (48, 3, 'Ferrari', 'images/item/18900944lpw-18900957-article-jpg_6766931_1250x625.jpg', 'images/item/ferrari.jpg', 'images/item/ferrari2.jpg', '', '', '', 'Très peu roulé', 170000, 'vip', 'offre'),
-(50, 11, 'Assiettes', 'images/item/assiettes.jpg', '', '', '', '', '', 'Très plates ! Parfait pour mes omelettes', 40, 'ferraille', 'enchere');
+(50, 11, 'Assiettes', 'images/item/assiettes.jpg', '', '', '', '', '', 'Très plates ! Parfait pour mes omelettes', 40, 'ferraille', 'enchere'),
+(53, 10, 'Guernica', 'images/item/guernica.jpg', '', '', '', '', '', 'Toile très réussie', 4500000, 'musee', 'enchere'),
+(54, 3, 'Collection de vinyles', 'images/item/gxcoosdqs5.jpg', 'images/item/vinyles-riaa-cd-big__w770.jpg', 'images/item/tdhfbfdt.jpg', 'images/item/selection-vinyle.jpg', 'images/item/sdfdsft.jpg', '', 'Vinyles en tous genres, les plus grands classiques !!', 2000, 'ferraille', 'immediat'),
+(55, 11, 'Obus', 'images/item/obus_1.jpg', 'images/item/obus_2.jpg', '', '', '', '', 'Ma fille a trouvé cet obus dans mon jardin en jouant au ballon. Il date de la Première Guerre Mondiale !!', 15000, 'ferraille', 'immediat_offre'),
+(56, 2, 'Statue grecque', 'images/item/fsdggs.jpg', '', '', '', '', '', 'Cette statue ne supporte plus de vivre dans mon salon, mais elle se sentira sûrement plus à l\'aise dans un musée...', 1500000, 'musee', 'offre');
 
 -- --------------------------------------------------------
 
@@ -174,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `offre` (
   `Proposition` int(11) NOT NULL,
   `Accepte` tinyint(1) NOT NULL,
   PRIMARY KEY (`IdOffre`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `offre`
@@ -190,7 +201,18 @@ INSERT INTO `offre` (`IdOffre`, `IdItem`, `IdAcheteur`, `Proposition`, `Accepte`
 (33, 41, 10, 2400000, 0),
 (32, 41, 10, 2600000, 0),
 (28, 48, 0, 170000, 0),
-(30, 41, 12, 2700000, 0);
+(30, 41, 12, 2700000, 0),
+(36, 52, 0, 1000000, 0),
+(37, 55, 0, 15000, 0),
+(38, 56, 0, 1500000, 0),
+(39, 48, 13, 150000, 0),
+(40, 56, 14, 1200000, 0),
+(41, 55, 14, 12000, 0),
+(42, 55, 8, 13000, 0),
+(43, 55, 14, 14000, 0),
+(44, 55, 8, 14000, 0),
+(45, 55, 8, 13500, 0),
+(46, 55, 8, 13500, 1);
 
 -- --------------------------------------------------------
 
