@@ -63,7 +63,7 @@
 
     elseif( $_SESSION["id"]==1){
 
-        echo' ,zenfopzejopafjoz';
+        
         echo '<li class="nav-item"><a class="nav-link" href="fiche_vendeur.php">'.$_SESSION["prenom"].'</a></li>';
         echo '<li class="nav-item"><a class="nav-link" href="gestion_admin_vendeur.php">Admin</a></li>';
         echo '
