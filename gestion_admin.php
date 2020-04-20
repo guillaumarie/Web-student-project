@@ -5,6 +5,7 @@
     $idItem = isset($_POST["idItem"])? $_POST["idItem"] : "";
     $idVendeur = isset($_POST["id"])? $_POST["id"] : "";
     $emailVendeur = isset($_POST["email"])? $_POST["email"] : "";
+    $idAcheteur = $_SESSION["id"];
 
     
     $database = "ebay_ece";
@@ -13,7 +14,7 @@
     $db_found = mysqli_select_db($db_handle, $database);
 
     if ($db_found) {
-        if(isset($_POST["button1"])) {
+        if(isset($_POST["button1"])) {      // Suppression article du site
             if($idItem) {
                 $sql = "SELECT TypeAchat FROM item WHERE IdItem LIKE '$idItem'"; 
                 $result = mysqli_query($db_handle, $sql);
@@ -34,7 +35,7 @@
                 header('Location: accueil.php');
             }
         }
-        if(isset($_POST["button2"])) {
+        if(isset($_POST["button2"])) {      // Suppression vendeur
             if ($idVendeur) {
                 $sql = "SELECT IdItem, TypeAchat FROM item WHERE IdVendeur LIKE '$idVendeur'"; 
                 $result = mysqli_query($db_handle, $sql);
@@ -85,6 +86,13 @@
                 $resultDelete = mysqli_query($db_handle, $sqlDelete);
 
                 header('Location: accueil.php');
+            }
+        }
+        if(isset($_POST["button3"])) {      // Suppression article du panier
+            if($idItem) {
+                $sqlDelete = "DELETE FROM panier WHERE IdItem LIKE '$idItem' AND IdAcheteur LIKE '$idAcheteur'"; 
+                $resultDelete = mysqli_query($db_handle, $sqlDelete);
+                header('Location: panier.php');
             }
         }
     } else {

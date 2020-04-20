@@ -8,10 +8,7 @@
     <body>
         <?php include 'includes/header.php';
 
-        $database = "ebay_ece";
-
-        $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
-        $db_found = mysqli_select_db($db_handle, $database);
+        include 'includes/bdd.php';
 
         if ($db_found) {
             $id = $_SESSION["id"];
@@ -35,6 +32,14 @@
                             <?php $prix = number_format($data['Prix'], 2, ',', ' '); echo $prix . " €" . "<br>";
                             $prixTot = $prixTot + $data['Prix']; ?></span>
                         </div>
+                        <form action="gestion_admin.php" method="post">
+                            <div class="well">
+                                <p><?php $idItem=$data['IdItem']; echo "<input type='hidden' name='idItem' value='$idItem'>"; ?></p>
+                            </div>
+                            <div>
+                                <p><input type="submit" name="button3" value="Supprimer du panier"></p>
+                            </div>
+                        </form>
                     </div>
                 </div><br>
             <?php

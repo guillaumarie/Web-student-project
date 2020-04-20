@@ -46,7 +46,20 @@
 }
     else {
         $connexion = 0;
-        echo '<li class="nav-item"><a class="nav-link" href="acces_vendeur.php">Connexion</a></li>
+        echo '<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color:white" id="navbar_Dropdown" role="button" data-toggle="dropdown">
+        Ventes
+        </a>
+         <ul class="dropdown-menu">
+         <li><a class="dropdown-item" href="categories.php">Par categories</a></li>
+         <li class="dropdown-divider"></li>
+         <li><a class="dropdown-item" href="Ventes.php">Par type de ventes</a></li>
+         <li class="dropdown-divider"></li>
+         <li><a class="dropdown-item" href="toutes_ventes.php">Tous type</a></li>
+         <li class="dropdown-divider"></li>
+         </ul>
+         ';
+         echo '<li class="nav-item"><a class="nav-link" href="acces_vendeur.php">Connexion</a></li>
               <li class="nav-item"><a class="nav-link" href="acces_acheteur.php"> Déjà membre ?</a></li>';
     }
 
