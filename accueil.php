@@ -39,15 +39,15 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <?php echo '<a href="fiche_article.php?id='.$rows[0].'">'; ?>
-                    <?php echo '<img src="'.$rows[3].'" alt ="bonne_affaire_vip" width="400" height="400"> </a>'; ?>
+                    <?php echo '<img src="'.$rows[3].'" alt ="bonne_affaire_vip" style="max-height:300px"> </a>'; ?>
                 </div>
                 <div class="carousel-item">
                     <?php echo '<a href="fiche_article.php?id='.$rows2[0].'">'; ?>
-                    <?php echo '<img src="'.$rows2[3].'" alt="bonne_affaire_musee" width="400" height="400"> </a>'; ?>
+                    <?php echo '<img src="'.$rows2[3].'" alt="bonne_affaire_musee" style="max-height:300px"> </a>'; ?>
                 </div>
                 <div class="carousel-item">
                     <?php echo '<a href="fiche_article.php?id='.$rows3[0].'">'; ?>
-                    <?php echo '<img src="'.$rows3[3].'" alt="bonne_affaire_tresor" width="400" height="400"> </a>'; ?>
+                    <?php echo '<img src="'.$rows3[3].'" alt="bonne_affaire_tresor" style="max-height:300px"> </a>'; ?>
                 </div>
             </div>
             <a class="carousel-control-prev" href="#Affaire1" role="button" data-slide="prev">

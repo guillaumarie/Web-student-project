@@ -17,34 +17,34 @@
             <table align="center" width="75%">
                 <tr>
                     <td>Type de carte : </td>
-                    <td><input type="radio" id="visa" name="typeCarte" value="visa"><label for="visa">
+                    <td><input type="radio" id="visa" name="TypeCarte" value="visa"><label for="visa">
                             <img src="images/paiement/logo_visa" alt="logo_visa" height="40"></label></td>
-                    <td><input type="radio" id="mastercard" name="typeCarte" value="mastercard"><label for="mastercard">
+                    <td><input type="radio" id="mastercard" name="TypeCarte" value="mastercard"><label for="mastercard">
                             <img src="images/paiement/logo_mastercard" alt="logo_masteracrd" height="40"></label></td>
-                    <td><input type="radio" id="amex" name="typeCarte" value="amex"><label for="amex">
+                    <td><input type="radio" id="amex" name="TypeCarte" value="amex"><label for="amex">
                             <img src="images/paiement/logo_amex" alt="logo_american_express" height="40"></label></td>
-                    <td><input type="radio" id="paypal" name="typeCarte" value="paypal"><label for="paypal">
+                    <td><input type="radio" id="paypal" name="TypeCarte" value="paypal"><label for="paypal">
                             <img src="images/paiement/logo_paypal" alt="logo_paypal" height="40"></label></td>
                 </tr>
             </table>
             <table align="center" width="75%">
                 <tr>
-                    <td><input class="container-fluid mb-1" type="text" name="numeroCarte" placeholder="N° Carte Bancaire" size="40"></td>
+                    <td><input class="container-fluid mb-1" type="text" name="NumeroCarte" placeholder="N° Carte Bancaire" size="40"></td>
                 </tr>
                 <tr>
-                    <td><input class="container-fluid mb-1" type="text" name="titulaire" placeholder="Nom du titualaire de la carte" size="40"></td>
+                    <td><input class="container-fluid mb-1" type="text" name="NomTitulaire" placeholder="Nom du titualaire de la carte" size="40"></td>
                 </tr>
             </table>
             <table align="center" width="75%">
                 <tr>
                     <td><label for="expiration">Date d'expiration :</label></td>
-                    <td><input class="container-fluid mb-1" type="date" name="expiration"></td>
-                    <td><input class="container-fluid mb-1" type="text" name="cvc" placeholder="Code de sécurité"></td>
+                    <td><input class="container-fluid mb-1" type="date" name="Expiration"></td>
+                    <td><input class="container-fluid mb-1" type="text" name="CVC" placeholder="Code de sécurité"></td>
                 </tr>
             </table>
             <table align="center" width="75%">
                 <tr>
-                    <td><input type="checkbox" name="clause"></td>
+                    <td><input type="checkbox" name="Clause"></td>
                     <td><label for="clause"> Pour les achats dans la catégorie "Meilleure offre", je reconnais être dans l'obligation
                             d'acheter l'article après acceptation de mon offre par le vendeur.</label></td>
                 </tr>
