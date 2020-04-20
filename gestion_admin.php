@@ -5,6 +5,8 @@
     $idItem = isset($_POST["idItem"])? $_POST["idItem"] : "";
     $idVendeur = isset($_POST["id"])? $_POST["id"] : "";
     $emailVendeur = isset($_POST["email"])? $_POST["email"] : "";
+  
+
 
     
     include 'includes/bdd.php';
