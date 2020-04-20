@@ -27,19 +27,20 @@
 
             <?php while ($data = mysqli_fetch_assoc($result)) { ?>
                 <div class="col-sm-4">
-                    <a style="text-decoration:none" href="fiche_article.php">
+                    <a style="text-decoration:none" <?php echo 'href="fiche_article.php?id='.$data["IdItem"].'"';?> >
                         <div class="panel panel-primary">
-                            <div class="btn btn-outline-secondary btn-lg" class="panel-heading" align="center"><?php echo $data['Nom']; ?></div><br>
+                            <div class="btn btn-outline-secondary btn-lg" class="panel-heading" align="center"><?php echo $data['Nom']; ?></div><br></a>
                             <div class="panel-body" align="center"><?php $photo = $data['Photo1'];
                             echo "<img src='$photo' class='img-responsive' style='width:50%' alt='photo_1'>"; ?></div><br>
                             <div class="panel-footer" align="center">
                             <?php if ($data['TypeAchat'] == "immediat_offre") { echo 'Achat immédiat ou  par meilleure offre'; }
                             if ($data['TypeAchat'] == "immediat") { echo 'Achat immédiat'; }
                             if ($data['TypeAchat'] == "offre") { echo 'Achat par meilleure offre'; }
-                            if ($data['TypeAchat'] == "enchere") { echo 'Achat par enchères'; } ?><br>
-                            <?php $prix = number_format($data['Prix'], 2, ',', ' '); echo $prix . " €"; ?></div><br>
+                            if ($data['TypeAchat'] == "enchere") { echo 'Achat par enchères'; } echo "<br>";
+                            $_SESSION["item"]=$data["IdItem"];
+                            $prix = number_format($data['Prix'], 2, ',', ' '); echo $prix . " €"; ?></div><br>
                         </div>
-                    </a>
+                    
                 </div>
             <?php
             }

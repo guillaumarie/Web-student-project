@@ -66,21 +66,21 @@
                             <?php
                             if ($enchereActuelle["Fin"] > $date) { // Enchères en cours
                                 if ($enchere["Plafond"] >= $enchereActuelle["Plafond"]) {       // Si le client à pour l'instant la plus forte enchère
-                                    echo "Votre plafond d'enchère pour cette offre fixé à " . $prix . " € n'a pour l'instant pas été dépassé.<br>
+                                    echo "Votre plafond d'enchère pour cet article fixé à " . $prix . " € n'a pour l'instant pas été dépassé.<br>
                                     Les enchères sont toujours en cours...<br>";
                                 }
                                 if ($enchere["Plafond"] < $enchereActuelle["Plafond"]) {
-                                    echo "Votre plafond d'enchère pour cette offre fixé à " . $prix . " € a été dépassé.<br>
+                                    echo "Votre plafond d'enchère pour cet article fixé à " . $prix . " € a été dépassé.<br>
                                     Vous ne remporterez malheuereusement pas cette vente...<br>";
                                 }
                             }
                             if ($enchereActuelle["Fin"] <= $date) {   // Enchères terminées
                                 if ($enchere["Plafond"] >= $enchereActuelle["Plafond"]) {
-                                    echo "Les enchères sont terminées pour ce produit et vous remportez la vente !<br>
+                                    echo "Les enchères sont terminées pour cet article et vous remportez la vente !<br>
                                     Vous pouvez valider l'achat à " . $prixgagnant . " €.<br>";
                                 }
                                 if ($enchere["Plafond"] < $enchereActuelle["Plafond"]) {
-                                    echo "Les enchères sont terminées pour ce produit, mais vous ne remportez malheureusement pas la vente...<br>";
+                                    echo "Les enchères sont terminées pour cet article, mais vous ne remportez malheureusement pas la vente...<br>";
                                 }
                             }
                             ?>
@@ -150,7 +150,7 @@
                                 Les enchères sont toujours en cours...<br>";
                             }
                             if ($enchereActuelle["Fin"] <= $date) {   // Enchères terminées
-                                echo "Les enchères sont terminées pour ce produit.<br>
+                                echo "Les enchères sont terminées pour cet article.<br>
                                 Elles ont été remportées par le client N°" . $acheteur . " pour un montant de " . $prixgagnant . " € !<br>";
                             }
                             ?>

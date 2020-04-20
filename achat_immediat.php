@@ -15,7 +15,7 @@
         $db_found = mysqli_select_db($db_handle, $database);
 
         if ($db_found) {
-            $sql = "SELECT * FROM item WHERE TypeAchat LIKE 'achat_immediat'"; 
+            $sql = "SELECT * FROM item WHERE TypeAchat LIKE 'immediat' OR TypeAchat LIKE 'immediat_offre'"; 
             $result = mysqli_query($db_handle, $sql);
 
 
@@ -23,7 +23,7 @@
             <div>
             <div class="container">
 
-            <h3 class="feature-title" align="center">Bon pour le musée</h3><br>
+            <h3 class="feature-title" align="center">Achat immédiat</h3><br>
 
             <div class="row">
 
@@ -39,9 +39,9 @@
                                  <?php if ($data['TypeAchat'] == "immediat_offre") { echo 'Achat immédiat ou par meilleure offre'; }
                                        if ($data['TypeAchat'] == "immediat") { echo 'Achat immédiat'; }
                                        if ($data['TypeAchat'] == "offre") { echo 'Achat par meilleure offre'; }
-                                       if ($data['TypeAchat'] == "enchere") { echo 'Achat par enchères'; } ?><br>
-                                       <?php $_SESSION["item"]=$data["IdItem"];?>
-                                       <?php $prix = number_format($data['Prix'], 2, ',', ' '); echo $prix . " €"; ?></div><br>
+                                       if ($data['TypeAchat'] == "enchere") { echo 'Achat par enchères'; } echo "<br>";
+                                       $_SESSION["item"]=$data["IdItem"];
+                                       $prix = number_format($data['Prix'], 2, ',', ' '); echo $prix . " €"; ?></div><br>
                 
                        </div>
                    

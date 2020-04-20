@@ -15,7 +15,7 @@
         $db_found = mysqli_select_db($db_handle, $database);
 
         if ($db_found) {
-            $sql = "SELECT * FROM item WHERE TypeAchat LIKE 'offre' OR TypeAchat LIKE 'immediat_offre'"; 
+            $sql = "SELECT * FROM item WHERE TypeAchat LIKE 'enchere'"; 
             $result = mysqli_query($db_handle, $sql);
 
 
@@ -23,7 +23,7 @@
             <div>
             <div class="container">
 
-            <h3 class="feature-title" align="center">Achat par meilleure offre</h3><br>
+            <h3 class="feature-title" align="center">Encheres</h3><br>
 
             <div class="row">
 

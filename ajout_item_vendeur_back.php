@@ -62,33 +62,7 @@
                     $sqlInsert = "UPDATE item SET Video = '$video' WHERE IdItem LIKE '$iditem'";
                     $result = mysqli_query($db_handle, $sqlInsert);
                 }
-
-                echo "Votre produit a été mis en vente." . "<br>";
-
-                $sql = "SELECT * FROM item WHERE item.IdVendeur LIKE '$id'";
-                $result = mysqli_query($db_handle, $sql);
-
-                while ($data = mysqli_fetch_assoc($result)) {
-                    echo "Informations sur le produit mis en vente :" . "<br>";
-                    echo "ID Produit : " . $data['IdItem'] . "<br>";
-                    echo "ID Vendeur : " . $data['IdVendeur'] . "<br>";
-                    echo "Catégorie : " . $data['Categorie'] . "<br>";
-                    echo "Nom : " . $data['Nom'] . "<br>";
-                    echo "Description : " . $data['Description'] . "<br>";
-                    echo "Prix : " . $data['Prix'] . " € <br>";
-                    $photo1 = $data['Photo1'];
-                    $photo2 = $data['Photo2'];
-                    $photo3 = $data['Photo3'];
-                    $photo4 = $data['Photo4'];
-                    $photo5 = $data['Photo5'];
-                    $video = $data['Video'];
-                    echo "<img src='$photo1' alt='photo1' height='400'><br>
-                    <img src='$photo2' alt='photo2' height='100'>
-                    <img src='$photo3' alt='photo3' height='100'>
-                    <img src='$photo4' alt='photo4' height='100'>
-                    <img src='$photo5' alt='photo5' height='100'>
-                    <embed src='$video' allowfullscreen='true' allowscriptaccess='always' bgcolor='#000000' height='200'><br>";
-                }
+                header('Location: espace_vendeur.php');
             }
 
             // Si Meilleure Offre OU Achat Immediat et Meilleure Offre
@@ -126,33 +100,7 @@
 
                 $sqlInsert = "INSERT INTO offre (IdItem, Proposition) VALUES ('$iditem', '$prix')";
                 $result = mysqli_query($db_handle, $sqlInsert);
-
-                echo "Votre produit a été mis en vente." . "<br>";
-
-                $sql = "SELECT * FROM item, offre WHERE item.IdItem = offre.IdItem AND item.IdVendeur LIKE '$id'";
-                $result = mysqli_query($db_handle, $sql);
-
-                while ($data = mysqli_fetch_assoc($result)) {
-                    echo "Informations sur le produit mis en vente :" . "<br>";
-                    echo "ID Produit : " . $data['IdItem'] . "<br>";
-                    echo "ID Vendeur : " . $data['IdVendeur'] . "<br>";
-                    echo "Catégorie : " . $data['Categorie'] . "<br>";
-                    echo "Nom : " . $data['Nom'] . "<br>";
-                    echo "Description : " . $data['Description'] . "<br>";
-                    echo "Prix : " . $data['Proposition'] . " € <br>";
-                    $photo1 = $data['Photo1'];
-                    $photo2 = $data['Photo2'];
-                    $photo3 = $data['Photo3'];
-                    $photo4 = $data['Photo4'];
-                    $photo5 = $data['Photo5'];
-                    $video = $data['Video'];
-                    echo "<img src='$photo1' alt='photo1' height='400'><br>
-                    <img src='$photo2' alt='photo2' height='100'>
-                    <img src='$photo3' alt='photo3' height='100'>
-                    <img src='$photo4' alt='photo4' height='100'>
-                    <img src='$photo5' alt='photo5' height='100'>
-                    <embed src='$video' allowfullscreen='true' allowscriptaccess='always' bgcolor='#000000' height='200'><br>";
-                }
+                header('Location: espace_vendeur.php');
             }
 
             // Si Enchères
@@ -188,37 +136,9 @@
                     $result = mysqli_query($db_handle, $sqlInsert);
                 }
                 
-                $sqlInsert = "INSERT INTO enchere (IdItem, Prix, Debut, Fin) VALUES ('$iditem', '$prix', '$debut', '$fin')";
+                $sqlInsert = "INSERT INTO enchere (IdItem, Plafond, Debut, Fin) VALUES ('$iditem', '$prix', '$debut', '$fin')";
                 $result = mysqli_query($db_handle, $sqlInsert);
-
-                echo "Votre produit a été mis en vente." . "<br>";
-
-                $sql = "SELECT * FROM item, enchere WHERE item.IdItem = enchere.IdItem AND item.IdVendeur LIKE '$id'";
-                $result = mysqli_query($db_handle, $sql);
-
-                while ($data = mysqli_fetch_assoc($result)) {
-                    echo "Informations sur le produit mis en vente :" . "<br>";
-                    echo "ID Produit : " . $data['IdItem'] . "<br>";
-                    echo "ID Vendeur : " . $data['IdVendeur'] . "<br>";
-                    echo "Catégorie : " . $data['Categorie'] . "<br>";
-                    echo "Nom : " . $data['Nom'] . "<br>";
-                    echo "Description : " . $data['Description'] . "<br>";
-                    echo "Prix : " . $data['Prix'] . " € <br>";
-                    echo "Début de la vente : " . $data['Debut'] . "<br>";
-                    echo "Fin de la vente : " . $data['Fin'] . "<br>";
-                    $photo1 = $data['Photo1'];
-                    $photo2 = $data['Photo2'];
-                    $photo3 = $data['Photo3'];
-                    $photo4 = $data['Photo4'];
-                    $photo5 = $data['Photo5'];
-                    $video = $data['Video'];
-                    echo "<img src='$photo1' alt='photo1' height='400'><br>
-                    <img src='$photo2' alt='photo2' height='100'>
-                    <img src='$photo3' alt='photo3' height='100'>
-                    <img src='$photo4' alt='photo4' height='100'>
-                    <img src='$photo5' alt='photo5' height='100'>
-                    <embed src='$video' allowfullscreen='true' allowscriptaccess='always' bgcolor='#000000' height='200'><br>";
-                }
+                header('Location: espace_vendeur.php');
             }
 
             if ($typeAchat === "enchere" && ($debut === "" || $fin === "")) {

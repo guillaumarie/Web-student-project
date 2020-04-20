@@ -44,27 +44,7 @@
                         '$numeroCarte', '$titulaire', '$expiration', '$cvc', '$password1')";
                     }
                     $result = mysqli_query($db_handle, $sqlInsert);
-                    echo "Votre compte client a été créé." . "<br><br>";
-
-                    $result = mysqli_query($db_handle, $sql);
-
-                    $data = mysqli_fetch_assoc($result);
-                    echo "Informations sur le nouveau client :" . "<br>";
-                    echo "N° Client : " . $data['IdAcheteur'] . "<br>";
-                    echo "Nom : " . $data['Nom'] . "<br>";
-                    echo "Prenom : " . $data['Prenom'] . "<br>";
-                    echo "Email : " . $data['Email'] . "<br>";
-                    echo "Adresse : " . $data['Adresse1'] . $data['Adresse2'] . "<br>";
-                    echo "Code Postal : " . $data['CP'] . "<br>";
-                    echo "Ville : " . $data['Ville'] . "<br>";
-                    echo "Pays : " . $data['Pays'] . "<br>";
-                    echo "N° Téléphone : " . $data['Telephone'] . "<br>";
-                    echo "Type de carte bancaire : " . $data['TypeCarte'] . "<br>";
-                    echo "Numéro de carte : " . $data['NumeroCarte'] . "<br>";
-                    echo "Nom du titualire de la carte : " . $data['NomTitulaire'] . "<br>";
-                    echo "Date d'expiration : " . $data['Expiration'] . "<br>";
-                    echo "Code de sécurité : " . $data['CVC'] . "<br>";
-                    echo "<br>";
+                    header('Location: acces_acheteur.php');
                 } else {
                     echo "Les mots de passe ne sont pas les mêmes.<br>";
                 }
