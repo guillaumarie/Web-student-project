@@ -38,10 +38,10 @@
                         $produit = mysqli_fetch_assoc($resultProduit);
                         ?>
 
-                        <div class="col-sm-9">
+                        <div class="d-flex justify-content-center">
                             <div class="well">
-                                <span><?php $photo = $produit['Photo1']; echo "<img src='$photo' width='200' align='left'>"; ?></span>
-                                <span><h5><?php echo $produit['Nom'] . "<br>"; ?></h5><?php echo $produit['Description'] . "<br>"; ?></span>
+                            <span><h2 align="center"><?php echo $produit['Nom'] . "<br>" ; ?></h2><p align="center"><?php echo $produit['Description'] . "<br><br>"; ?></p></span>
+                                <span><?php $photo = $produit['Photo1']; echo "<img src='$photo' style=\"max-height:300px\">"; ?><br></span>
                             </div>
                         </div>
 
@@ -58,8 +58,8 @@
                         $prixgagnant = number_format($enchereActuelle['Plafond'], 2, ',', ' ');
                         
                         ?>
-                        <div class="col-sm-9">
-                            <div class="well"><span>
+                        <div class="d-flex justify-content-center">
+                            <div class="well"><span><br>
                             <?php
                             if ($enchereActuelle["Fin"] > $date) { // Enchères en cours
                                 if ($enchere["Plafond"] >= $enchereActuelle["Plafond"]) {       // Si le client à pour l'instant la plus forte enchère

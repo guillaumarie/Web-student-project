@@ -6,15 +6,13 @@
 
 
 <body>
-    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/header.php';
 
+    include 'includes/bdd.php';
 
-<?php
     $idAcheteur = isset($_SESSION["id"])? $_SESSION["id"] : "";
     $job = isset($_SESSION["job"])? $_SESSION["job"] : "";
     $idItem = isset($_GET['id']) ? $_GET['id'] : "";
-
-    include 'includes/bdd.php';
 
     $date = date("Y-m-d");
 

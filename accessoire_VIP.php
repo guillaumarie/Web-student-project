@@ -11,7 +11,6 @@
 
         include 'includes/bdd.php';
 
-
         if ($db_found) {
             $sql = "SELECT * FROM item WHERE Categorie LIKE 'vip'"; 
             $result = mysqli_query($db_handle, $sql);

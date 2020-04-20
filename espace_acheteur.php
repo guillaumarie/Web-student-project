@@ -11,7 +11,6 @@
         $id = $_SESSION["id"];
 
         include 'includes/bdd.php';
-       
 
         if ($db_found) {
             $sql = "SELECT * FROM acheteur WHERE IdAcheteur LIKE '$id'"; 
