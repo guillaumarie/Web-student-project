@@ -26,7 +26,6 @@
 
                     $result = mysqli_query($db_handle, $sqlInsert);
                     header('Location: acces_vendeur.php');
-                    }
                 } else {
                     echo "Les mots de passe ne sont pas les mêmes.<br>";
                 }

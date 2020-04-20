@@ -1,10 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<?php include 'includes/head.php'; ?>
+<body>
+<?php include 'includes/header.php'; ?>
+<h2 align = "center">Merci d'avoir commandé chez ebay_ece</h2>
+<?php include 'includes/footer.php'; ?>
+</body>
+</html>
+
+
 <?php
+session_start();
 
-$RefAchat = isset($_POST["RefAchat"]) ? $_POST["RefAchat"] : "";
-$IdAcheteur = isset($_POST["IdAcheteur"]) ? $_POST["IdAcheteur"] : "";
 
-$IdAcheteur = "";
-$Nom ="";
+$IdAcheteur = $_SESSION["id"];
+$NumeroCommande = $_SESSION["item"];
+
+
+$Nom = "";
 $Prenom = "";
 $Adresse1 = "";
 $Adresse2 = "";
@@ -15,10 +29,12 @@ $Telephone = "";
 $Email = "";
 $TypeCarte = "";
 $IdItem = "";
-$IdAcheteur = "";
 $Date = "";
-$Prix = "";
+$Prix = 0;
 $TypeAchat = "";
+$IdVendeur = "";
+$Total = 0;
+$NombreArticles = 0;
 
 if ($IdAcheteur) {
     include 'includes/bdd.php';
@@ -58,35 +74,26 @@ if ($IdAcheteur) {
     mysqli_close($db_handle);
 }
 
-if ($RefAchat) {
+if ($NumeroCommande) {
     $database = "ebay_ece";
 
     $db_handle = mysqli_connect('127.0.0.1:3308', 'root', '');
     $db_found = mysqli_select_db($db_handle, $database);
 
     if ($db_found) {
-        $sql = "SELECT * FROM achat WHERE RefAchat LIKE '$RefAchat'";
+        $sql = "SELECT * FROM achat WHERE NumeroCommande LIKE '$NumeroCommande'";
         $result = mysqli_query($db_handle, $sql);
 
-        if (mysqli_num_rows($result) === 0) {
-            echo "Ce compte client n'existe pas.<br>";
-        } else {
-            $sql .= " AND RefAchat LIKE '$RefAchat'";
-            $result = mysqli_query($db_handle, $sql);
-
-            if (mysqli_num_rows($result) === 0) {
-                echo "Votre mot de passe est incorrect.<br>";
-            } else {
-                while ($data = mysqli_fetch_assoc($result)) {
-
-                    $RefAchat = $data['RefAchat'];
-                    $IdItem = $data['IdItem'];
-                    $IdAcheteur = $data['IdAcheteur'];
-                    $Date = $data['Date'];
-                    $Prix = $data['Prix'];
-                    $TypeAchat = $data['TypeAchat'];
-                }
-            }
+        while ($data = mysqli_fetch_assoc($result)) {
+            $RefAchat = $data['RefAchat'];
+            $IdItem = $data['IdItem'];
+            $IdAcheteur = $data['IdAcheteur'];
+            $IdVendeur = $data['IdVendeur'];
+            $Date = $data['DateVente'];
+            $Prix = $data['Prix'];
+            $Total += $Prix;
+            $TypeAchat = $data['TypeAchat'];
+            $NombreArticles += 1;
         }
     } else {
         echo "Database not found.<br>";
@@ -105,8 +112,8 @@ $message .= ' ';
 $message .= $Nom;
 $message .= ',<br><br>Merci d\'avoir fait affaire avec Ebay ECE.';
 $message .= '<br><br>';
-$message .='Nous confirmons le paiement de votre commande (';
-$message .= $RefAchat;
+$message .= 'Nous confirmons le paiement de votre commande (';
+$message .= $NumeroCommande;
 $message .= ') du ';
 $message .= $Date;
 $message .= '.';
@@ -116,7 +123,13 @@ $message .= $IdAcheteur;
 $message .= '<br><br>';
 $message .= 'Informations sur votre commande : ';
 $message .= '<br><br>';
+$message .= 'Vous avez commandé ';
+$message .= $NombreArticles;
+$message .= ' articles.';
+$message .= '<br><br>';
 $message .= 'Montant total : ';
+$message .= $Total;
+$message .= ' €';
 $message .= '<br><br>';
 $message .= 'Mode de paiement choisi : ';
 $message .= $TypeCarte;
@@ -129,8 +142,7 @@ $message .= $Nom;
 $message .= '<br>';
 $message .= $Adresse1;
 $message .= '<br>';
-if($Adresse2)
-{
+if ($Adresse2) {
     $message .= $Adresse2;
     $message .= '<br>';
 }
@@ -152,13 +164,8 @@ $message .= 'Recevez nos sincères salutations EBAY ECE, Paris, ebayece2020@gmai
 
 mail("killian95840@gmail.com", "Confirmation de votre commande chez EBAY ECE", $message, $header);
 /*mail($Email, "Confirmation de votre commande chez EBAY ECE", $message, $header);*/
+
+
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<?php include 'includes/head.php'; ?>
-<body>
-<?php include 'includes/header.php'; ?>
-<p>Merci d'avoir commandé chez ebay_ece</p>
-<?php include 'includes/footer.php'; ?>
-</body>
-</html>
+
